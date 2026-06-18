@@ -133,7 +133,7 @@ const ViewTimesheetModal = ({ timesheet: initialTimesheet, onClose, onCommentAdd
                   <div key={log._id} className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                     <div className="flex justify-between items-center mb-2">
                       <span className="font-bold text-slate-700 text-sm">{log.job}</span>
-                      <span className="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs">
+                      <span className="font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full text-xs">
                         {log.hours} HRS
                       </span>
                     </div>
@@ -155,17 +155,17 @@ const ViewTimesheetModal = ({ timesheet: initialTimesheet, onClose, onCommentAdd
                   <button
                     key={attachment._id || idx}
                     onClick={() => downloadFile(attachment.blobName || attachment.url, attachment.originalname)}
-                    className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-all group text-left"
+                    className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-amber-50 hover:border-amber-200 transition-all group text-left"
                   >
                     <div className="flex items-center gap-2 overflow-hidden">
-                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-xs shrink-0">
+                      <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 font-bold text-xs shrink-0">
                         {(attachment.originalname?.split('.').pop() || "FILE").toUpperCase()}
                       </div>
                       <span className="text-xs font-bold text-slate-700 truncate">
                         {attachment.originalname || "Attachment"}
                       </span>
                     </div>
-                    <div className="text-slate-400 group-hover:text-blue-600">
+                    <div className="text-slate-400 group-hover:text-amber-600">
                       <Paperclip size={16} />
                     </div>
                   </button>
@@ -187,7 +187,7 @@ const ViewTimesheetModal = ({ timesheet: initialTimesheet, onClose, onCommentAdd
                   <div key={i} className="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm">
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">
+                        <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold">
                           {comment.author.charAt(0)}
                         </div>
                         <span className="text-xs font-bold text-slate-800">{comment.author}</span>
@@ -213,7 +213,7 @@ const ViewTimesheetModal = ({ timesheet: initialTimesheet, onClose, onCommentAdd
                   if (errors.comment) setErrors(prev => ({ ...prev, comment: null }));
                 }}
                 placeholder="Type your reply..."
-                className={`w-full bg-slate-50 border ${errors.comment ? 'border-red-400' : 'border-slate-200'} rounded-xl pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 resize-none h-14 transition-all`}
+                className={`w-full bg-slate-50 border ${errors.comment ? 'border-red-400' : 'border-slate-200'} rounded-xl pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-100 resize-none h-14 transition-all`}
               />
               <div className="flex justify-between items-center mt-1 px-1">
                 {errors.comment ? (

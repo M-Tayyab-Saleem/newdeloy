@@ -130,16 +130,16 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
       <div className="w-full sm:w-[450px] bg-white h-full shadow-2xl flex flex-col animate-fade-left animate-duration-300">
         
         {/* HEADER */}
-        <div className="flex justify-between items-center px-8 py-6 border-b border-slate-100">
-          <h2 className="text-lg font-black text-slate-800 tracking-widest uppercase">
+        <div className="flex justify-between items-center px-8 py-6 border-b border-border-subtle">
+          <h2 className="text-lg font-black text-heading tracking-widest uppercase">
             APPLY FOR LEAVE
           </h2>
           <button
             onClick={() => !isSubmitting && setIsOpen(false)}
-            className="p-2 hover:bg-slate-100 rounded-full transition-colors disabled:opacity-50"
+            className="p-2 hover:bg-surface rounded-full transition-colors disabled:opacity-50"
             disabled={isSubmitting}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
@@ -149,11 +149,11 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
           
           {/* LEAVE TYPE */}
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               LEAVE TYPE*
             </label>
             <select
-              className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3.5 text-slate-700 font-medium focus:ring-2 focus:ring-brand-btnBlue/50 transition-all appearance-none"
+              className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3.5 text-main font-medium focus:ring-2 focus:ring-brand-btnBlue/50 transition-all appearance-none"
               value={leaveType}
               onChange={(e) => setLeaveType(e.target.value)}
               required
@@ -173,12 +173,12 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
           <div className="grid grid-cols-2 gap-4">
             {/* START DATE */}
             <div>
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
                 START DATE*
               </label>
               <input
                 type="date"
-                className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3 text-slate-700 font-medium focus:ring-2 focus:ring-brand-btnBlue/50"
+                className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3 text-main font-medium focus:ring-2 focus:ring-brand-btnBlue/50"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
                 required
@@ -188,12 +188,12 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
 
             {/* END DATE */}
             <div>
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
                 END DATE*
               </label>
               <input
                 type="date"
-                className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3 text-slate-700 font-medium focus:ring-2 focus:ring-brand-btnBlue/50"
+                className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3 text-main font-medium focus:ring-2 focus:ring-brand-btnBlue/50"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
                 required
@@ -211,11 +211,11 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
 
           {/* REASON */}
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               REASON FOR LEAVE
             </label>
             <textarea
-              className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3 text-slate-700 font-medium focus:ring-2 focus:ring-brand-btnBlue/50 resize-none"
+              className="w-full bg-brand-inner/40 border-none rounded-xl px-4 py-3 text-main font-medium focus:ring-2 focus:ring-brand-btnBlue/50 resize-none"
               rows={4}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
@@ -244,12 +244,12 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
         </form>
 
         {/* FOOTER ACTIONS */}
-        <div className="p-8 border-t border-slate-100 flex gap-4 bg-slate-50/50">
+        <div className="p-8 border-t border-border-subtle flex gap-4 bg-white/40 dark:bg-black/20">
           <button
             type="button"
             onClick={() => !isSubmitting && setIsOpen(false)}
             disabled={isSubmitting}
-            className="flex-1 px-6 py-4 rounded-2xl font-black text-[11px] text-slate-400 uppercase tracking-widest hover:bg-slate-100 transition-all disabled:opacity-50"
+            className="flex-1 px-6 py-4 rounded-2xl font-black text-[11px] text-muted uppercase tracking-widest hover:bg-surface transition-all disabled:opacity-50"
           >
             CANCEL
           </button>
@@ -259,7 +259,7 @@ const ApplyLeaveModal = ({ isOpen, setIsOpen, onLeaveAdded }) => {
             disabled={quotaError !== "" || !leaveType || !startDate || !endDate || isSubmitting}
             className={`flex-1 px-6 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest transition-all shadow-lg ${
               quotaError !== "" || !leaveType || !startDate || !endDate || isSubmitting
-                ? "bg-slate-200 text-slate-400 cursor-not-allowed shadow-none"
+                ? "bg-slate-200 text-muted cursor-not-allowed shadow-none"
                 : "bg-brand-btnGreen text-brand-stroke-green hover:opacity-90 shadow-brand-btnGreen/20"
             }`}
           >

@@ -7,6 +7,7 @@ import api from "../../axios";
 import RaiseTicketModal from "../../Pages/Tickets/RaiseTicketModal";
 import ViewTicketDetailsModal from "../../Pages/Tickets/ViewTicketDetailsModal";
 import { toast } from "react-toastify";
+import PageContainer from "../../Components/ui/PageContainer";
 
 const Ticket = () => {
   const [tickets, setTickets] = useState([]);
@@ -85,10 +86,10 @@ const Ticket = () => {
       open: { color: "bg-green-100 text-green-800", label: "Open" },
       opened: { color: "bg-green-100 text-green-800", label: "Open" },
       closed: { color: "bg-red-100 text-red-800", label: "Closed" },
-      "in progress": { color: "bg-blue-100 text-blue-800", label: "In Progress" }
+      "in progress": { color: "bg-amber-100 text-amber-800", label: "In Progress" }
     };
 
-    const config = statusConfig[status?.toLowerCase()] || { color: "bg-slate-100 text-slate-800", label: status || "Unknown" };
+    const config = statusConfig[status?.toLowerCase()] || { color: "bg-surface text-heading", label: status || "Unknown" };
 
     return (
       <span className={`px-3 py-1.5 rounded-full text-xs font-medium uppercase tracking-wide ${config.color}`}>
@@ -103,7 +104,7 @@ const Ticket = () => {
       label: "Ticket ID",
       sortable: true,
       render: (row) => (
-        <span className="font-bold text-blue-600" title={row.ticketID || row._id}>
+        <span className="font-bold text-amber-600" title={row.ticketID || row._id}>
           #{row.ticketID || row._id.slice(0, 8).toUpperCase()}
         </span>
       )
@@ -113,7 +114,7 @@ const Ticket = () => {
       label: "Date",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-600 whitespace-nowrap">
+        <span className="text-muted whitespace-nowrap">
           {formatDate(row.createdAt)}
         </span>
       )
@@ -123,7 +124,7 @@ const Ticket = () => {
       label: "Subject",
       sortable: true,
       render: (row) => (
-        <div className="font-bold text-slate-700 truncate max-w-[180px]" title={row.subject}>
+        <div className="font-bold text-main truncate max-w-[180px]" title={row.subject}>
           {row.subject}
         </div>
       )
@@ -133,7 +134,7 @@ const Ticket = () => {
       label: "Description",
       sortable: false,
       render: (row) => (
-        <div className="text-slate-600 truncate max-w-[200px]" title={row.description}>
+        <div className="text-muted truncate max-w-[200px]" title={row.description}>
           {row.description}
         </div>
       )
@@ -146,7 +147,7 @@ const Ticket = () => {
         <span className={`px-3 py-1.5 rounded-full text-xs font-medium uppercase tracking-wide ${
           row.priority?.toLowerCase().includes('high') ? 'bg-red-100 text-red-800' :
           row.priority?.toLowerCase().includes('medium') ? 'bg-yellow-100 text-yellow-800' :
-          'bg-blue-100 text-blue-800'
+          'bg-amber-100 text-amber-800'
         }`}>
           {row.priority?.replace(' Priority', '') || 'Normal'}
         </span>
@@ -164,7 +165,7 @@ const Ticket = () => {
     {
       icon: <FaEye size={16} />,
       title: "View Details",
-      className: "bg-blue-50 text-blue-600 hover:bg-blue-100",
+      className: "bg-amber-50 text-amber-600 hover:bg-amber-100",
       onClick: (row) => setSelectedTicket(row)
     },
     {
@@ -176,57 +177,55 @@ const Ticket = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent p-2">
-      {/* Header Card */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="flex items-center gap-4">
-            <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">My Tickets</h2>
-            <div className="text-xs text-slate-600 flex items-center gap-1">
-              <span className="font-medium">Total:</span>
-              <span className="font-bold text-slate-800">{filteredTickets.length}</span>
-            </div>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-            <div className="relative flex-grow sm:flex-grow-0 sm:w-56">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-4 w-4 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <input
-                type="text"
-                placeholder="Search tickets..."
-                className="w-full pl-10 pr-10 py-2.5 rounded-lg shadow-sm text-sm bg-white/80 backdrop-blur-sm text-slate-700 border border-slate-200 focus:outline-none focus:ring-1 focus:ring-blue-500/30 focus:border-blue-500"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              {searchTerm && (
-                <button
-                  onClick={() => setSearchTerm("")}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 transition-colors"
-                  title="Clear search"
-                >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              )}
-            </div>
-
-            <button
-              onClick={() => setShowModal(true)}
-              className="px-6 py-3 bg-[#64748b] text-white rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg shadow-slate-100 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
-            >
-              <FiPlus className="h-4 w-4" />
-              Raise Ticket
-            </button>
-          </div>
+    <PageContainer
+      title="My Tickets"
+      subtitle={
+        <div className="flex items-center gap-1 mt-1">
+          <span className="font-medium text-muted">Total Tickets:</span>
+          <span className="font-bold text-heading">{filteredTickets.length}</span>
         </div>
-      </div>
-
-      <TableWithPagination
+      }
+      loading={loading}
+      isCard={true}
+      headerActions={
+        <button
+          onClick={() => setShowModal(true)}
+          className="btn btn-primary flex items-center justify-center gap-2"
+        >
+          <FiPlus className="h-4 w-4" />
+          Raise Ticket
+        </button>
+      }
+      filters={
+        <div className="relative flex-grow sm:flex-grow-0 sm:w-64">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg className="h-4 w-4 text-heading" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <input
+            type="text"
+            placeholder="Search tickets..."
+            className="w-full pl-10 pr-10 py-2.5 rounded-lg shadow-sm text-sm bg-white/80 backdrop-blur-sm text-main border border-border-subtle focus:outline-none focus:ring-1 focus:ring-amber-500/30 focus:border-amber-500"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm("")}
+              className="absolute inset-y-0 right-0 pr-3 flex items-center text-muted hover:text-muted transition-colors"
+              title="Clear search"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+      }
+    >
+      <div className="bg-white/30 backdrop-blur-md rounded-2xl border border-white/60 shadow-[inset_0_2px_10px_rgba(255,255,255,0.3)] overflow-hidden">
+        <TableWithPagination
         columns={ticketColumns}
         data={filteredTickets}
         loading={loading}
@@ -240,6 +239,8 @@ const Ticket = () => {
         actions={ticketActions}
         rowsPerPage={10}
       />
+
+      </div>
 
       {showModal && (
         <RaiseTicketModal
@@ -258,7 +259,7 @@ const Ticket = () => {
           onClose={() => setSelectedTicket(null)} 
         />
       )}
-    </div>
+    </PageContainer>
   );
 };
 

@@ -150,7 +150,7 @@ const ApproveTimesheetViewModal = ({
                   max={timesheet.submittedHours}
                   value={approvedHours}
                   onChange={(e) => setApprovedHours(parseFloat(e.target.value))}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium"
+                  className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium"
                   placeholder="Enter approved hours"
                 />
                 <p className="text-xs text-slate-400 mt-1">
@@ -183,7 +183,7 @@ const ApproveTimesheetViewModal = ({
                   <div key={log._id} className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                     <div className="flex justify-between items-center mb-2">
                       <span className="font-bold text-slate-700 text-sm">{log.job}</span>
-                      <span className="font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full text-xs">
+                      <span className="font-bold text-amber-600 bg-amber-50 px-3 py-1 rounded-full text-xs">
                         {log.hours} HRS
                       </span>
                     </div>
@@ -212,7 +212,7 @@ const ApproveTimesheetViewModal = ({
                               <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <button
                                   onClick={() => window.open(file.url, '_blank')}
-                                  className="p-1.5 text-blue-500 hover:bg-blue-50 rounded"
+                                  className="p-1.5 text-amber-500 hover:bg-amber-50 rounded"
                                   title="Preview"
                                 >
                                   <FaEye size={12} />
@@ -247,17 +247,17 @@ const ApproveTimesheetViewModal = ({
                   <button
                     key={attachment._id || idx}
                     onClick={() => downloadFile(attachment.blobName || attachment.url, attachment.originalname)}
-                    className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-all group text-left"
+                    className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-amber-50 hover:border-amber-200 transition-all group text-left"
                   >
                     <div className="flex items-center gap-2 overflow-hidden">
-                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs shrink-0">
+                      <div className="w-8 h-8 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold text-xs shrink-0">
                         {attachment.originalname?.split('.').pop().toUpperCase() || "FILE"}
                       </div>
                       <span className="text-xs font-bold text-slate-700 truncate">
                         {attachment.originalname || "Attachment"}
                       </span>
                     </div>
-                    <div className="text-slate-400 group-hover:text-blue-600">
+                    <div className="text-slate-400 group-hover:text-amber-600">
                       <Paperclip size={16} />
                     </div>
                   </button>
@@ -273,7 +273,7 @@ const ApproveTimesheetViewModal = ({
             </label>
             
             {/* Comment Input */}
-            <div className={`bg-slate-50 p-2 rounded-2xl border ${errors.comment ? 'border-red-400' : 'border-slate-200'} flex items-center gap-2 focus-within:ring-2 focus-within:ring-blue-100 transition-all mb-1`}>
+            <div className={`bg-slate-50 p-2 rounded-2xl border ${errors.comment ? 'border-red-400' : 'border-slate-200'} flex items-center gap-2 focus-within:ring-2 focus-within:ring-amber-100 transition-all mb-1`}>
               <textarea 
                 value={newComment}
                 onChange={(e) => {
@@ -306,7 +306,7 @@ const ApproveTimesheetViewModal = ({
                     {c.avatar ? (
                       <img src={c.avatar} alt="" className="w-8 h-8 rounded-full border border-slate-100 object-cover" />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold shrink-0">
                         {c.author?.charAt(0) || "U"}
                       </div>
                     )}

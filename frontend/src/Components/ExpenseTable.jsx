@@ -26,7 +26,7 @@ const ExpenseTable = ({
         );
       default:
         return (
-          <span className="px-2.5 py-1 rounded-full text-[10px] font-bold border bg-blue-50 text-blue-600 border-blue-100 uppercase tracking-wide">
+          <span className="px-2.5 py-1 rounded-full text-[10px] font-bold border bg-amber-50 text-amber-600 border-amber-100 uppercase tracking-wide">
             Pending
           </span>
         );

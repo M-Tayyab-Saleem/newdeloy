@@ -22,6 +22,7 @@ import {
 import api from "../../axios";
 import { toast } from "react-toastify";
 import { refreshUserData } from "../../slices/userSlice";
+import PageContainer from "../../Components/ui/PageContainer";
 
 function format(sec) {
   const h = String(Math.floor(sec / 3600)).padStart(2, "0");
@@ -220,79 +221,59 @@ const userName =
   if (loading) return <div className="p-6 text-center">Loading...</div>;
 
   return (
-    <div className="w-full p-2">
-
-     {/* Header Card */}
-<div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-200 mb-4 p-4">
-  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-
-    {/* ✅ LEFT: GREETING (RESTORED PROPERLY) */}
-    <div className="flex items-center gap-3 min-w-0">
-    {profileImage ? (
-  <img
-    src={profileImage}
-    alt={userName}
-    className="h-11 w-11 rounded-full object-cover border-2 border-white shadow-md"
-  />
-) : (
-  <div className="h-11 w-11 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-bold border-2 border-white shadow-md">
-    {userName.charAt(0).toUpperCase()}
-  </div>
-)}
-
-      <div className="truncate">
-        <h2 className="text-base font-bold text-slate-800 truncate uppercase tracking-tight">
-          Hey, {userInfo?.name || "User"}!
-        </h2>
-        <p className="text-slate-500 text-xs font-medium uppercase tracking-wide">
-          Have a great day
-        </p>
-      </div>
-    </div>
-
-    {/* ✅ RIGHT: TIMER + MOBILE BUTTON */}
-    <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
-
-      {/* TIMER (YOUR ORIGINAL STYLE) */}
-      <div className="flex items-center gap-1.5">
-        <div className="bg-amber-50 border border-amber-100 text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
-          {h}
+    <PageContainer
+      title={
+        <div className="flex items-center gap-3">
+          {profileImage ? (
+            <img
+              src={profileImage}
+              alt={userName}
+              className="h-11 w-11 rounded-full object-cover border-2 border-white shadow-md"
+            />
+          ) : (
+            <div className="h-11 w-11 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-bold border-2 border-white shadow-md">
+              {userName.charAt(0).toUpperCase()}
+            </div>
+          )}
+          <span>Hey, {userInfo?.name || "User"}!</span>
         </div>
-        <div className="text-sm font-bold text-slate-800">:</div>
-        <div className="bg-amber-50 border border-amber-100 text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
-          {m}
+      }
+      subtitle="Have a great day"
+      isCard={false}
+      headerActions={
+        <div className="flex items-center gap-2 w-full sm:w-auto justify-between sm:justify-end">
+          <div className="flex items-center gap-1.5">
+            <div className="bg-white/80 backdrop-blur-sm border border-border-subtle text-heading px-3 py-2 rounded-xl font-bold text-sm shadow-sm min-w-[2.5rem] text-center">
+              {h}
+            </div>
+            <div className="text-sm font-bold text-heading">:</div>
+            <div className="bg-white/80 backdrop-blur-sm border border-border-subtle text-heading px-3 py-2 rounded-xl font-bold text-sm shadow-sm min-w-[2.5rem] text-center">
+              {m}
+            </div>
+            <div className="text-sm font-bold text-heading">:</div>
+            <div className="bg-white/80 backdrop-blur-sm border border-border-subtle text-heading px-3 py-2 rounded-xl font-bold text-sm shadow-sm min-w-[2.5rem] text-center">
+              {s}
+            </div>
+          </div>
+
+          <button
+            onClick={buttonState.onClick}
+            disabled={buttonState.disabled || reduxLoading}
+            className={`sm:hidden hide-on-mobile-device text-white text-[10px] font-bold px-3 py-2 rounded-full shadow-md transition-all active:scale-95 ${buttonState.className} disabled:opacity-50`}
+          >
+            {buttonState.text}
+          </button>
         </div>
-        <div className="text-sm font-bold text-slate-800">:</div>
-        <div className="bg-amber-50 border border-amber-100 text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
-          {s}
-        </div>
-      </div>
-
-      {/* ✅ CHECK-IN BUTTON (ONLY MOBILE) */}
-      <button
-        onClick={buttonState.onClick}
-        disabled={buttonState.disabled || reduxLoading}
-        className={`sm:hidden hide-on-mobile-device text-white text-[10px] font-bold px-3 py-2 rounded-full shadow-md transition-all active:scale-95
-        ${buttonState.className} disabled:opacity-50`}
-      >
-        {buttonState.text}
-      </button>
-
-
-    </div>
-  </div>
-</div>
-      {/* ADD CARD */}
+      }
+    >
       <div className="mb-3 text-end">
         <AddCardMenu onAdd={addCard} />
       </div>
 
-      {/* GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {cards.map(renderCard)}
       </div>
-
-    </div>
+    </PageContainer>
   );
 };
 

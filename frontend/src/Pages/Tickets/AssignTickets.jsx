@@ -169,7 +169,7 @@ const AssignTicket = () => {
       <div className="min-h-screen bg-transparent p-2 flex items-center justify-center">
         <div className="text-center">
           <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
-          <p className="mt-3 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading ticket...</p>
+          <p className="mt-3 text-muted text-xs font-medium uppercase tracking-wide">Loading ticket...</p>
         </div>
       </div>
     );
@@ -179,10 +179,10 @@ const AssignTicket = () => {
     return (
       <div className="min-h-screen bg-transparent p-2 flex items-center justify-center">
         <div className="text-center">
-          <p className="mt-3 text-sm font-medium text-slate-500">Ticket not found</p>
+          <p className="mt-3 text-sm font-medium text-muted">Ticket not found</p>
           <button
             onClick={() => navigate("/admin/assign-ticket")}
-            className="mt-4 px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-200 transition"
+            className="mt-4 px-4 py-2 bg-surface text-main rounded-lg text-sm font-medium hover:bg-slate-200 transition"
           >
             Back to Tickets
           </button>
@@ -218,17 +218,17 @@ const AssignTicket = () => {
                 setAddTechnicianModal(false);
                 setSelectedUserToPromote(null);
               }}
-              className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 hover:text-red-500 transition-all text-2xl font-light z-10"
+              className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-muted hover:bg-surface hover:text-red-500 transition-all text-2xl font-light z-10"
               disabled={promoting}
             >
               &times;
             </button>
 
             <div className="px-6 py-6 sm:px-10 sm:py-8 border-b border-slate-50 text-center flex-shrink-0">
-              <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-widest uppercase">
+              <h2 className="text-base sm:text-lg font-black text-heading tracking-widest uppercase">
                 ADD TECHNICIAN
               </h2>
-              <p className="text-[9px] text-slate-400 font-black tracking-[0.2em] mt-1 uppercase">Grant Technician Privileges</p>
+              <p className="text-[9px] text-muted font-black tracking-[0.2em] mt-1 uppercase">Grant Technician Privileges</p>
             </div>
 
             <div className="p-6 sm:p-10 space-y-5 sm:space-y-6 overflow-y-auto custom-scrollbar min-h-[400px]">
@@ -249,23 +249,23 @@ const AssignTicket = () => {
               />
 
               {selectedUserToPromote && (
-                <div className="bg-slate-50/80 border border-slate-200 rounded-xl p-4 space-y-3">
+                <div className="bg-surface/50 border border-border-subtle rounded-xl p-4 space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">NAME</p>
-                      <p className="text-sm font-bold text-slate-700 truncate">{selectedUserToPromote.name}</p>
+                      <p className="text-[9px] font-black text-muted uppercase tracking-widest">NAME</p>
+                      <p className="text-sm font-bold text-main truncate">{selectedUserToPromote.name}</p>
                     </div>
                     <div>
-                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">CURRENT DESIGNATION</p>
-                      <span className={`inline-flex px-3 py-1 rounded-full text-xs font-bold uppercase bg-blue-50 text-blue-600`}>
+                      <p className="text-[9px] font-black text-muted uppercase tracking-widest">CURRENT DESIGNATION</p>
+                      <span className={`inline-flex px-3 py-1 rounded-full text-xs font-bold uppercase bg-amber-50 text-amber-600`}>
                         {selectedUserToPromote.designation || selectedUserToPromote.role}
                       </span>
                     </div>
                   </div>
                   <div className="grid grid-cols-1 gap-3">
                     <div>
-                      <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">ACTION</p>
-                      <p className="text-xs text-slate-600">
+                      <p className="text-[9px] font-black text-muted uppercase tracking-widest">ACTION</p>
+                      <p className="text-xs text-muted">
                         This user will be added to the <strong>Technician List</strong>. <br />
                         Their existing Role ({selectedUserToPromote.role}) and Designation will remain unchanged.
                       </p>
@@ -275,7 +275,7 @@ const AssignTicket = () => {
               )}
             </div>
 
-            <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-slate-100 flex gap-3 sm:gap-4 bg-white flex-shrink-0">
+            <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-border-subtle flex gap-3 sm:gap-4 bg-white flex-shrink-0">
               <button
                 type="button"
                 onClick={() => {
@@ -283,7 +283,7 @@ const AssignTicket = () => {
                   setSelectedUserToPromote(null);
                 }}
                 disabled={promoting}
-                className="flex-1 py-3 sm:py-4 font-black text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors disabled:opacity-50"
+                className="flex-1 py-3 sm:py-4 font-black text-[10px] sm:text-[11px] text-muted uppercase tracking-widest hover:text-muted transition-colors disabled:opacity-50"
               >
                 CANCEL
               </button>
@@ -309,22 +309,22 @@ const AssignTicket = () => {
 
       {/* Main Ticket Interface */}
       <div className="relative z-[99]">
-        <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4">
+        <div className="glass-card mb-4 p-4">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div className="flex items-center gap-3 min-w-0">
               <button
                 onClick={() => navigate("/admin/assign-ticket")}
-                className="p-2 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+                className="p-2 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200 transition shadow-sm"
                 title="Back to Tickets"
               >
                 <ArrowLeft size={18} />
               </button>
               <div className="truncate">
-                <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight truncate">
+                <h2 className="text-base font-bold text-heading uppercase tracking-tight truncate">
                   Ticket #{ticket.ticketID || ticket._id?.slice(0, 6)}: {ticket.subject || ticket.title}
                 </h2>
                 <div className="flex flex-wrap items-center gap-2 mt-1">
-                  <span className="text-xs text-slate-500 flex items-center gap-1">
+                  <span className="text-xs text-muted flex items-center gap-1">
                     <Clock size={12} />
                     Created {new Date(ticket.createdAt).toLocaleString()}
                   </span>
@@ -356,7 +356,7 @@ const AssignTicket = () => {
                   onClick={() => setAssignDropdownOpen(!assignDropdownOpen)}
                   className={`px-4 py-2 rounded-xl flex items-center gap-2 transition-all shadow-sm ${selectedAssignee
                       ? "bg-green-100 text-green-800 border border-green-200"
-                      : "bg-blue-100 text-blue-800 border border-blue-200"
+                      : "bg-amber-100 text-amber-800 border border-amber-200"
                     } hover:brightness-95`}
                 >
                   <User size={16} />
@@ -367,24 +367,24 @@ const AssignTicket = () => {
                 </button>
 
                 {assignDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg z-[9999] border border-slate-100 overflow-hidden max-h-60 overflow-y-auto">
+                  <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg z-[9999] border border-border-subtle overflow-hidden max-h-60 overflow-y-auto">
                     <div className="py-1">
                       {technician.length > 0 ? (
                         <>
-                          <div className="px-3 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
+                          <div className="px-3 py-2 text-xs font-bold text-muted uppercase tracking-wider border-b border-border-subtle">
                             Available Technicians
                           </div>
                           {technician.map((user) => (
                             <button
                               key={user._id}
                               onClick={() => assignToUser(user._id)}
-                              className={`w-full text-left px-3 py-2 text-sm flex items-center gap-2 hover:bg-slate-50 transition ${selectedAssigneeId === user._id ? "bg-blue-50 text-blue-700" : "text-slate-700"
+                              className={`w-full text-left px-3 py-2 text-sm flex items-center gap-2 hover:bg-surface transition ${selectedAssigneeId === user._id ? "bg-amber-50 text-amber-700" : "text-main"
                                 }`}
                             >
-                              <User className="w-4 h-4 text-slate-500" />
+                              <User className="w-4 h-4 text-muted" />
                               <div className="flex flex-col truncate">
                                 <span className="font-medium truncate">{user.name}</span>
-                                <span className="text-[10px] text-slate-400 uppercase">
+                                <span className="text-[10px] text-muted uppercase">
                                   {user.designation || user.role}
                                 </span>
                               </div>
@@ -397,8 +397,8 @@ const AssignTicket = () => {
                       ) : (
                         <div className="px-3 py-3 text-center">
                           <User className="w-8 h-8 text-slate-300 mx-auto mb-2" />
-                          <p className="text-sm text-slate-500 font-medium">No technicians found</p>
-                          <p className="text-xs text-slate-400 mt-1">Use "Add Technician" to update privileges</p>
+                          <p className="text-sm text-muted font-medium">No technicians found</p>
+                          <p className="text-xs text-muted mt-1">Use "Add Technician" to update privileges</p>
                         </div>
                       )}
                     </div>
@@ -416,36 +416,36 @@ const AssignTicket = () => {
         {/* Left Column */}
         <div className="lg:col-span-2 space-y-4">
           {/* Description */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 relative z-10">
-            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-2 mb-3">
+          <div className="glass-card p-4 relative z-10">
+            <h3 className="text-sm font-bold text-heading uppercase tracking-wide border-b border-border-subtle pb-2 mb-3">
               Description
             </h3>
-            <p className="text-sm text-slate-700 leading-relaxed">{ticket.description}</p>
+            <p className="text-sm text-main leading-relaxed">{ticket.description}</p>
           </div>
 
           {/* DISCUSSION / CHAT SECTION */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 relative z-10">
-            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wide mb-4">Discussion</h3>
+          <div className="glass-card p-4 relative z-10">
+            <h3 className="text-sm font-bold text-heading uppercase tracking-wide mb-4">Discussion</h3>
             <div className="space-y-3 mb-4 max-h-[300px] overflow-y-auto custom-scrollbar">
               {ticket.responses?.map((res, i) => (
-                <div key={i} className="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
+                <div key={i} className="bg-surface/50 rounded-xl p-3 border border-border-subtle">
                   <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-800 rounded-full text-sm font-bold shrink-0">
+                    <div className="w-8 h-8 flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-sm font-bold shrink-0">
                       {res.avatar && res.avatar !== "👤" && !res.avatar.includes("Unknown") ?
                         <img src={res.avatar} alt="av" className="w-full h-full rounded-full object-cover" /> :
                         res.author?.charAt(0)}
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between mb-1">
-                        <h4 className="text-sm font-bold text-slate-800">{res.author}</h4>
-                        <span className="text-xs text-slate-500">{new Date(res.time).toLocaleString()}</span>
+                        <h4 className="text-sm font-bold text-heading">{res.author}</h4>
+                        <span className="text-xs text-muted">{new Date(res.time).toLocaleString()}</span>
                       </div>
-                      <p className="text-sm text-slate-700 whitespace-pre-wrap">{res.content}</p>
+                      <p className="text-sm text-main whitespace-pre-wrap">{res.content}</p>
                     </div>
                   </div>
                 </div>
               ))}
-              {(!ticket.responses || ticket.responses.length === 0) && <p className="text-center text-xs text-slate-400 italic">No messages yet.</p>}
+              {(!ticket.responses || ticket.responses.length === 0) && <p className="text-center text-xs text-muted italic">No messages yet.</p>}
             </div>
 
             <div className="relative">
@@ -456,7 +456,7 @@ const AssignTicket = () => {
                   setResponseError(validateDescription(e.target.value, { min: 10, max: 500, required: true }));
                 }}
                 onBlur={() => setResponseError(validateDescription(newResponse, { min: 10, max: 500, required: true }))}
-                className={`w-full border ${responseError ? "border-red-400" : "border-slate-200"} rounded-xl p-3 pr-12 text-sm focus:ring-2 focus:ring-blue-100 min-h-[60px] resize-none`}
+                className={`w-full border ${responseError ? "border-red-400" : "border-border-subtle"} rounded-xl p-3 pr-12 text-sm focus:ring-2 focus:ring-amber-100 min-h-[60px] resize-none`}
                 placeholder="Type a reply (min 10 characters, at least 3 words)..."
               />
               {responseError && (
@@ -465,7 +465,7 @@ const AssignTicket = () => {
               <button
                 onClick={handleSubmitResponse}
                 disabled={!newResponse.trim() || !!responseError}
-                className="absolute right-2 bottom-2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all"
+                className="absolute right-2 bottom-2 p-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 disabled:opacity-50 transition-all"
               >
                 <Send size={16} />
               </button>
@@ -475,28 +475,28 @@ const AssignTicket = () => {
 
         {/* Right Column */}
         <div className="space-y-4">
-          <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 relative z-10">
-            <h3 className="text-sm font-bold text-slate-800 uppercase mb-3 border-b pb-2">Ticket Details</h3>
+          <div className="glass-card p-4 relative z-10">
+            <h3 className="text-sm font-bold text-heading uppercase mb-3 border-b pb-2">Ticket Details</h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <div className="p-2 rounded-lg bg-red-100 text-red-800"><Flag size={16} /></div>
                 <div>
-                  <p className="text-xs font-medium text-slate-500 uppercase">Priority</p>
-                  <p className="text-sm font-bold text-slate-800">{ticket.priority}</p>
+                  <p className="text-xs font-medium text-muted uppercase">Priority</p>
+                  <p className="text-sm font-bold text-heading">{ticket.priority}</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-blue-100 text-blue-800"><User size={16} /></div>
+                <div className="p-2 rounded-lg bg-amber-100 text-amber-800"><User size={16} /></div>
                 <div>
-                  <p className="text-xs font-medium text-slate-500 uppercase">Assignee</p>
-                  <p className="text-sm font-bold text-slate-800">{selectedAssignee?.name || "Unassigned"}</p>
+                  <p className="text-xs font-medium text-muted uppercase">Assignee</p>
+                  <p className="text-sm font-bold text-heading">{selectedAssignee?.name || "Unassigned"}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 relative z-10">
-            <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wide border-b border-slate-200 pb-2 mb-3">
+          <div className="glass-card p-4 relative z-10">
+            <h3 className="text-sm font-bold text-heading uppercase tracking-wide border-b border-border-subtle pb-2 mb-3">
               Attachments
             </h3>
             {ticket.attachments && ticket.attachments.length > 0 ? (
@@ -507,22 +507,22 @@ const AssignTicket = () => {
                     onClick={() => {
                       downloadFile(file.blobName || file.url, file.name);
                     }}
-                    className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-all group"
+                    className="w-full flex items-center justify-between p-3 bg-surface rounded-xl border border-border-subtle hover:bg-amber-50 hover:border-amber-200 transition-all group"
                   >
                     <div className="flex items-center gap-2 overflow-hidden text-left">
-                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs">
+                      <div className="w-8 h-8 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold text-xs">
                         {file.name.split('.').pop().toUpperCase()}
                       </div>
-                      <span className="text-xs font-bold text-slate-700 truncate">{file.name}</span>
+                      <span className="text-xs font-bold text-main truncate">{file.name}</span>
                     </div>
-                    <div className="text-slate-400 group-hover:text-blue-600">
+                    <div className="text-muted group-hover:text-amber-600">
                       <Paperclip size={16} />
                     </div>
                   </button>
                 ))}
               </div>
             ) : (
-              <p className="text-xs text-slate-500 italic">No attachments found.</p>
+              <p className="text-xs text-muted italic">No attachments found.</p>
             )}
           </div>
         </div>

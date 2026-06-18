@@ -11,6 +11,7 @@ import TableWithPagination from "../../Components/TableWithPagination";
 import ViewTimesheetModal from "../../Components/ViewTimesheetModal";
 import EditTimesheetModal from "../../Components/EditTimesheetModal";
 import { moment, TIMEZONE } from "../../utils/dateUtils";
+import PageContainer from "../../Components/ui/PageContainer";
 
 const Timesheet = ({ refreshTrigger }) => {
   const [showCalendar, setShowCalendar] = useState(false);
@@ -243,7 +244,7 @@ const Timesheet = ({ refreshTrigger }) => {
       label: "Date",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-700 font-medium">
+        <span className="text-main font-medium">
           {formatTimesheetDate(row.date)}
         </span>
       )
@@ -253,7 +254,7 @@ const Timesheet = ({ refreshTrigger }) => {
       label: "Timesheet Name",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-700 font-medium truncate max-w-[150px] inline-block" title={row.name || "Unnamed"}>
+        <span className="text-main font-medium truncate max-w-[150px] inline-block" title={row.name || "Unnamed"}>
           {row.name || "Unnamed"}
         </span>
       )
@@ -263,7 +264,7 @@ const Timesheet = ({ refreshTrigger }) => {
       label: "Submitted Hours",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-700 font-medium">
+        <span className="text-main font-medium">
           {(row.submittedHours || 0).toFixed(1)}
         </span>
       )
@@ -273,7 +274,7 @@ const Timesheet = ({ refreshTrigger }) => {
       label: "Approved Hours",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-700 font-medium">
+        <span className="text-main font-medium">
           {(row.approvedHours || 0).toFixed(1)}
         </span>
       )
@@ -302,10 +303,10 @@ const Timesheet = ({ refreshTrigger }) => {
       render: (row) => {
         const commentCount = row.comments?.length || 0;
         if (commentCount === 0) {
-          return <span className="text-slate-400 text-xs">No comments</span>;
+          return <span className="text-muted text-xs">No comments</span>;
         }
         return (
-          <div className="flex items-center justify-center text gap-1 text-blue-600">
+          <div className="flex items-center justify-center text gap-1 text-amber-600">
             <FaCommentDots size={14} />
             <span className="text-xs font-medium">{commentCount} {commentCount !== 1 ? 's' : ''}</span>
           </div>
@@ -318,35 +319,35 @@ const Timesheet = ({ refreshTrigger }) => {
     {
       icon: <FaEye size={14} />,
       title: "View Details",
-      className: "bg-blue-50 text-blue-600 hover:bg-blue-100",
+      className: "bg-amber-50 text-amber-600 hover:bg-amber-100",
       onClick: (row) => handleViewDetails(row)
     },
     {
       icon: <IoPencil size={14} />,
       title: "Edit",
-      className: (row) => `hover:bg-green-100 ${row.status === 'Pending' ? 'bg-green-50 text-green-600' : 'bg-slate-100 text-slate-400 cursor-not-allowed'}`,
+      className: (row) => `hover:bg-green-100 ${row.status === 'Pending' ? 'bg-green-50 text-green-600' : 'bg-surface text-muted cursor-not-allowed'}`,
       onClick: (row) => handleEditClick(row)
     },
     {
       icon: <IoTrash size={14} />,
       title: "Delete",
-      className: (row) => `hover:bg-red-100 ${row.status === 'Pending' ? 'bg-red-50 text-red-600' : 'bg-slate-100 text-slate-400 cursor-not-allowed'}`,
+      className: (row) => `hover:bg-red-100 ${row.status === 'Pending' ? 'bg-red-50 text-red-600' : 'bg-surface text-muted cursor-not-allowed'}`,
       onClick: (row) => handleDeleteClick(row)
     }
   ];
 
   return (
-    <>
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-2 relative z-20">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">
-            Weekly Timesheets
-          </h2>
-
-          <div className="flex flex-row items-center gap-3 ">
+    <PageContainer
+      title="Weekly Timesheets"
+      subtitle="Track your work hours and timesheets"
+      loading={loading}
+      isCard={true}
+      headerActions={
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="flex flex-row items-center gap-3">
             <button
               onClick={navigateToPreviousWeek}
-              className="p-2.5 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+              className="p-2.5 rounded-lg bg-surface text-muted hover:bg-hover border border-border-subtle transition shadow-sm"
               title="Previous Week"
               disabled={loading}
             >
@@ -355,11 +356,11 @@ const Timesheet = ({ refreshTrigger }) => {
 
             <div className="relative" ref={calendarRef}>
               <button
-                className="px-3 py-2 text-blue-800 bg-blue-100 rounded-lg flex items-center gap-2 hover:bg-blue-200 transition shadow-sm text-sm font-medium"
+                className="px-3 py-2 bg-surface border border-border-subtle text-main rounded-lg flex items-center gap-2 hover:bg-hover transition shadow-sm text-sm font-medium"
                 onClick={() => setShowCalendar(!showCalendar)}
                 disabled={loading}
               >
-                <IoCalendarNumberOutline size={18} />
+                <IoCalendarNumberOutline size={18} className="text-muted" />
                 <span className="text-sm font-medium">
                   {formatWeekRange(weeklyData.weekStart, weeklyData.weekEnd)}
                 </span>
@@ -371,7 +372,7 @@ const Timesheet = ({ refreshTrigger }) => {
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                          className="absolute z-50 mt-2    rounded-xl"
+                    className="absolute z-50 mt-2 bg-white dark:bg-slate-800 shadow-2xl rounded-xl border border-border-subtle p-2"
                   >
                     <DatePicker
                       selected={ensureDate(selectedWeekStart)}
@@ -387,7 +388,7 @@ const Timesheet = ({ refreshTrigger }) => {
 
             <button
               onClick={navigateToNextWeek}
-              className="p-2.5 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+              className="p-2.5 rounded-lg bg-surface text-muted hover:bg-hover border border-border-subtle transition shadow-sm"
               title="Next Week"
               disabled={loading}
             >
@@ -396,23 +397,24 @@ const Timesheet = ({ refreshTrigger }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-2 items-center">
-            <div className="bg-blue-50 px-3 py-2 rounded-lg shadow-sm">
-              <span className="text-xs font-medium text-slate-800">
+            <div className="bg-amber-50/80 border border-amber-200 px-3 py-2 rounded-lg shadow-sm">
+              <span className="text-xs font-medium text-amber-900">
                 Total: <span className="font-bold">{weeklyData.weeklyTotal?.toFixed(1) || 0}h</span>
               </span>
             </div>
-            <div className={`px-3 py-2 rounded-lg shadow-sm ${(weeklyData.remainingHours || 0) > 10 ? 'bg-green-50' :
-                (weeklyData.remainingHours || 0) > 0 ? 'bg-yellow-50' : 'bg-red-50'
-              }`}>
-              <span className="text-xs font-medium text-slate-800">
+            <div className={`px-3 py-2 rounded-lg shadow-sm border ${
+              (weeklyData.remainingHours || 0) > 10 ? 'bg-green-50/80 border-green-200 text-green-900' :
+              (weeklyData.remainingHours || 0) > 0 ? 'bg-yellow-50/80 border-yellow-200 text-yellow-900' : 'bg-red-50/80 border-red-200 text-red-900'
+            }`}>
+              <span className="text-xs font-medium">
                 Remaining: <span className="font-bold">{(weeklyData.remainingHours || 0).toFixed(1)}h</span>
               </span>
             </div>
           </div>
         </div>
-      </div>
-
-      <div>
+      }
+    >
+      <div className="bg-white/30 backdrop-blur-md rounded-2xl border border-white/60 shadow-[inset_0_2px_10px_rgba(255,255,255,0.3)] overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={selectedWeekStart?.getTime?.() || 'default'}
@@ -424,7 +426,7 @@ const Timesheet = ({ refreshTrigger }) => {
             {loading && (
               <div className="text-center p-6">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
-                <p className="mt-3 text-slate-600 text-xs font-medium uppercase tracking-wide">
+                <p className="mt-3 text-muted text-xs font-medium uppercase tracking-wide">
                   Loading weekly timesheets...
                 </p>
               </div>
@@ -449,9 +451,9 @@ const Timesheet = ({ refreshTrigger }) => {
                 renderTable={(data) => (
                   <table className="min-w-full text-sm border-separate border-spacing-0">
                     <thead>
-                      <tr className="bg-slate-100/80 backdrop-blur-sm text-slate-800">
+                      <tr className="bg-surface/80 backdrop-blur-sm text-heading">
                         {timesheetColumns.map((col) => (
-                          <th key={col.key} className="p-4 font-semibold text-xs uppercase tracking-wide border-b border-slate-200 text-left">
+                          <th key={col.key} className="p-4 font-semibold text-xs uppercase tracking-wide border-b border-border-subtle text-left">
                             {col.label}
                           </th>
                         ))}
@@ -459,7 +461,7 @@ const Timesheet = ({ refreshTrigger }) => {
                     </thead>
                     <tbody>
                       {data.map((item) => (
-                        <tr key={item._id} className="border-b border-slate-100 hover:bg-slate-50/80 transition-colors">
+                        <tr key={item._id} className="border-b border-border-subtle hover:bg-surface/50 transition-colors">
                           {timesheetColumns.map((col) => (
                             <td key={col.key} className="p-4">
                               {col.render ? col.render(item) : item[col.key]}
@@ -513,16 +515,16 @@ const Timesheet = ({ refreshTrigger }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
               </div>
-              <h3 className="text-base font-black text-slate-800 uppercase tracking-wider mb-2">
+              <h3 className="text-base font-black text-heading uppercase tracking-wider mb-2">
                 Delete Timesheet
               </h3>
-              <p className="text-xs text-slate-500 font-medium mb-6">
+              <p className="text-xs text-muted font-medium mb-6">
                 Are you sure you want to delete this timesheet? This action cannot be undone.
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={handleCancelDelete}
-                  className="flex-1 py-3 bg-slate-100 text-slate-700 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
+                  className="flex-1 py-3 bg-surface text-main rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
                 >
                   Cancel
                 </button>
@@ -537,7 +539,7 @@ const Timesheet = ({ refreshTrigger }) => {
           </div>
         </div>
       )}
-    </>
+    </PageContainer>
   );
 };
 

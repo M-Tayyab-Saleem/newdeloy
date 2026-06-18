@@ -77,7 +77,7 @@
 //         </button>
  
 //         <p className="text-sm text-white mt-4 text-center">
-//           <a href="/auth/login" className="text-blue-300 hover:underline">
+//           <a href="/auth/login" className="text-amber-300 hover:underline">
 //             Back to Login
 //           </a>
 //         </p>

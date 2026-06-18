@@ -14,6 +14,7 @@ import ActiveProjectsCard from "../../Components/ProjectDashboardCards/ActivePro
 import UpcomingDeadlinesCard from "../../Components/ProjectDashboardCards/UpcomingDeadlinesCard";
 import MyTeamMembersCard from "../../Components/ProjectDashboardCards/MyTeamMembersCard";
 import TimeTrackingOverviewCard from "../../Components/ProjectDashboardCards/TimeTrackingOverviewCard";
+import PageContainer from "../../Components/ui/PageContainer";
 
 const ProjectDashBoard = () => {
   const dispatch = useDispatch();
@@ -55,45 +56,48 @@ const ProjectDashBoard = () => {
   ];
 
   return (
-    <div className="px-4 py-2">
-      <div className="p-4 sm:p-8 rounded-xl bg-primary">
-        <GreetingTimerCard />
+    <PageContainer
+      title="Project Dashboard"
+      subtitle="Overview of your active projects and tasks"
+      loading={loading}
+      isCard={false}
+    >
+      <GreetingTimerCard />
 
-        <div className="mt-12 flex flex-wrap gap-4 sm:gap-6">
-          {leaveData.map((item, index) => (
-            <div key={index} className="w-full sm:w-[48%] lg:w-[23%] text-text">
-              <ProjectCard
-                title={item.label}
-                value={item.available}
-                icon={item.icon}
-                badgeColor={item.badgeColor}
-              />
-            </div>
-          ))}
+      <div className="mt-6 flex flex-wrap gap-4 sm:gap-6">
+        {leaveData.map((item, index) => (
+          <div key={index} className="w-full sm:w-[48%] lg:w-[23%] text-text">
+            <ProjectCard
+              title={item.label}
+              value={item.available}
+              icon={item.icon}
+              badgeColor={item.badgeColor}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
+        <div className="">
+          <ActiveProjectsCard />
         </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
-          <div className="">
-            <ActiveProjectsCard />
-          </div>
-          <div className="">
-            <BarCard />
-          </div>
-          <div className="">
-            <TasksAssignedToMeCard />
-          </div>
-          <div className="">
-            <UpcomingDeadlinesCard />
-          </div>
-          <div className="">
-            <MyTeamMembersCard /> 
-          </div>
-          <div className="">
-            <TimeTrackingOverviewCard />  
-          </div>
+        <div className="">
+          <BarCard />
+        </div>
+        <div className="">
+          <TasksAssignedToMeCard />
+        </div>
+        <div className="">
+          <UpcomingDeadlinesCard />
+        </div>
+        <div className="">
+          <MyTeamMembersCard /> 
+        </div>
+        <div className="">
+          <TimeTrackingOverviewCard />  
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

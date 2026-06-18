@@ -255,7 +255,7 @@ export default function AdminCreateTimesheetModal({ open, onClose, onTimesheetCr
                       <span className="font-black text-slate-700 uppercase tracking-tighter">
                         {log.job || log.jobTitle}
                       </span>
-                      <span className="font-bold text-blue-500 bg-blue-50 px-2 py-0.5 rounded-full">
+                      <span className="font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full">
                         {log.hours} HRS
                       </span>
                     </div>
@@ -286,7 +286,7 @@ export default function AdminCreateTimesheetModal({ open, onClose, onTimesheetCr
                         : null
                 );
               }}
-              className={`w-full bg-white border ${nameError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium`}
+              className={`w-full bg-white border ${nameError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium`}
               required
             />
             {nameError && <p className="text-xs text-red-500 mt-1">{nameError}</p>}
@@ -314,7 +314,7 @@ export default function AdminCreateTimesheetModal({ open, onClose, onTimesheetCr
                   (description.length > 0 && words.length < 3 ? "Please enter a meaningful description (at least 3 words)." : null)
                 );
               }}
-              className={`w-full bg-white border ${descriptionError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 min-h-[100px]`}
+              className={`w-full bg-white border ${descriptionError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 min-h-[100px]`}
               placeholder="Describe work in detail (at least 3 meaningful words)..."
             />
             <div className="flex justify-between items-center mt-1">

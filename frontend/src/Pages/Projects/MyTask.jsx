@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchMyTasks, createTask, updateTask } from "../../Store/taskSlice";
 import { toast } from "react-toastify";
 
+import PageContainer from "../../Components/ui/PageContainer";
+
 const MyTask = () => {
   const dispatch = useDispatch();
   const { tasks, loading } = useSelector((state) => state.tasks);
@@ -47,27 +49,26 @@ const MyTask = () => {
   };
 
   return (
-    <div className="px-4 py-2">
-      <div className="p-8 rounded-xl bg-primary">
-        <div className="bg-white px-8 py-4 font-semibold rounded-lg">
-          My Tasks
-        </div>
-        <div className="my-6">
-          <MyTasksTable 
-            tasks={tasks} 
-            loading={loading}
-            onUpdate={handleUpdateTask}
-          >
-            <CustomTopBar openModal={() => setShowModal(true)} />
-          </MyTasksTable>
-        </div>
-        <AddTaskDrawer 
-          isOpen={showModal} 
-          onClose={() => setShowModal(false)}
-          onSubmit={handleCreateTask}
-        />
+    <PageContainer
+      title="My Tasks"
+      subtitle="View and manage tasks assigned to you"
+      isCard={true}
+    >
+      <div className="my-2">
+        <MyTasksTable 
+          tasks={tasks} 
+          loading={loading}
+          onUpdate={handleUpdateTask}
+        >
+          <CustomTopBar openModal={() => setShowModal(true)} />
+        </MyTasksTable>
       </div>
-    </div>
+      <AddTaskDrawer 
+        isOpen={showModal} 
+        onClose={() => setShowModal(false)}
+        onSubmit={handleCreateTask}
+      />
+    </PageContainer>
   );
 };
 

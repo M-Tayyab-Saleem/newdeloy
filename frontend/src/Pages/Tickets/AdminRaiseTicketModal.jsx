@@ -184,14 +184,14 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 hover:text-red-500 transition-all text-2xl font-light z-10"
+          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-muted hover:bg-surface hover:text-red-500 transition-all text-2xl font-light z-10"
         >
           &times;
         </button>
 
         {/* Header */}
         <div className="px-6 py-6 sm:px-10 sm:py-8 border-b border-slate-50 text-center flex-shrink-0">
-          <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-widest uppercase">
+          <h2 className="text-base sm:text-lg font-black text-heading tracking-widest uppercase">
             RAISE A TICKET
           </h2>
         </div>
@@ -203,13 +203,13 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
           onSubmit={handleSubmit}
         >
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               TICKET ID*
             </label>
             <input
               name="id"
               placeholder="ticket id"
-              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all placeholder:text-slate-300"
+              className="w-full bg-white border border-border-subtle rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-300 transition-all placeholder:text-slate-300"
               value={form.id}
               onChange={handleChange}
               required
@@ -217,14 +217,14 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               EMAIL*
             </label>
             <input
               name="email"
               type="email"
               placeholder="user@example.com"
-              className={`w-full bg-white border ${errors.email ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all placeholder:text-slate-300`}
+              className={`w-full bg-white border ${errors.email ? 'border-red-400' : 'border-border-subtle'} rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-300 transition-all placeholder:text-slate-300`}
               value={form.email}
               onChange={handleChange}
               required
@@ -235,13 +235,13 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               SUBJECT*
             </label>
             <input
               name="subject"
               placeholder="issue subject"
-              className={`w-full bg-white border ${errors.subject ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all placeholder:text-slate-300`}
+              className={`w-full bg-white border ${errors.subject ? 'border-red-400' : 'border-border-subtle'} rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-300 transition-all placeholder:text-slate-300`}
               value={form.subject}
               onChange={handleChange}
               required
@@ -250,18 +250,18 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
               {errors.subject ? (
                 <p className="text-[10px] font-bold text-red-500 uppercase tracking-tight">{errors.subject}</p>
               ) : <div />}
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest">{form.subject.length}/100</p>
+              <p className="text-[10px] text-muted uppercase tracking-widest">{form.subject.length}/100</p>
             </div>
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               DESCRIPTION*
             </label>
             <textarea
               name="comment"
               placeholder="describe the issue"
-              className={`w-full bg-white border ${errors.comment ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all placeholder:text-slate-300 min-h-[100px] resize-none`}
+              className={`w-full bg-white border ${errors.comment ? 'border-red-400' : 'border-border-subtle'} rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-300 transition-all placeholder:text-slate-300 min-h-[100px] resize-none`}
               value={form.comment}
               onChange={handleChange}
               rows={3}
@@ -271,12 +271,12 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
               {errors.comment ? (
                 <p className="text-[10px] font-bold text-red-500 uppercase tracking-tight">{errors.comment}</p>
               ) : <div />}
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest">{form.comment.length}/1000</p>
+              <p className="text-[10px] text-muted uppercase tracking-widest">{form.comment.length}/1000</p>
             </div>
           </div>
 
-          <div className="flex flex-col gap-2 p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-            <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest cursor-pointer select-none">
+          <div className="flex flex-col gap-2 p-4 bg-surface rounded-xl border border-dashed border-border-subtle">
+            <label className="text-[10px] font-black text-muted uppercase tracking-widest cursor-pointer select-none">
               ATTACHMENT {form.attachments.length > 0 && `(${form.attachments.length}/${MAX_FILES})`}
             </label>
             <input
@@ -285,7 +285,7 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
               type="file"
               multiple
               accept=".bmp,.mp4,.mp3,.pdf,.doc,.docx,.xls,.xlsx,.txt,.csv,image/png,image/jpeg,image/jpg,image/bmp,video/mp4,audio/mpeg,audio/mpeg3,audio/x-mpeg,audio/x-mpeg-3"
-              className="text-xs text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:uppercase file:bg-slate-200 file:text-slate-600 hover:file:bg-slate-300 cursor-pointer"
+              className="text-xs text-muted file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-[10px] file:font-black file:uppercase file:bg-slate-200 file:text-muted hover:file:bg-slate-300 cursor-pointer"
               onChange={handleChange}
               disabled={form.attachments.length >= MAX_FILES}
             />
@@ -299,16 +299,16 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
                 {form.attachments.map((file, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between p-2 bg-white rounded-lg border border-slate-200"
+                    className="flex items-center justify-between p-2 bg-white rounded-lg border border-border-subtle"
                   >
                     <div className="flex items-center gap-2 flex-1 min-w-0">
-                      <span className="text-[10px] font-bold text-slate-700 truncate">{file.name}</span>
-                      <span className="text-[9px] text-slate-400">({(file.size / 1024).toFixed(1)} KB)</span>
+                      <span className="text-[10px] font-bold text-main truncate">{file.name}</span>
+                      <span className="text-[9px] text-muted">({(file.size / 1024).toFixed(1)} KB)</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeAttachment(index)}
-                      className="text-slate-400 hover:text-red-500 transition-colors text-sm font-bold"
+                      className="text-muted hover:text-red-500 transition-colors text-sm font-bold"
                     >
                       ✕
                     </button>
@@ -320,11 +320,11 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
         </form>
 
         {/* Footer Actions */}
-        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-slate-100 flex gap-3 sm:gap-4 bg-white flex-shrink-0">
+        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-border-subtle flex gap-3 sm:gap-4 bg-white flex-shrink-0">
           <button
             type="button"
             onClick={handleCancelClick}
-            className="flex-1 py-3 sm:py-4 font-black text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors"
+            className="flex-1 py-3 sm:py-4 font-black text-[10px] sm:text-[11px] text-muted uppercase tracking-widest hover:text-muted transition-colors"
           >
             CANCEL
           </button>
@@ -348,16 +348,16 @@ const AdminRaiseTicketModal = ({ onClose, onSubmit }) => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
               </div>
-              <h3 className="text-base font-black text-slate-800 uppercase tracking-wider mb-2">
+              <h3 className="text-base font-black text-heading uppercase tracking-wider mb-2">
                 Unsaved Changes
               </h3>
-              <p className="text-xs text-slate-500 font-medium mb-6">
+              <p className="text-xs text-muted font-medium mb-6">
                 You have unsaved data. Are you sure you want to leave? All progress will be lost.
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={handleConfirmStay}
-                  className="flex-1 py-3 bg-slate-100 text-slate-700 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
+                  className="flex-1 py-3 bg-surface text-main rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
                 >
                   Stay
                 </button>

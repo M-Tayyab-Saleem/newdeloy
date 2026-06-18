@@ -24,7 +24,7 @@ const ActiveProjectsCard = () => {
   return (
     <div className="relative bg-background rounded-xl shadow-md p-5 pt-10 overflow-visible">
       {/* Icon top left */}
-      <div className="absolute -top-4 left-4 bg-blue-200 text-blue-800 w-10 h-10 flex items-center justify-center rounded-md shadow z-99">
+      <div className="absolute -top-4 left-4 bg-amber-200 text-amber-800 w-10 h-10 flex items-center justify-center rounded-md shadow z-99">
         <FiFolder className="text-xl" />
       </div>
 
@@ -36,7 +36,7 @@ const ActiveProjectsCard = () => {
             Ongoing projects and their current status
           </p>
         </div>
-        <button className="flex items-center text-blue-600 text-sm hover:underline transition-colors duration-200 whitespace-nowrap">
+        <button className="flex items-center text-amber-600 text-sm hover:underline transition-colors duration-200 whitespace-nowrap">
           View All
           <ArrowRightIcon className="h-4 w-4 ml-1" />
         </button>
@@ -56,7 +56,7 @@ const ActiveProjectsCard = () => {
             </div>
             <div className="w-full bg-white rounded-full h-4 relative">
               <div
-                className="bg-blue-500 h-4 rounded-full transition-all duration-500"
+                className="bg-amber-500 h-4 rounded-full transition-all duration-500"
                 style={{ width: `${project.progress}%` }}
               ></div>
               <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-text font-medium">

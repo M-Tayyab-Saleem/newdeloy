@@ -264,13 +264,13 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 hover:text-red-500 transition-all text-2xl font-light z-10"
+          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-muted hover:bg-surface hover:text-red-500 transition-all text-2xl font-light z-10"
         >
           &times;
         </button>
 
         <div className="px-6 py-6 sm:px-10 sm:py-8 border-b border-slate-50 text-center flex-shrink-0">
-          <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-widest uppercase">
+          <h2 className="text-base sm:text-lg font-black text-heading tracking-widest uppercase">
             CREATE TIMESHEET
           </h2>
         </div>
@@ -280,7 +280,7 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
           onSubmit={handleSubmit}
         >
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               TIMESHEET DATE*
             </label>
             <DatePicker
@@ -289,37 +289,37 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
   maxDate={new Date()} // replaces max={getTodayString()}
   dateFormat="yyyy-MM-dd"
   wrapperClassName="w-full"
-  className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium"
+  className="w-full bg-white border border-border-subtle rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 font-medium"
   placeholderText="Select date"
   required
 />
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-3 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-3 uppercase tracking-widest">
               AVAILABLE LOGS FOR {selectedDate ? formatDisplayDate(selectedDate) : '...'}
             </label>
             {fetchingLogs ? (
-              <div className="text-center p-4 text-xs font-bold text-slate-400 animate-pulse">
+              <div className="text-center p-4 text-xs font-bold text-muted animate-pulse">
                 LOADING LOGS...
               </div>
             ) : logs.length === 0 ? (
-              <div className="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200 text-center text-xs text-slate-400">
+              <div className="p-4 bg-surface rounded-xl border border-dashed border-border-subtle text-center text-xs text-muted">
                 No logs available for this date.
               </div>
             ) : (
               <div className="space-y-2 max-h-48 overflow-y-auto pr-2 custom-scrollbar">
                 {logs.map((log) => (
-                  <div key={log._id} className="p-3 bg-slate-50 border border-slate-100 rounded-xl text-xs">
+                  <div key={log._id} className="p-3 bg-surface border border-border-subtle rounded-xl text-xs">
                     <div className="flex justify-between items-center mb-1">
-                      <span className="font-black text-slate-700 uppercase tracking-tighter">
+                      <span className="font-black text-main uppercase tracking-tighter">
                         {log.job || log.jobTitle}
                       </span>
-                      <span className="font-bold text-blue-500 bg-blue-50 px-2 py-0.5 rounded-full">
+                      <span className="font-bold text-amber-500 bg-amber-50 px-2 py-0.5 rounded-full">
                         {log.hours} HRS
                       </span>
                     </div>
-                    <p className="text-slate-400 line-clamp-1">{log.description}</p>
+                    <p className="text-muted line-clamp-1">{log.description}</p>
                   </div>
                 ))}
               </div>
@@ -327,7 +327,7 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               TIMESHEET NAME
             </label>
             <input
@@ -338,7 +338,7 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
                 setNameError(validateName(e.target.value));
               }}
               onBlur={() => setNameError(validateName(timesheetName))}
-              className={`w-full bg-white border ${nameError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium`}
+              className={`w-full bg-white border ${nameError ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 font-medium`}
               required
             />
             {nameError && (
@@ -347,7 +347,7 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               SUMMARY DESCRIPTION* <span className="normal-case font-normal text-slate-300">(min 10, max 500 chars)</span>
             </label>
             <textarea
@@ -357,19 +357,19 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
                 setDescriptionError(validateDescription(e.target.value, { min: 10, max: 500, required: true }));
               }}
               onBlur={() => setDescriptionError(validateDescription(description, { min: 10, max: 500, required: true }))}
-              className={`w-full bg-white border ${descriptionError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 min-h-[100px]`}
+              className={`w-full bg-white border ${descriptionError ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 min-h-[100px]`}
               placeholder="Describe your work in detail (at least 3 meaningful words)..."
             />
             <div className="flex justify-between items-center mt-1">
               {descriptionError ? (
                 <p className="text-xs text-red-500">{descriptionError}</p>
               ) : <span />}
-              <p className="text-xs text-slate-400 text-right">{description.length}/500</p>
+              <p className="text-xs text-muted text-right">{description.length}/500</p>
             </div>
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               ATTACHMENT {attachments.length > 0 && `(${attachments.length}/${MAX_FILES})`}
             </label>
             <div className="relative group">
@@ -382,7 +382,7 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
                 className="w-full opacity-0 absolute inset-0 cursor-pointer z-10"
                 disabled={attachments.length >= MAX_FILES}
               />
-              <div className="w-full bg-white border border-slate-200 border-dashed rounded-xl px-4 py-3 text-sm text-slate-400 flex items-center justify-between group-hover:bg-slate-50 transition-all">
+              <div className="w-full bg-white border border-border-subtle border-dashed rounded-xl px-4 py-3 text-sm text-muted flex items-center justify-between group-hover:bg-surface transition-all">
                 <span className="truncate">
                   {attachments.length > 0 ? `${attachments.length} file(s) selected` : "Choose file(s)..."}
                 </span>
@@ -399,16 +399,16 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
                 {attachments.map((file, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between p-2 bg-white rounded-lg border border-slate-200"
+                    className="flex items-center justify-between p-2 bg-white rounded-lg border border-border-subtle"
                   >
                     <div className="flex items-center gap-2 flex-1 min-w-0">
-                      <span className="text-[10px] font-bold text-slate-700 truncate">{file.name}</span>
-                      <span className="text-[9px] text-slate-400">({(file.size / 1024).toFixed(1)} KB)</span>
+                      <span className="text-[10px] font-bold text-main truncate">{file.name}</span>
+                      <span className="text-[9px] text-muted">({(file.size / 1024).toFixed(1)} KB)</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeAttachment(index)}
-                      className="text-slate-400 hover:text-red-500 transition-colors text-sm font-bold"
+                      className="text-muted hover:text-red-500 transition-colors text-sm font-bold"
                     >
                       ✕
                     </button>
@@ -419,8 +419,8 @@ export default function CreateTimesheetModal({ open, onClose, onTimesheetCreated
           </div>
         </form>
 
-        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-slate-100 flex gap-3 sm:gap-4 bg-white flex-shrink-0">
-          <button onClick={onClose} className="flex-1 py-4 font-black text-[10px] text-slate-400 uppercase tracking-widest">
+        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-border-subtle flex gap-3 sm:gap-4 bg-white flex-shrink-0">
+          <button onClick={onClose} className="flex-1 py-4 font-black text-[10px] text-muted uppercase tracking-widest">
             CANCEL
           </button>
           <button

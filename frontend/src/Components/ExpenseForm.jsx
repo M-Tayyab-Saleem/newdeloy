@@ -195,11 +195,11 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
       {step === "upload" && (
         <div className="space-y-6">
           {/* Info Banner */}
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4 flex items-start gap-3">
-            <Wand2 size={20} className="text-blue-600 mt-0.5 flex-shrink-0" />
+          <div className="bg-gradient-to-r from-amber-50 to-indigo-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+            <Wand2 size={20} className="text-amber-600 mt-0.5 flex-shrink-0" />
             <div>
-              <p className="text-xs font-bold text-blue-900">AI-Powered Receipt Processing</p>
-              <p className="text-[10px] text-blue-700 mt-1">
+              <p className="text-xs font-bold text-amber-900">AI-Powered Receipt Processing</p>
+              <p className="text-[10px] text-amber-700 mt-1">
                 Upload your receipt or invoice and our AI will automatically extract the details for you.
               </p>
             </div>
@@ -216,7 +216,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
                 onClick={() => setDocumentType("receipt")}
                 className={`flex-1 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex justify-center items-center gap-2 ${
                   documentType === "receipt"
-                    ? "bg-blue-600 text-white shadow-md"
+                    ? "bg-amber-600 text-white shadow-md"
                     : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                 }`}
               >
@@ -227,7 +227,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
                 onClick={() => setDocumentType("invoice")}
                 className={`flex-1 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-widest transition-all flex justify-center items-center gap-2 ${
                   documentType === "invoice"
-                    ? "bg-blue-600 text-white shadow-md"
+                    ? "bg-amber-600 text-white shadow-md"
                     : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                 }`}
               >
@@ -316,7 +316,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
               type="button"
               onClick={handleProcessReceipt}
               disabled={processingReceipt}
-              className="w-full px-4 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:active:scale-100 flex justify-center items-center gap-2"
+              className="w-full px-4 py-4 bg-gradient-to-r from-amber-600 to-indigo-600 text-white rounded-xl font-black text-[10px] uppercase tracking-widest shadow-lg hover:brightness-110 active:scale-95 transition-all disabled:opacity-50 disabled:active:scale-100 flex justify-center items-center gap-2"
             >
               {processingReceipt ? (
                 <>
@@ -367,7 +367,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
               name="title"
               value={formData.title}
               onChange={handleChange}
-              className={`w-full bg-white border ${errors.title ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-700 placeholder:text-slate-300`}
+              className={`w-full bg-white border ${errors.title ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-amber-100 outline-none transition-all text-slate-700 placeholder:text-slate-300`}
               placeholder="e.g., Client Meeting Lunch"
             />
             <div className="flex justify-between items-center mt-1">
@@ -388,7 +388,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
               value={formData.description}
               onChange={handleChange}
               rows="4"
-              className={`w-full bg-white border ${errors.description ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-700 placeholder:text-slate-300 resize-none`}
+              className={`w-full bg-white border ${errors.description ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-amber-100 outline-none transition-all text-slate-700 placeholder:text-slate-300 resize-none`}
               placeholder="Provide additional details about this expense..."
             />
             <div className="flex justify-between items-center mt-1">
@@ -409,7 +409,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
                 name="amount"
                 value={formData.amount}
                 onChange={handleChange}
-                className={`w-full bg-white border ${errors.amount ? 'border-rose-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-blue-100 outline-none transition-all text-slate-700 placeholder:text-slate-300`}
+                className={`w-full bg-white border ${errors.amount ? 'border-rose-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-amber-100 outline-none transition-all text-slate-700 placeholder:text-slate-300`}
                 placeholder="0.00"
                 min="0"
                 step="0.01"
@@ -465,7 +465,7 @@ const ExpenseForm = ({ onSubmitSuccess, onCancel }) => {
               <button
                 type="button"
                 onClick={handleBackToUpload}
-                className="text-[10px] font-bold text-blue-600 uppercase tracking-widest hover:underline"
+                className="text-[10px] font-bold text-amber-600 uppercase tracking-widest hover:underline"
               >
                 Change
               </button>

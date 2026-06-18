@@ -261,14 +261,14 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
         {/* CLOSE CROSS */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 hover:text-red-500 transition-all text-2xl font-light z-10"
+          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-muted hover:bg-surface hover:text-red-500 transition-all text-2xl font-light z-10"
         >
           &times;
         </button>
 
         {/* HEADER */}
         <div className="px-6 py-6 sm:px-10 sm:py-8 border-b border-slate-50 text-center flex-shrink-0">
-          <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-widest uppercase">
+          <h2 className="text-base sm:text-lg font-black text-heading tracking-widest uppercase">
             ADD TIME LOG
           </h2>
         </div>
@@ -278,7 +278,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
 
           {/* JOB TITLE INPUT */}
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               LOG TITLE*
             </label>
             <input
@@ -290,7 +290,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
                 setErrors((prev) => ({ ...prev, jobTitle: validateField("jobTitle", e.target.value) }));
               }}
               onBlur={() => setErrors((prev) => ({ ...prev, jobTitle: validateField("jobTitle", jobTitle) }))}
-              className={`w-full bg-white border ${errors.jobTitle ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-slate-300 transition-all`}
+              className={`w-full bg-white border ${errors.jobTitle ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100 placeholder:text-slate-300 transition-all`}
             />
             {errors.jobTitle && (
               <p className="text-xs text-red-500 mt-1">{errors.jobTitle}</p>
@@ -300,7 +300,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
           <div className="grid grid-cols-2 gap-4">
             {/* DATE */}
             <div className="relative">
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
                 DATE*
               </label>
               <DatePicker
@@ -312,7 +312,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
                 maxDate={new Date()}
                 dateFormat="yyyy-MM-dd"
                 placeholderText="Select Date"
-                className={`w-full bg-white border ${errors.date ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 cursor-pointer`}
+                className={`w-full bg-white border ${errors.date ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 cursor-pointer`}
                 popperProps={{ strategy: "fixed" }}
               />
               {errors.date && (
@@ -322,7 +322,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
 
             {/* HOURS */}
             <div>
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
                 HOURS*
               </label>
               <input
@@ -337,7 +337,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
                   setErrors((prev) => ({ ...prev, hours: validateField("hours", e.target.value) }));
                 }}
                 onBlur={() => setErrors((prev) => ({ ...prev, hours: validateField("hours", hours) }))}
-                className={`w-full bg-white border ${errors.hours ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-slate-300`}
+                className={`w-full bg-white border ${errors.hours ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 placeholder:text-slate-300`}
               />
               {errors.hours && (
                 <p className="text-xs text-red-500 mt-1">{errors.hours}</p>
@@ -347,7 +347,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
 
           {/* DESCRIPTION */}
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
               DESCRIPTION* <span className="normal-case font-normal text-slate-300">(min 10, max 300 chars)</span>
             </label>
             <textarea
@@ -366,7 +366,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
                   description: validateDescription(description, { min: 10, max: 300, required: true }),
                 }))
               }
-              className={`w-full bg-white border ${errors.description ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-slate-300 resize-none`}
+              className={`w-full bg-white border ${errors.description ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 placeholder:text-slate-300 resize-none`}
               rows={3}
             />
             <div className="flex justify-between items-center mt-1">
@@ -375,19 +375,19 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
               ) : (
                 <span />
               )}
-              <p className="text-xs text-slate-400 text-right">{description.length}/300</p>
+              <p className="text-xs text-muted text-right">{description.length}/300</p>
             </div>
           </div>
 
           {/* ATTACHMENT */}
           <div className="flex flex-col gap-2">
-            <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest">
+            <label className="block text-[10px] font-black text-muted uppercase tracking-widest">
               ATTACHMENT {attachments.length > 0 && `(${attachments.length}/${MAX_FILES})`}
             </label>
             <div className="flex items-center justify-center w-full">
-              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-slate-200 border-dashed rounded-xl cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors">
+              <label className="flex flex-col items-center justify-center w-full h-24 border-2 border-border-subtle border-dashed rounded-xl cursor-pointer bg-surface hover:bg-surface transition-colors">
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-tighter">
+                  <p className="text-[10px] text-muted font-bold uppercase tracking-tighter">
                     {attachments.length > 0 ? `${attachments.length} file(s) selected` : "click to upload file(s)"}
                   </p>
                 </div>
@@ -412,16 +412,16 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
                 {attachments.map((file, index) => (
                   <div
                     key={index}
-                    className="flex items-center justify-between p-2 bg-white rounded-lg border border-slate-200"
+                    className="flex items-center justify-between p-2 bg-white rounded-lg border border-border-subtle"
                   >
                     <div className="flex items-center gap-2 flex-1 min-w-0">
-                      <span className="text-[10px] font-bold text-slate-700 truncate">{file.name}</span>
-                      <span className="text-[9px] text-slate-400">({(file.size / 1024).toFixed(1)} KB)</span>
+                      <span className="text-[10px] font-bold text-main truncate">{file.name}</span>
+                      <span className="text-[9px] text-muted">({(file.size / 1024).toFixed(1)} KB)</span>
                     </div>
                     <button
                       type="button"
                       onClick={() => removeAttachment(index)}
-                      className="text-slate-400 hover:text-red-500 transition-colors text-sm font-bold"
+                      className="text-muted hover:text-red-500 transition-colors text-sm font-bold"
                     >
                       ✕
                     </button>
@@ -434,19 +434,19 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
           {/* PREVIEW OF QUEUED LOGS */}
           {logs.length > 0 && (
             <div className="space-y-3">
-              <label className="block text-[10px] font-black text-blue-500 uppercase tracking-widest">
+              <label className="block text-[10px] font-black text-amber-500 uppercase tracking-widest">
                 QUEUED LOGS ({logs.length})
               </label>
               <div className="space-y-2">
                 {logs.map((log, idx) => (
                   <div
                     key={idx}
-                    className="p-3 bg-blue-50 rounded-xl border border-blue-100 text-[11px] font-medium text-blue-700 flex justify-between items-center"
+                    className="p-3 bg-amber-50 rounded-xl border border-amber-100 text-[11px] font-medium text-amber-700 flex justify-between items-center"
                   >
                     <span>
                       {log.jobTitle} • {log.hours}h
                     </span>
-                    <span className="text-blue-300 uppercase">{log.date}</span>
+                    <span className="text-amber-300 uppercase">{log.date}</span>
                   </div>
                 ))}
               </div>
@@ -455,7 +455,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
         </div>
 
         {/* FOOTER */}
-        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-slate-100 flex flex-col sm:flex-row gap-3 bg-white flex-shrink-0">
+        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-border-subtle flex flex-col sm:flex-row gap-3 bg-white flex-shrink-0">
           <button
             type="button"
             onClick={handleAddAnother}
@@ -468,7 +468,7 @@ const AddTimeLogModal = ({ isOpen, onClose, onTimeLogAdded }) => {
           <div className="flex gap-3 flex-[2]">
             <button
               onClick={onClose}
-              className="flex-1 py-3 font-black text-[10px] text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors"
+              className="flex-1 py-3 font-black text-[10px] text-muted uppercase tracking-widest hover:text-muted transition-colors"
             >
               CANCEL
             </button>

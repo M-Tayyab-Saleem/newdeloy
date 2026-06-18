@@ -89,7 +89,7 @@ const AddTaskModal = ({ isOpen, onClose }) => {
               type="text" 
               name="taskName"
               placeholder="Task name" 
-              className={`w-full bg-white border ${errors.taskName ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 transition-all placeholder:text-slate-300`} 
+              className={`w-full bg-white border ${errors.taskName ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 transition-all placeholder:text-slate-300`} 
               required 
               onChange={(e) => setErrors(prev => ({ ...prev, taskName: e.target.value ? null : "Task name is required." }))}
             />
@@ -105,7 +105,7 @@ const AddTaskModal = ({ isOpen, onClose }) => {
           {/* Description */}
           <div>
             <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">DESCRIPTION</label>
-            <textarea placeholder="Brief description" rows="3" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-slate-300"></textarea>
+            <textarea placeholder="Brief description" rows="3" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 placeholder:text-slate-300"></textarea>
           </div>
 
           {/* Assignment Row (Custom Searchable Dropdowns - Kept as is) */}
@@ -113,11 +113,11 @@ const AddTaskModal = ({ isOpen, onClose }) => {
             <div className="relative">
               <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">ASSIGN TO</label>
               {!assignTo ? (
-                <input type="text" value={queryTo} onChange={(e) => { setQueryTo(e.target.value); setShowDropdownTo(true); }} placeholder="Find user" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100" />
+                <input type="text" value={queryTo} onChange={(e) => { setQueryTo(e.target.value); setShowDropdownTo(true); }} placeholder="Find user" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100" />
               ) : (
-                <div className="flex items-center justify-between border border-blue-100 rounded-xl px-4 py-3 bg-blue-50/50">
+                <div className="flex items-center justify-between border border-amber-100 rounded-xl px-4 py-3 bg-amber-50/50">
                   <span className="text-sm font-bold text-slate-700">{assignTo}</span>
-                  <button type="button" onClick={() => {setAssignTo(null); setQueryTo("");}} className="text-[10px] font-black text-blue-500 uppercase">Change</button>
+                  <button type="button" onClick={() => {setAssignTo(null); setQueryTo("");}} className="text-[10px] font-black text-amber-500 uppercase">Change</button>
                 </div>
               )}
               {showDropdownTo && filteredUsersTo.length > 0 && !assignTo && (
@@ -132,11 +132,11 @@ const AddTaskModal = ({ isOpen, onClose }) => {
             <div className="relative">
               <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">ASSIGN BY</label>
               {!assignBy ? (
-                <input type="text" value={queryBy} onChange={(e) => { setQueryBy(e.target.value); setShowDropdownBy(true); }} placeholder="Find user" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100" />
+                <input type="text" value={queryBy} onChange={(e) => { setQueryBy(e.target.value); setShowDropdownBy(true); }} placeholder="Find user" className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100" />
               ) : (
-                <div className="flex items-center justify-between border border-blue-100 rounded-xl px-4 py-3 bg-blue-50/50">
+                <div className="flex items-center justify-between border border-amber-100 rounded-xl px-4 py-3 bg-amber-50/50">
                   <span className="text-sm font-bold text-slate-700">{assignBy}</span>
-                  <button type="button" onClick={() => {setAssignBy(null); setQueryBy("");}} className="text-[10px] font-black text-blue-500 uppercase">Change</button>
+                  <button type="button" onClick={() => {setAssignBy(null); setQueryBy("");}} className="text-[10px] font-black text-amber-500 uppercase">Change</button>
                 </div>
               )}
               {showDropdownBy && filteredUsersBy.length > 0 && !assignBy && (

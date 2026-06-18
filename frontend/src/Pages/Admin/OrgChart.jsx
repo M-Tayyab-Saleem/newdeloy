@@ -17,7 +17,7 @@ const OrgNode = ({ node, onNodeClick }) => {
       return "from-purple-500 to-indigo-600"; // Leadership purple
     }
     if (r.includes("manager") || r.includes("lead")) {
-      return "from-blue-500 to-cyan-500"; // Mid-level modern blue
+      return "from-amber-500 to-cyan-500"; // Mid-level modern blue
     }
     if (r.includes("engineer") || r.includes("developer")) {
       return "from-emerald-400 to-teal-500"; // Tech green
@@ -43,7 +43,7 @@ const OrgNode = ({ node, onNodeClick }) => {
           <div className="p-5 flex flex-col items-center w-full">
             {/* View Profile Badge (Visible on Hover) */}
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <FaIdBadge className="text-blue-500" title="View Profile" />
+              <FaIdBadge className="text-amber-500" title="View Profile" />
             </div>
 
             {/* Avatar */}
@@ -57,7 +57,7 @@ const OrgNode = ({ node, onNodeClick }) => {
 
             {/* Text Info */}
             <h3 className="text-sm font-bold text-gray-800 text-center leading-tight mb-1">{node.name}</h3>
-            <p className="text-xs text-blue-600 font-semibold text-center mb-2 px-2 truncate w-full">{node.designation || node.role}</p>
+            <p className="text-xs text-amber-600 font-semibold text-center mb-2 px-2 truncate w-full">{node.designation || node.role}</p>
 
             {node.department && (
               <span className="inline-block px-2 py-0.5 rounded text-[10px] font-medium bg-gray-100 text-gray-600">
@@ -67,8 +67,8 @@ const OrgNode = ({ node, onNodeClick }) => {
           </div>
 
           {/* Bottom Action Strip */}
-          <div className="w-full bg-blue-50 h-0 group-hover:h-8 transition-all duration-300 flex items-center justify-center overflow-hidden">
-            <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">View Profile</span>
+          <div className="w-full bg-amber-50 h-0 group-hover:h-8 transition-all duration-300 flex items-center justify-center overflow-hidden">
+            <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider">View Profile</span>
           </div>
         </div>
 
@@ -146,14 +146,14 @@ const OrgChartPage = () => {
       <div className="mb-6 flex justify-between items-center bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
         <div>
           <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-            <FaNetworkWired className="text-blue-600" /> Organization Chart
+            <FaNetworkWired className="text-amber-600" /> Organization Chart
           </h1>
           <p className="text-sm text-gray-500 mt-1">Interactive hierarchy of company leadership and teams</p>
         </div>
       </div>
 
       {/* Chart Container */}
-      <div className="flex-1 bg-slate-50 border border-gray-200 shadow-inner overflow-hidden relative rounded-2xl">
+      <div className="flex-1 bg-surface border border-gray-200 shadow-inner overflow-hidden relative rounded-2xl">
         <TransformWrapper
           initialScale={1}
           minScale={0.2}
@@ -191,7 +191,7 @@ const OrgChartPage = () => {
                 <div className="min-w-max flex justify-center pb-20 pt-16 relative z-10">
                   {loading ? (
                     <div className="flex flex-col items-center justify-center mt-20 text-gray-400 gap-4">
-                      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+                      <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-amber-600"></div>
                       <p>Mapping Hierarchy...</p>
                     </div>
                   ) : data.length > 0 ? (

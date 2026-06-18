@@ -89,7 +89,7 @@ const CreateDepartmentModal = ({ isOpen, onClose, onDepartmentCreated, potential
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full bg-white border ${errors.name ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 transition-all`}
+              className={`w-full bg-white border ${errors.name ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 transition-all`}
               placeholder="e.g. Engineering"
               required
             />
@@ -117,7 +117,7 @@ const CreateDepartmentModal = ({ isOpen, onClose, onDepartmentCreated, potential
               name="description"
               value={formData.description}
               onChange={handleChange}
-              className={`w-full bg-white border ${errors.description ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 resize-none transition-all`}
+              className={`w-full bg-white border ${errors.description ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 resize-none transition-all`}
               placeholder="Brief description"
               rows="3"
             />

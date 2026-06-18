@@ -77,7 +77,7 @@ const FeedsCard = ({ onDelete }) => {
 
                 {item.actionType && (
                   <button
-                    className={`text-[9px] px-2 py-0.5 rounded-md font-medium shrink-0 ${item.actionType === "status" ? "bg-blue-100 text-blue-700" : "bg-green-100 text-green-700"}`}
+                    className={`text-[9px] px-2 py-0.5 rounded-md font-medium shrink-0 ${item.actionType === "status" ? "bg-amber-100 text-amber-700" : "bg-green-100 text-green-700"}`}
                   >
                     {item.actionType === "status" ? "View" : "Check-in"}
                   </button>

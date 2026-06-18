@@ -38,7 +38,7 @@ const LiveTimer = ({ startTime }) => {
     return () => clearInterval(interval);
   }, [startTime]);
 
-  return <span className="text-blue-600 font-mono font-bold tracking-wider">{duration}</span>;
+  return <span className="text-amber-600 font-mono font-bold tracking-wider">{duration}</span>;
 };
 
 // --- MAIN COMPONENT ---
@@ -254,9 +254,9 @@ const AdminAttendance = () => {
       case "Absent":
         return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-700 border border-rose-200"><XCircle size={12} /> Absent</span>;
       case "On Leave":
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-700 border border-blue-200"><Calendar size={12} /> On Leave</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-700 border border-amber-200"><Calendar size={12} /> On Leave</span>;
       default:
-        return <span className="text-slate-500 text-xs font-bold">{status}</span>;
+        return <span className="text-muted text-xs font-bold">{status}</span>;
     }
   };
 
@@ -280,14 +280,14 @@ const AdminAttendance = () => {
 
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-black text-slate-800 uppercase tracking-tight">Employee Attendance</h1>
-          <p className="text-sm text-slate-500 font-medium mt-1">Monitor daily check-ins, check-outs, and working hours.</p>
+          <h1 className="text-2xl font-black text-heading uppercase tracking-tight">Employee Attendance</h1>
+          <p className="text-sm text-muted font-medium mt-1">Monitor daily check-ins, check-outs, and working hours.</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {canEdit && (
             <button
               onClick={() => setIsAddAttendanceOpen(true)}
-              className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-200 text-[11px] font-black uppercase tracking-wide"
+              className="flex items-center gap-2 px-4 py-2.5 bg-amber-600 text-white rounded-xl hover:bg-amber-700 transition shadow-lg shadow-amber-200 text-[11px] font-black uppercase tracking-wide"
             >
               + Check In/Out
             </button>
@@ -302,9 +302,9 @@ const AdminAttendance = () => {
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
-        <div className="bg-white p-2 rounded-xl shadow-sm border border-slate-100 flex flex-col sm:flex-row gap-2 h-auto sm:h-16">
+        <div className="bg-white p-2 rounded-xl shadow-sm border border-border-subtle flex flex-col sm:flex-row gap-2 h-auto sm:h-16">
           <div className="relative flex-1">
-            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-slate-400">
+            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none text-muted">
               <Search size={18} />
             </div>
             <input
@@ -312,7 +312,7 @@ const AdminAttendance = () => {
               placeholder="Search Employee..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full h-full bg-slate-50 border border-slate-100 rounded-lg pl-10 pr-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-blue-100 transition-all"
+              className="w-full h-full bg-surface border border-border-subtle rounded-lg pl-10 pr-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-amber-100 transition-all"
             />
           </div>
           <div className="relative sm:w-48">
@@ -328,16 +328,16 @@ const AdminAttendance = () => {
               }}
               dateFormat="yyyy-MM-dd"
               wrapperClassName="w-full h-full" // Ensure the wrapper fills the div
-              className="w-full h-full bg-slate-50 border border-slate-100 rounded-lg px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-blue-100 transition-all text-slate-600 cursor-pointer"
+              className="w-full h-full bg-surface border border-border-subtle rounded-lg px-4 py-3 text-sm font-medium outline-none focus:ring-2 focus:ring-amber-100 transition-all text-muted cursor-pointer"
               placeholderText="Filter by Date"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-0 bg-white border border-slate-100 rounded-xl overflow-hidden divide-x divide-slate-100 shadow-sm">
-          <div className="px-2 py-3 flex flex-col justify-center text-center bg-blue-50/30">
-            <p className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-1">TOTAL</p>
-            <p className="text-xl font-black text-slate-700">{summaryData.counts.total}</p>
+        <div className="grid grid-cols-4 gap-0 bg-white border border-border-subtle rounded-xl overflow-hidden divide-x divide-slate-100 shadow-sm">
+          <div className="px-2 py-3 flex flex-col justify-center text-center bg-amber-50/30">
+            <p className="text-[10px] font-black text-amber-400 uppercase tracking-widest mb-1">TOTAL</p>
+            <p className="text-xl font-black text-main">{summaryData.counts.total}</p>
           </div>
           <div 
             onClick={() => {
@@ -364,10 +364,10 @@ const AdminAttendance = () => {
               setActiveTab("leave");
               localStorage.setItem('admin_attendance_tab', 'leave');
             }}
-            className={`px-2 py-3 flex flex-col justify-center text-center cursor-pointer transition-all ${activeTab === 'leave' ? 'bg-blue-100/50' : 'bg-blue-50/30 hover:bg-blue-50'}`}
+            className={`px-2 py-3 flex flex-col justify-center text-center cursor-pointer transition-all ${activeTab === 'leave' ? 'bg-amber-100/50' : 'bg-amber-50/30 hover:bg-amber-50'}`}
           >
-            <p className="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-1">LEAVE</p>
-            <p className="text-xl font-black text-blue-700">{summaryData.counts.onLeave}</p>
+            <p className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-1">LEAVE</p>
+            <p className="text-xl font-black text-amber-700">{summaryData.counts.onLeave}</p>
           </div>
         </div>
       </div>
@@ -383,7 +383,7 @@ const AdminAttendance = () => {
             className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all border ${
               activeTab === t 
                 ? "bg-slate-800 text-white border-slate-800 shadow-lg shadow-slate-200" 
-                : "bg-white text-slate-400 border-slate-100 hover:border-slate-200"
+                : "bg-white text-muted border-border-subtle hover:border-border-subtle"
             }`}
           >
             {t}
@@ -391,63 +391,63 @@ const AdminAttendance = () => {
         ))}
       </div>
 
-      <div className="bg-white rounded-[1.5rem] shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-[1.5rem] shadow-sm border border-border-subtle overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50/80 border-b border-slate-100">
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap w-[30%] min-w-[200px]">Employee</th>
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap w-[15%] min-w-[120px]">Date</th>
+              <tr className="border-b border-border-subtle">
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest whitespace-nowrap w-[30%] min-w-[200px]">Employee</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest whitespace-nowrap w-[15%] min-w-[120px]">Date</th>
                 {activeTab === "present" && (
                   <>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Check In</th>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Check Out</th>
-                    <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Duration</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Check In</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Check Out</th>
+                    <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Duration</th>
                   </>
                 )}
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Status</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest whitespace-nowrap w-[12%] min-w-[100px]">Status</th>
                 {canEdit && (
-                  <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest text-right whitespace-nowrap w-[7%] min-w-[100px]">Actions</th>
+                  <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-widest text-right whitespace-nowrap w-[7%] min-w-[100px]">Actions</th>
                 )}
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
               {loading ? (
-                <tr><td colSpan={activeTab === 'present' ? (canEdit ? 7 : 6) : (canEdit ? 4 : 3)} className="px-6 py-12 text-center text-slate-400 italic font-medium">Loading attendance data...</td></tr>
+                <tr><td colSpan={activeTab === 'present' ? (canEdit ? 7 : 6) : (canEdit ? 4 : 3)} className="px-6 py-12 text-center text-muted italic font-medium">Loading attendance data...</td></tr>
               ) : activeTabLogs.length === 0 ? (
-                <tr><td colSpan={activeTab === 'present' ? (canEdit ? 7 : 6) : (canEdit ? 4 : 3)} className="px-6 py-12 text-center text-slate-400 italic font-medium">No records found for this category.</td></tr>
+                <tr><td colSpan={activeTab === 'present' ? (canEdit ? 7 : 6) : (canEdit ? 4 : 3)} className="px-6 py-12 text-center text-muted italic font-medium">No records found for this category.</td></tr>
               ) : (
                 activeTabLogs.map((log) => (
-                  <tr key={log._id || log.user?._id} className="hover:bg-slate-50/50 transition-colors">
+                  <tr key={log._id || log.user?._id} className="hover:bg-white/40 dark:bg-black/20 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold border-2 border-white shadow-sm">
+                        <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold border-2 border-white shadow-sm">
                           {log.user?.name?.charAt(0).toUpperCase() || "?"}
                         </div>
                         <div>
-                          <p className="text-sm font-bold text-slate-700">{log.user?.name || "Unknown"}</p>
-                          <p className="text-[10px] font-bold text-slate-400 uppercase">{log.user?.designation || "Employee"}</p>
+                          <p className="text-sm font-bold text-main">{log.user?.name || "Unknown"}</p>
+                          <p className="text-[10px] font-bold text-muted uppercase">{log.user?.designation || "Employee"}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-600 whitespace-nowrap">
+                    <td className="px-6 py-4 text-sm text-muted whitespace-nowrap">
                       {new Date(log.date || filterDate).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </td>
                     {activeTab === "present" && (
                       <>
-                        <td className="px-6 py-4 text-sm font-bold text-slate-700">{formatTime(log.checkInTime)}</td>
+                        <td className="px-6 py-4 text-sm font-bold text-main">{formatTime(log.checkInTime)}</td>
                         <td className="px-6 py-4">
                           {log.checkOutTime ? (
-                            <span className="text-sm font-bold text-slate-700">{formatTime(log.checkOutTime)}</span>
+                            <span className="text-sm font-bold text-main">{formatTime(log.checkOutTime)}</span>
                           ) : (
                             <span className="text-[10px] font-black text-amber-600 bg-amber-50 px-2 py-1 rounded border border-amber-100 uppercase tracking-wider">Active</span>
                           )}
                         </td>
                         <td className="px-6 py-4 text-sm font-medium">
                           {log.checkInTime && log.checkOutTime ? (
-                            <span className="text-slate-600">{log.totalHours} hrs</span>
+                            <span className="text-muted">{log.totalHours} hrs</span>
                           ) : (
-                            log.checkInTime ? <LiveTimer startTime={log.checkInTime} /> : <span className="text-slate-400 text-xs italic">N/A</span>
+                            log.checkInTime ? <LiveTimer startTime={log.checkInTime} /> : <span className="text-muted text-xs italic">N/A</span>
                           )}
                         </td>
                       </>
@@ -457,16 +457,16 @@ const AdminAttendance = () => {
                       <td className="px-6 py-4 text-right flex justify-end gap-1">
                         {log._id ? (
                           <>
-                            <button onClick={() => handleEditClick(log)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all" title="Edit Record">
+                            <button onClick={() => handleEditClick(log)} className="p-2 text-muted hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all" title="Edit Record">
                               <Edit2 size={16} />
                             </button>
-                            <button onClick={() => handleDeleteRecord(log._id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Delete Record">
+                            <button onClick={() => handleDeleteRecord(log._id)} className="p-2 text-muted hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Delete Record">
                               <Trash2 size={16} />
                             </button>
                           </>
                         ) : (
                            /* For absent/leave virtual records without _id, we can still allow "Add" behavior via edit modal */
-                           <button onClick={() => handleEditClick(log)} className="p-2 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all" title="Add/Update Record">
+                           <button onClick={() => handleEditClick(log)} className="p-2 text-muted hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-all" title="Add/Update Record">
                              <Edit2 size={16} />
                            </button>
                         )}
@@ -483,44 +483,44 @@ const AdminAttendance = () => {
       {isEditModalOpen && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[9999] flex justify-center items-center p-4">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fadeIn">
-            <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-              <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest">Edit Attendance</h3>
-              <button onClick={() => setIsEditModalOpen(false)} className="text-slate-400 hover:text-red-500"><X size={20} /></button>
+            <div className="px-6 py-4 border-b border-border-subtle flex justify-between items-center bg-white/40 dark:bg-black/20">
+              <h3 className="text-sm font-black text-heading uppercase tracking-widest">Edit Attendance</h3>
+              <button onClick={() => setIsEditModalOpen(false)} className="text-muted hover:text-red-500"><X size={20} /></button>
             </div>
 
             <div className="p-6 space-y-4 ">
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Check In Time</label>
+                <label className="block text-[10px] font-black text-muted uppercase tracking-widest mb-2">Check In Time</label>
                 <DatePicker
                   selected={editFormData.checkInTime}
                   onChange={(date) => setEditFormData({ ...editFormData, checkInTime: date })}
                   showTimeSelect
                   dateFormat="Pp"
                   wrapperClassName="w-full"
-                  className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-blue-100 outline-none"
+                  className="w-full border border-border-subtle rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-amber-100 outline-none"
                   popperProps={{ strategy: "fixed" }}
                   portalId="portal-root"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Check Out Time</label>
+                <label className="block text-[10px] font-black text-muted uppercase tracking-widest mb-2">Check Out Time</label>
                 <DatePicker
                   selected={editFormData.checkOutTime}
                   onChange={(date) => setEditFormData({ ...editFormData, checkOutTime: date })}
                   showTimeSelect
                   dateFormat="Pp"
                   wrapperClassName="w-full"
-                  className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-blue-100 outline-none"
+                  className="w-full border border-border-subtle rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-amber-100 outline-none"
                   popperProps={{ strategy: "fixed" }}
                   portalId="portal-root"
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Status</label>
+                <label className="block text-[10px] font-black text-muted uppercase tracking-widest mb-2">Status</label>
                 <select
-                  className="w-full border border-slate-200 rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-blue-100 outline-none bg-white"
+                  className="w-full border border-border-subtle rounded-xl px-3 py-2 text-sm font-medium focus:ring-2 focus:ring-amber-100 outline-none bg-white"
                   value={editFormData.status}
                   onChange={(e) => setEditFormData({ ...editFormData, status: e.target.value })}
                 >
@@ -534,16 +534,16 @@ const AdminAttendance = () => {
               </div>
             </div>
 
-            <div className="px-6 py-4 border-t border-slate-100 flex gap-3 bg-slate-50/50">
+            <div className="px-6 py-4 border-t border-border-subtle flex gap-3 bg-white/40 dark:bg-black/20">
               <button
                 onClick={() => setIsEditModalOpen(false)}
-                className="flex-1 py-2 text-xs font-bold text-slate-500 hover:text-slate-700 uppercase tracking-wider"
+                className="flex-1 py-2 text-xs font-bold text-muted hover:text-main uppercase tracking-wider"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSaveChanges}
-                className="flex-1 py-2 bg-blue-600 text-white rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-blue-700 shadow-md shadow-blue-200 flex justify-center items-center gap-2"
+                className="flex-1 py-2 bg-amber-600 text-white rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-amber-700 shadow-md shadow-amber-200 flex justify-center items-center gap-2"
               >
                 <Save size={14} /> Save Changes
               </button>

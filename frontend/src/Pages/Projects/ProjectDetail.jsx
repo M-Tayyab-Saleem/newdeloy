@@ -11,6 +11,8 @@ import CommentsSection from "../../Components/project/CommentSection";
 import MyTasksView from "../../Components/project/MyTaskView";
 import AddTaskDrawer from "../../Components/project/AddTaskDrawer";
 
+import PageContainer from "../../Components/ui/PageContainer";
+
 const ProjectDetail = () => {
   const { id } = useParams();
   const { selectedTheme } = useTheme(); // Correctly using selectedTheme
@@ -75,31 +77,13 @@ const ProjectDetail = () => {
     }
   };
 
-  if (projectLoading) {
-    return (
-      <div className="px-4 py-2">
-        <div 
-          className="p-4 sm:p-6 lg:p-8 rounded-xl"
-          style={{ backgroundColor: selectedTheme.colors.background }}
-        >
-          <div className="flex items-center justify-center h-64">
-            <div 
-              className="animate-spin rounded-full h-8 w-8 border-b-2"
-              style={{ borderColor: selectedTheme.colors.primary }}
-            ></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="px-4 py-2 scrollbar-hide">
-      <div 
-        className="p-4 sm:p-6 lg:p-8 rounded-xl bg-primary"
-        // style={{ backgroundColor: '#f9f7f3' }}
-      >
-        <ProjectHeader project={project} />
+    <PageContainer
+      loading={projectLoading}
+      isCard={false}
+    >
+      <div className="flex flex-col gap-4">
+        {project && <ProjectHeader project={project} />}
         
         <TabNavigation 
           activeTab={activeTab}
@@ -109,7 +93,7 @@ const ProjectDetail = () => {
           onAddTask={() => setShowModal(true)}
         />
         
-        <div className="min-h-screen">
+        <div className="w-full">
           {renderTabContent()}
         </div>
         
@@ -119,7 +103,7 @@ const ProjectDetail = () => {
           onSubmit={handleCreateTask}
         />
       </div>
-    </div>
+    </PageContainer>
   );
 };
 

@@ -329,19 +329,19 @@ export default function EditProfile() {
 
   if (loading) {
     return (
-      <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50">
+      <div className="text-center p-6 glass-card">
         <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
-        <p className="mt-3 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading profile...</p>
+        <p className="mt-3 text-muted text-xs font-medium uppercase tracking-wide">Loading profile...</p>
       </div>
     );
   }
 
   return (
-    <div className="relative flex flex-col bg-transparent text-slate-800 p-6 rounded-[1.2rem] min-h-[700px]">
+    <div className="relative flex flex-col bg-transparent text-heading p-6 rounded-[1.2rem] min-h-[700px]">
       {/* Back Button */}
       <button
         onClick={() => navigate("/people/profile")}
-        className="absolute top-10 right-10 bg-white/30 backdrop-blur-lg text-slate-800 font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 hover:scale-105 text-sm ring-1 ring-white/20 z-50 flex items-center gap-2"
+        className="absolute top-10 right-10 bg-white/30 backdrop-blur-lg text-heading font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 hover:scale-105 text-sm ring-1 ring-white/20 z-50 flex items-center gap-2"
       >
         <IoArrowBack className="text-base" />
         Back
@@ -388,17 +388,17 @@ export default function EditProfile() {
         </div>
       </div>
 
-      <h2 className="text-lg font-bold text-slate-800 mb-6 uppercase tracking-tight">Edit Your Profile</h2>
+      <h2 className="text-lg font-bold text-heading mb-6 uppercase tracking-tight">Edit Your Profile</h2>
 
       {/* Basic Information */}
       <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] p-4 mb-6 shadow-md border border-white/50">
-        <h3 className="font-semibold mb-4 text-sm text-slate-800 uppercase tracking-wide">Basic Information</h3>
+        <h3 className="font-semibold mb-4 text-sm text-heading uppercase tracking-wide">Basic Information</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Full Name *</label>
+            <label className="block text-sm font-medium text-main mb-1">Full Name *</label>
             <input
               type="text"
-              className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+              className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
               value={formData.name}
               onChange={(e) => handleInputChange('name', e.target.value)}
               required
@@ -406,10 +406,10 @@ export default function EditProfile() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Email *</label>
+            <label className="block text-sm font-medium text-main mb-1">Email *</label>
             <input
               type="email"
-              className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+              className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
               value={formData.email}
               onChange={(e) => handleInputChange('email', e.target.value)}
               required
@@ -417,10 +417,10 @@ export default function EditProfile() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Phone Number</label>
+            <label className="block text-sm font-medium text-main mb-1">Phone Number</label>
             <input
               type="tel"
-              className={`w-full p-3 border ${errors.phoneNumber ? 'border-red-400' : 'border-slate-200'} rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all`}
+              className={`w-full p-3 border ${errors.phoneNumber ? 'border-red-400' : 'border-border-subtle'} rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all`}
               value={formData.phoneNumber}
               onChange={(e) => handleInputChange('phoneNumber', e.target.value.replace(/\D/g, ''))}
               placeholder="Digits only"
@@ -442,10 +442,10 @@ export default function EditProfile() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Designation *</label>
+            <label className="block text-sm font-medium text-main mb-1">Designation *</label>
             <input
               type="text"
-              className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+              className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
               value={formData.designation}
               onChange={(e) => handleInputChange('designation', e.target.value)}
               required
@@ -453,10 +453,10 @@ export default function EditProfile() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Branch *</label>
+            <label className="block text-sm font-medium text-main mb-1">Branch *</label>
             <input
               type="text"
-              className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+              className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
               value={formData.branch}
               onChange={(e) => handleInputChange('branch', e.target.value)}
               required
@@ -482,18 +482,18 @@ export default function EditProfile() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Marital Status</label>
+            <label className="block text-sm font-medium text-main mb-1">Marital Status</label>
             <input
               type="text"
-              className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+              className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
               value={formData.maritalStatus}
               onChange={(e) => handleInputChange('maritalStatus', e.target.value)}
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-slate-700 mb-1">Address</label>
+            <label className="block text-sm font-medium text-main mb-1">Address</label>
             <textarea
-              className={`w-full p-3 border ${errors.address ? 'border-red-400' : 'border-slate-200'} rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all resize-none`}
+              className={`w-full p-3 border ${errors.address ? 'border-red-400' : 'border-border-subtle'} rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all resize-none`}
               rows={3}
               value={formData.address}
               onChange={(e) => handleInputChange('address', e.target.value)}
@@ -502,7 +502,7 @@ export default function EditProfile() {
               {errors.address ? (
                 <p className="text-[10px] font-bold text-red-500 uppercase tracking-tight">{errors.address}</p>
               ) : <div />}
-              <p className="text-[10px] text-slate-400 uppercase tracking-widest">{formData.address.length}/200</p>
+              <p className="text-[10px] text-muted uppercase tracking-widest">{formData.address.length}/200</p>
             </div>
             </div>
           </div>
@@ -510,9 +510,9 @@ export default function EditProfile() {
 
       {/* About */}
       <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] p-4 mb-6 shadow-md border border-white/50">
-        <h3 className="font-semibold mb-3 text-sm text-slate-800 uppercase tracking-wide">About</h3>
+        <h3 className="font-semibold mb-3 text-sm text-heading uppercase tracking-wide">About</h3>
         <textarea
-          className={`w-full p-3 border ${errors.about ? 'border-red-400' : 'border-slate-200'} rounded-lg text-sm bg-white/80 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all resize-none`}
+          className={`w-full p-3 border ${errors.about ? 'border-red-400' : 'border-border-subtle'} rounded-lg text-sm bg-white/80 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent transition-all resize-none`}
           rows={5}
           value={formData.about}
           onChange={(e) => handleInputChange('about', e.target.value)}
@@ -521,24 +521,24 @@ export default function EditProfile() {
           {errors.about ? (
             <p className="text-[10px] font-bold text-red-500 uppercase tracking-tight">{errors.about}</p>
           ) : <div />}
-          <p className="text-[10px] text-slate-400 uppercase tracking-widest">{formData.about.length}/1000</p>
+          <p className="text-[10px] text-muted uppercase tracking-widest">{formData.about.length}/1000</p>
         </div>
       </div>
 
       {/* Emergency Contacts */}
       <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] p-4 mb-6 shadow-md border border-white/50">
         <div className="flex justify-between items-center mb-4">
-          <h3 className="font-semibold text-sm text-slate-800 uppercase tracking-wide">Emergency Contacts</h3>
+          <h3 className="font-semibold text-sm text-heading uppercase tracking-wide">Emergency Contacts</h3>
           <button
             onClick={addEmergencyContact}
-            className="p-2 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+            className="p-2 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200 transition shadow-sm"
             title="Add Contact"
           >
             <FiPlus className="text-lg" />
           </button>
         </div>
         {formData.emergencyContact.map((contact, idx) => (
-          <div key={idx} className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-slate-100">
+          <div key={idx} className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-border-subtle">
             {idx > 0 && (
               <button
                 onClick={() => removeEmergencyContact(idx)}
@@ -550,31 +550,31 @@ export default function EditProfile() {
             )}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs font-medium text-slate-600 mb-1">Name</label>
+                <label className="block text-xs font-medium text-muted mb-1">Name</label>
                 <input
                   type="text"
                   placeholder="Contact Name"
-                  className="w-full p-2 border border-slate-200 rounded text-sm bg-white/90 text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-2 border border-border-subtle rounded text-sm bg-white/90 text-main focus:outline-none focus:ring-1 focus:ring-amber-300"
                   value={contact.name}
                   onChange={(e) => updateEmergencyContact(idx, 'name', e.target.value)}
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-600 mb-1">Relation</label>
+                <label className="block text-xs font-medium text-muted mb-1">Relation</label>
                 <input
                   type="text"
                   placeholder="Relationship"
-                  className="w-full p-2 border border-slate-200 rounded text-sm bg-white/90 text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-2 border border-border-subtle rounded text-sm bg-white/90 text-main focus:outline-none focus:ring-1 focus:ring-amber-300"
                   value={contact.relation}
                   onChange={(e) => updateEmergencyContact(idx, 'relation', e.target.value)}
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-slate-600 mb-1">Phone *</label>
+                <label className="block text-xs font-medium text-muted mb-1">Phone *</label>
                 <input
                   type="tel"
                   placeholder="Phone Number"
-                  className="w-full p-2 border border-slate-200 rounded text-sm bg-white/90 text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-300"
+                  className="w-full p-2 border border-border-subtle rounded text-sm bg-white/90 text-main focus:outline-none focus:ring-1 focus:ring-amber-300"
                   value={contact.phone}
                   onChange={(e) => updateEmergencyContact(idx, 'phone', e.target.value.replace(/\D/g, ''))}
                 />
@@ -589,10 +589,10 @@ export default function EditProfile() {
         {/* Education */}
         <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] p-4 shadow-md border border-white/50">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="font-semibold text-sm text-slate-800 uppercase tracking-wide">Education</h3>
+            <h3 className="font-semibold text-sm text-heading uppercase tracking-wide">Education</h3>
             <button
               onClick={addEducation}
-              className="p-2 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+              className="p-2 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200 transition shadow-sm"
               title="Add Education"
             >
               <FiPlus className="text-lg" />
@@ -601,7 +601,7 @@ export default function EditProfile() {
           {formData.education.map((edu, idx) => (
             <div
               key={idx}
-              className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-slate-100"
+              className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-border-subtle"
             >
               {idx > 0 && (
                 <button
@@ -615,14 +615,14 @@ export default function EditProfile() {
               <input
                 type="text"
                 placeholder="Institution *"
-                className="w-full mb-3 p-3 border border-slate-200 rounded-lg text-sm bg-white/90 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+                className="w-full mb-3 p-3 border border-border-subtle rounded-lg text-sm bg-white/90 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
                 value={edu.institution}
                 onChange={(e) => updateEducation(idx, 'institution', e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Degree / Program *"
-                className="w-full mb-3 p-3 border border-slate-200 rounded-lg text-sm bg-white/90 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+                className="w-full mb-3 p-3 border border-border-subtle rounded-lg text-sm bg-white/90 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
                 value={edu.degree}
                 onChange={(e) => updateEducation(idx, 'degree', e.target.value)}
               />
@@ -630,14 +630,14 @@ export default function EditProfile() {
                 <input
                   type="number"
                   placeholder="Start Year"
-                  className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/90 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+                  className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/90 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
                   value={edu.startYear}
                   onChange={(e) => updateEducation(idx, 'startYear', e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder="End Year"
-                  className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/90 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+                  className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/90 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
                   value={edu.endYear}
                   onChange={(e) => updateEducation(idx, 'endYear', e.target.value)}
                 />
@@ -649,10 +649,10 @@ export default function EditProfile() {
         {/* Experience */}
         <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] p-4 shadow-md border border-white/50">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="font-semibold text-sm text-slate-800 uppercase tracking-wide">Work Experience</h3>
+            <h3 className="font-semibold text-sm text-heading uppercase tracking-wide">Work Experience</h3>
             <button
               onClick={addExperience}
-              className="p-2 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+              className="p-2 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200 transition shadow-sm"
               title="Add Experience"
             >
               <FiPlus className="text-lg" />
@@ -661,7 +661,7 @@ export default function EditProfile() {
           {formData.experience.map((exp, idx) => (
             <div
               key={idx}
-              className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-slate-100"
+              className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 mb-4 border border-border-subtle"
             >
               {idx > 0 && (
                 <button
@@ -675,7 +675,7 @@ export default function EditProfile() {
               <input
                 type="text"
                 placeholder="Company Name *"
-                className="w-full mb-3 p-3 border border-slate-200 rounded-lg text-sm bg-white/90 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+                className="w-full mb-3 p-3 border border-border-subtle rounded-lg text-sm bg-white/90 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
                 value={exp.company}
                 onChange={(e) => updateExperience(idx, 'company', e.target.value)}
               />
@@ -714,7 +714,7 @@ export default function EditProfile() {
 
               <textarea
                 placeholder="Job Description"
-                className="w-full p-3 border border-slate-200 rounded-lg text-sm bg-white/90 backdrop-blur-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+                className="w-full p-3 border border-border-subtle rounded-lg text-sm bg-white/90 backdrop-blur-sm text-main focus:outline-none focus:ring-2 focus:ring-amber-300 focus:border-transparent"
                 rows={3}
                 value={exp.description}
                 onChange={(e) => updateExperience(idx, 'description', e.target.value)}
@@ -725,7 +725,7 @@ export default function EditProfile() {
       </div>
 
       {/* Save Button */}
-      <div className="flex justify-end mt-6 pt-6 border-t border-slate-200">
+      <div className="flex justify-end mt-6 pt-6 border-t border-border-subtle">
         <button
           className={`bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2.5 rounded-lg transition-all text-sm font-medium shadow-sm hover:shadow-md ${saving ? 'opacity-50 cursor-not-allowed' : ''
             }`}

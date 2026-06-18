@@ -85,8 +85,8 @@ const SubNavbar = () => {
         <div className="w-3/5 flex justify-center">{navLinks}</div>
 
         <div className="w-1/5 flex justify-end space-x-4">
-          <PhoneIcon className="w-5 h-5 text-text hover:text-blue-500 cursor-pointer" />
-          <CalendarDaysIcon className="w-5 h-5 text-text hover:text-blue-500 cursor-pointer" />
+          <PhoneIcon className="w-5 h-5 text-text hover:text-amber-500 cursor-pointer" />
+          <CalendarDaysIcon className="w-5 h-5 text-text hover:text-amber-500 cursor-pointer" />
         </div>
       </div>
 
@@ -137,8 +137,8 @@ const SubNavbar = () => {
         <div className="flex flex-col gap-4 mt-5">
           {navLinks}
           <div className="flex items-center gap-4 px-4">
-            <PhoneIcon className="w-5 h-5 text-gray-600 hover:text-blue-500 cursor-pointer" />
-            <CalendarDaysIcon className="w-5 h-5 text-gray-600 hover:text-blue-500 cursor-pointer" />
+            <PhoneIcon className="w-5 h-5 text-gray-600 hover:text-amber-500 cursor-pointer" />
+            <CalendarDaysIcon className="w-5 h-5 text-gray-600 hover:text-amber-500 cursor-pointer" />
           </div>
         </div>
       </MobileNav>

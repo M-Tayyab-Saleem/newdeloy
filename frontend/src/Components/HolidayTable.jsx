@@ -136,7 +136,7 @@ const HolidayTable = ({ holidays: propHolidays, searchTerm = "", refreshKey = 0 
                   daysCount = Math.ceil((holidayDate - today) / (1000 * 60 * 60 * 24));
                   statusClass = daysCount === 0
                     ? "bg-green-100 text-green-800"
-                    : "bg-blue-100 text-blue-800";
+                    : "bg-amber-100 text-amber-800";
                 } else {
                   daysCount = Math.ceil((today - holidayDate) / (1000 * 60 * 60 * 24));
                   statusClass = "bg-gray-100 text-gray-800";

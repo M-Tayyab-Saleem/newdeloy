@@ -137,7 +137,7 @@ const AddHolidayModal = ({ isOpen, setIsOpen, onHolidayAdded }) => {
               placeholder="Enter holiday name"
               value={formData.holidayName}
               onChange={handleChange}
-              className={`w-full bg-white border ${errors.holidayName ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm sm:text-base text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 transition-all placeholder:text-slate-300`}
+              className={`w-full bg-white border ${errors.holidayName ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm sm:text-base text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 transition-all placeholder:text-slate-300`}
               required
             />
             {errors.holidayName && (

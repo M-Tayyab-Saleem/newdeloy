@@ -162,7 +162,7 @@ export default function AssignedTickets() {
 
   const getStatusColor = (s) => {
     const status = s.toLowerCase();
-    if (status === "open") return "bg-blue-100 text-blue-700";
+    if (status === "open") return "bg-amber-100 text-amber-700";
     if (status === "in progress") return "bg-purple-100 text-purple-700";
     return "bg-gray-100 text-gray-600";
   };
@@ -171,15 +171,15 @@ export default function AssignedTickets() {
     <div className="p-6 min-h-screen">
       
       {/* --- CONTAINER 1: HEADER & FILTERS --- */}
-      <div className="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 p-6 mb-6">
+      <div className="bg-white rounded-[1.5rem] shadow-sm border border-border-subtle p-6 mb-6">
         <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-50 rounded-2xl">
-               <ClipboardDocumentCheckIcon className="w-8 h-8 text-blue-600" />
+            <div className="p-3 bg-amber-50 rounded-2xl">
+               <ClipboardDocumentCheckIcon className="w-8 h-8 text-amber-600" />
             </div>
             <div>
-              <h1 className="text-xl font-black text-slate-800 uppercase tracking-tight">Assigned Tickets</h1>
-              <p className="text-xs text-slate-500 font-bold mt-1">
+              <h1 className="text-xl font-black text-heading uppercase tracking-tight">Assigned Tickets</h1>
+              <p className="text-xs text-muted font-bold mt-1">
                 Manage your tasks efficiently
               </p>
             </div>
@@ -188,18 +188,18 @@ export default function AssignedTickets() {
           <div className="flex flex-col md:flex-row gap-3 w-full xl:w-auto">
             {/* Search */}
             <div className="relative flex-1">
-              <MagnifyingGlassIcon className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+              <MagnifyingGlassIcon className="w-4 h-4 text-muted absolute left-3 top-1/2 -translate-y-1/2" />
               <input 
                 type="text" 
                 placeholder="Search ID or Subject..." 
-                className="pl-9 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-100 w-full transition-all"
+                className="pl-9 pr-10 py-2.5 bg-surface border border-border-subtle rounded-xl text-xs font-bold focus:outline-none focus:ring-2 focus:ring-amber-100 w-full transition-all"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-muted transition-colors"
                   title="Clear search"
                 >
                   <XMarkIcon className="w-4 h-4" />
@@ -209,7 +209,7 @@ export default function AssignedTickets() {
             
             {/* Priority Filter */}
             <select 
-              className="px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-bold text-slate-600 outline-none focus:ring-2 focus:ring-blue-100 cursor-pointer"
+              className="px-4 py-2.5 bg-surface border border-border-subtle rounded-xl text-xs font-bold text-muted outline-none focus:ring-2 focus:ring-amber-100 cursor-pointer"
               value={priorityFilter}
               onChange={(e) => setPriorityFilter(e.target.value)}
             >
@@ -220,13 +220,13 @@ export default function AssignedTickets() {
             </select>
 
             {/* Status Filter */}
-            <div className="flex bg-slate-50 p-1 rounded-xl border border-slate-200 overflow-x-auto">
+            <div className="flex bg-surface p-1 rounded-xl border border-border-subtle overflow-x-auto">
               {["All", "Open", "In Progress", "Closed"].map(s => (
                 <button
                   key={s}
                   onClick={() => setStatusFilter(s)}
                   className={`px-3 py-1.5 rounded-lg text-[10px] font-black uppercase tracking-wide transition-all whitespace-nowrap ${
-                    statusFilter === s ? "bg-white text-slate-800 shadow-sm" : "text-slate-400 hover:text-slate-600"
+                    statusFilter === s ? "bg-white text-heading shadow-sm" : "text-muted hover:text-muted"
                   }`}
                 >
                   {s}
@@ -238,37 +238,37 @@ export default function AssignedTickets() {
       </div>
 
       {/* --- CONTAINER 2: DATA TABLE --- */}
-      <div className="bg-white rounded-[1.5rem] shadow-sm border border-slate-200 overflow-hidden min-h-[500px] flex flex-col">
+      <div className="bg-white rounded-[1.5rem] shadow-sm border border-border-subtle overflow-hidden min-h-[500px] flex flex-col">
         <div className="overflow-x-auto flex-1">
           <table className="w-full text-left border-collapse">
-            <thead className="bg-slate-50 border-b border-slate-100">
+            <thead className="bg-surface border-b border-border-subtle">
               <tr>
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-wider">Ticket ID</th>
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-wider">Subject</th>
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-wider">Priority</th>
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-wider text-right">Action</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-wider">Ticket ID</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-wider">Subject</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-wider">Priority</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-wider">Status</th>
+                <th className="px-6 py-4 text-[10px] font-black text-muted uppercase tracking-wider text-right">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50">
               {loading ? (
-                <tr><td colSpan="5" className="text-center py-20 text-slate-400 text-xs font-bold">Loading tickets...</td></tr>
+                <tr><td colSpan="5" className="text-center py-20 text-muted text-xs font-bold">Loading tickets...</td></tr>
               ) : filteredTickets.length === 0 ? (
-                <tr><td colSpan="5" className="text-center py-20 text-slate-400 text-xs font-bold">No tickets match your filters.</td></tr>
+                <tr><td colSpan="5" className="text-center py-20 text-muted text-xs font-bold">No tickets match your filters.</td></tr>
               ) : (
                 filteredTickets.map((ticket) => (
-                  <tr key={ticket._id} className="hover:bg-slate-50/50 transition-colors group">
+                  <tr key={ticket._id} className="hover:bg-white/40 dark:bg-black/20 transition-colors group">
                     <td className="px-6 py-4">
-                      <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">
+                      <span className="text-xs font-mono font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded-md">
                         #{ticket.ticketID}
                       </span>
-                      <div className="text-[10px] text-slate-400 mt-1 pl-1 font-bold">
+                      <div className="text-[10px] text-muted mt-1 pl-1 font-bold">
                         {format(new Date(ticket.createdAt), "MMM dd, yyyy")}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm font-bold text-slate-700">{ticket.subject}</div>
-                      <div className="text-xs text-slate-400 mt-0.5 line-clamp-1 font-medium">{ticket.description}</div>
+                      <div className="text-sm font-bold text-main">{ticket.subject}</div>
+                      <div className="text-xs text-muted mt-0.5 line-clamp-1 font-medium">{ticket.description}</div>
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wide ${getPriorityColor(ticket.priority)}`}>
@@ -288,12 +288,12 @@ export default function AssignedTickets() {
                       </button>
 
                       {openDropdownId === ticket._id && (
-                        <div ref={dropdownRef} className="absolute left-6 top-10 w-32 bg-white rounded-xl shadow-xl border border-slate-100 z-50 overflow-hidden py-1 animate-fadeIn">
+                        <div ref={dropdownRef} className="absolute left-6 top-10 w-32 bg-white rounded-xl shadow-xl border border-border-subtle z-50 overflow-hidden py-1 animate-fadeIn">
                           {["Open", "In Progress", "Closed"].map((s) => (
                             <button
                               key={s}
                               onClick={() => handleStatusChange(ticket._id, s)}
-                              className="w-full text-left px-4 py-2 text-[10px] font-bold text-slate-600 hover:bg-slate-50 hover:text-blue-600 uppercase"
+                              className="w-full text-left px-4 py-2 text-[10px] font-bold text-muted hover:bg-surface hover:text-amber-600 uppercase"
                             >
                               {s}
                             </button>
@@ -304,7 +304,7 @@ export default function AssignedTickets() {
                     <td className="px-6 py-4 text-right">
                       <button 
                         onClick={() => setSelectedTicket(ticket)}
-                        className="p-2 bg-white border border-slate-200 text-slate-400 rounded-xl hover:border-blue-300 hover:text-blue-600 transition-all shadow-sm"
+                        className="p-2 bg-white border border-border-subtle text-muted rounded-xl hover:border-amber-300 hover:text-amber-600 transition-all shadow-sm"
                       >
                         <EyeIcon className="w-4 h-4" />
                       </button>
@@ -323,31 +323,31 @@ export default function AssignedTickets() {
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setSelectedTicket(null)}></div>
           
           <div className="relative bg-[#F8FAFC] w-full max-w-4xl max-h-[85vh] rounded-[2rem] shadow-2xl flex flex-col overflow-hidden animate-slideUp">
-            <div className="bg-white px-8 py-5 border-b border-slate-100 flex justify-between items-center shrink-0">
+            <div className="bg-white px-8 py-5 border-b border-border-subtle flex justify-between items-center shrink-0">
               <div>
-                <h2 className="text-xl font-black text-slate-800 flex items-center gap-3">
+                <h2 className="text-xl font-black text-heading flex items-center gap-3">
                    {selectedTicket.subject}
                    <span className={`text-[10px] px-2 py-1 rounded-md border uppercase tracking-wider ${getPriorityColor(selectedTicket.priority)}`}>
                      {selectedTicket.priority}
                    </span>
                 </h2>
-                <p className="text-slate-400 text-xs font-mono mt-1 font-bold">Ticket ID: {selectedTicket.ticketID}</p>
+                <p className="text-muted text-xs font-mono mt-1 font-bold">Ticket ID: {selectedTicket.ticketID}</p>
               </div>
-              <button onClick={() => setSelectedTicket(null)} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
-                <XMarkIcon className="w-6 h-6 text-slate-400" />
+              <button onClick={() => setSelectedTicket(null)} className="p-2 hover:bg-surface rounded-full transition-colors">
+                <XMarkIcon className="w-6 h-6 text-muted" />
               </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-8">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div className="lg:col-span-2 space-y-6">
-                  <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
-                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3">Description</h3>
-                    <p className="text-slate-700 text-sm leading-relaxed font-medium whitespace-pre-wrap">{selectedTicket.description}</p>
+                  <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-border-subtle">
+                    <h3 className="text-xs font-black text-muted uppercase tracking-widest mb-3">Description</h3>
+                    <p className="text-main text-sm leading-relaxed font-medium whitespace-pre-wrap">{selectedTicket.description}</p>
                   </div>
 
-                  <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
-                    <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
+                  <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-border-subtle">
+                    <h3 className="text-xs font-black text-muted uppercase tracking-widest mb-3 flex items-center gap-2">
                       <PaperClipIcon className="w-4 h-4" /> Attachments
                     </h3>
                     {selectedTicket.attachments && selectedTicket.attachments.length > 0 ? (
@@ -356,40 +356,40 @@ export default function AssignedTickets() {
                            <button 
                              key={idx}
                              onClick={() => handleDownload(file.blobName, file.name)}
-                             className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-all group text-left"
+                             className="w-full flex items-center justify-between p-3 bg-surface rounded-xl border border-border-subtle hover:bg-amber-50 hover:border-amber-200 transition-all group text-left"
                            >
                               <div className="flex items-center gap-2 overflow-hidden">
-                                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 font-bold text-xs shrink-0">
+                                <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center text-amber-600 font-bold text-xs shrink-0">
                                   {file.name.split('.').pop().toUpperCase()}
                                 </div>
-                                <span className="text-xs font-bold text-slate-700 truncate">{file.name}</span>
+                                <span className="text-xs font-bold text-main truncate">{file.name}</span>
                               </div>
-                              <div className="text-slate-400 group-hover:text-blue-600">
+                              <div className="text-muted group-hover:text-amber-600">
                                 <Paperclip size={16}/>
                               </div>
                            </button>
                         ))}
                       </div>
                     ) : (
-                      <p className="text-xs text-slate-400 italic">No files attached.</p>
+                      <p className="text-xs text-muted italic">No files attached.</p>
                     )}
                   </div>
 
                   <div className="space-y-4">
-                     <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest pl-2">Discussion</h3>
+                     <h3 className="text-xs font-black text-muted uppercase tracking-widest pl-2">Discussion</h3>
                      {selectedTicket.responses?.map((res, idx) => (
-                       <div key={idx} className="bg-white p-5 rounded-[1.5rem] shadow-sm border border-slate-100 flex gap-4">
-                          <img src={res.avatar || `https://ui-avatars.com/api/?name=${res.author}`} className="w-8 h-8 rounded-full border border-slate-100" />
+                       <div key={idx} className="bg-white p-5 rounded-[1.5rem] shadow-sm border border-border-subtle flex gap-4">
+                          <img src={res.avatar || `https://ui-avatars.com/api/?name=${res.author}`} className="w-8 h-8 rounded-full border border-border-subtle" />
                           <div className="flex-1">
                              <div className="flex justify-between items-center mb-1">
-                                <span className="font-bold text-sm text-slate-800">{res.author}</span>
-                                <span className="text-[10px] text-slate-400 font-bold">{format(new Date(res.time), "MMM dd, hh:mm a")}</span>
+                                <span className="font-bold text-sm text-heading">{res.author}</span>
+                                <span className="text-[10px] text-muted font-bold">{format(new Date(res.time), "MMM dd, hh:mm a")}</span>
                              </div>
-                             <p className="text-sm text-slate-600 font-medium">{res.content}</p>
+                             <p className="text-sm text-muted font-medium">{res.content}</p>
                           </div>
                        </div>
                      ))}
-                     <div className="bg-white p-2 rounded-[1.5rem] shadow-sm border border-slate-200 flex items-center gap-2 focus-within:ring-2 focus-within:ring-blue-100 transition-all">
+                     <div className="bg-white p-2 rounded-[1.5rem] shadow-sm border border-border-subtle flex items-center gap-2 focus-within:ring-2 focus-within:ring-amber-100 transition-all">
                         <textarea 
                           value={commentText}
                           onChange={(e) => {
@@ -417,13 +417,13 @@ export default function AssignedTickets() {
                  </div>
 
                 <div className="space-y-4">
-                   <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100">
-                      <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Requester</h3>
+                   <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-border-subtle">
+                      <h3 className="text-xs font-black text-muted uppercase tracking-widest mb-4">Requester</h3>
                       <div className="flex items-center gap-3">
                          <img src={selectedTicket.user?.avatar || `https://ui-avatars.com/api/?name=${selectedTicket.emailAddress}`} className="w-10 h-10 rounded-full border-2 border-white shadow-sm" />
                          <div>
-                            <p className="text-sm font-bold text-slate-700">{selectedTicket.user?.name || "Unknown"}</p>
-                            <p className="text-xs text-slate-400 font-medium">{selectedTicket.emailAddress}</p>
+                            <p className="text-sm font-bold text-main">{selectedTicket.user?.name || "Unknown"}</p>
+                            <p className="text-xs text-muted font-medium">{selectedTicket.emailAddress}</p>
                          </div>
                       </div>
                    </div>

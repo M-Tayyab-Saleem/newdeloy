@@ -16,6 +16,7 @@ import ExpenseTable from "../../Components/ExpenseTable";
 import ExpenseForm from "../../Components/ExpenseForm";
 import ExpenseDetail from "../../Components/ExpenseDetails";
 import { downloadFile } from "../../utils/downloadFile";
+import PageContainer from "../../Components/ui/PageContainer";
 
 // --- MAIN COMPONENT ---
 const ExpenseManagement = () => {
@@ -274,7 +275,48 @@ const ExpenseManagement = () => {
   };
 
   return (
-    <div className="w-full bg-transparent min-h-screen p-4">
+    <PageContainer
+      title="Expense Management"
+      subtitle="Track, approve, and manage employee expenses"
+      headerActions={
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setIsSubmitModalOpen(true)}
+            className="btn btn-primary flex items-center gap-2"
+          >
+            <Upload size={14} /> Submit Expense
+          </button>
+          <button
+            onClick={handleDownload}
+            className="px-6 py-3 bg-white text-main rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-md border border-border-subtle hover:bg-surface active:scale-95 transition-all flex items-center gap-2"
+          >
+            <Download size={14} /> Export CSV
+          </button>
+        </div>
+      }
+      topWidgets={
+        <ExpenseStats stats={stats} />
+      }
+      filters={
+        <ExpenseFilters
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+          startDate={startDate}
+          onStartDateChange={setStartDate}
+          endDate={endDate}
+          onEndDateChange={setEndDate}
+          statusFilter={statusFilter}
+          onStatusFilterChange={setStatusFilter}
+          categoryFilter={categoryFilter}
+          onCategoryFilterChange={setCategoryFilter}
+          selectedUser={selectedUser}
+          onUserChange={setSelectedUser}
+          users={users}
+          showUserFilter={currentUser?.role === "Admin" || currentUser?.role === "Manager" || currentUser?.role === "Super Admin"}
+        />
+      }
+      loading={loading}
+    >
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: scale(0.95); }
@@ -305,59 +347,7 @@ const ExpenseManagement = () => {
           background: #94a3b8;
         }
       `}</style>
-
-      {/* Header */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div>
-            <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">
-              Expense Management
-            </h2>
-            <p className="text-slate-500 text-xs font-medium uppercase tracking-wide">
-              Track, approve, and manage employee expenses
-            </p>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => setIsSubmitModalOpen(true)}
-              className="px-6 py-3 bg-[#64748b] text-white rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg shadow-slate-100 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2"
-            >
-              <Upload size={14} /> Submit Expense
-            </button>
-            <button
-              onClick={handleDownload}
-              className="px-6 py-3 bg-white text-slate-700 rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-md border border-slate-200 hover:bg-slate-50 active:scale-95 transition-all flex items-center gap-2"
-            >
-              <Download size={14} /> Export CSV
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Stats Cards */}
-      <ExpenseStats stats={stats} />
-
-      {/* Filters */}
-      <ExpenseFilters
-        searchTerm={searchTerm}
-        onSearchChange={setSearchTerm}
-        startDate={startDate}
-        onStartDateChange={setStartDate}
-        endDate={endDate}
-        onEndDateChange={setEndDate}
-        statusFilter={statusFilter}
-        onStatusFilterChange={setStatusFilter}
-        categoryFilter={categoryFilter}
-        onCategoryFilterChange={setCategoryFilter}
-        selectedUser={selectedUser}
-        onUserChange={setSelectedUser}
-        users={users}
-        showUserFilter={currentUser?.role === "Admin" || currentUser?.role === "Manager" || currentUser?.role === "Super Admin"}
-      />
-
-      {/* Expenses Table */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 mb-4">
+      <div className="bg-white/30 backdrop-blur-md rounded-2xl border border-white/60 shadow-[inset_0_2px_10px_rgba(255,255,255,0.3)] overflow-hidden">
         <ExpenseTable
           expenses={filteredExpenses}
           loading={loading}
@@ -374,8 +364,8 @@ const ExpenseManagement = () => {
       {isSubmitModalOpen && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[9999] flex justify-center items-center p-4 overflow-y-auto">
           <div className="bg-white rounded-[1.2rem] shadow-2xl w-full max-w-2xl my-8 overflow-hidden animate-fadeIn border border-white/50">
-            <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50 sticky top-0">
-              <h3 className="text-xs font-bold text-slate-800 uppercase tracking-widest">
+            <div className="px-6 py-4 border-b border-border-subtle flex justify-between items-center bg-white/40 dark:bg-black/20 sticky top-0">
+              <h3 className="text-xs font-bold text-heading uppercase tracking-widest">
                 Submit New Expense
               </h3>
               <button 
@@ -425,9 +415,9 @@ const ExpenseManagement = () => {
       {/* Edit/Reject Modal */}
       {isEditModalOpen && editingExpense && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[9999] flex justify-center items-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fadeIn border border-slate-200">
-            <div className="px-6 py-4 border-b border-slate-200 flex justify-between items-center bg-slate-50/50">
-              <h3 className="text-sm font-black text-slate-800 uppercase tracking-widest">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden animate-fadeIn border border-border-subtle">
+            <div className="px-6 py-4 border-b border-border-subtle flex justify-between items-center bg-white/40 dark:bg-black/20">
+              <h3 className="text-sm font-black text-heading uppercase tracking-widest">
                 {editMode === "reject" ? 'Reject Expense' : 'Edit Expense'}
               </h3>
               <button
@@ -436,7 +426,7 @@ const ExpenseManagement = () => {
                   setEditingExpense(null);
                   setEditMode("edit");
                 }}
-                className="text-slate-400 hover:text-rose-500 transition-colors"
+                className="text-muted hover:text-rose-500 transition-colors"
               >
                 <X size={20} />
               </button>
@@ -446,13 +436,13 @@ const ExpenseManagement = () => {
               {editMode === "reject" ? (
                 // Reject Form
                 <div>
-                  <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">
+                  <label className="block text-[10px] font-black text-muted uppercase tracking-widest mb-2">
                     Rejection Reason <span className="text-rose-500">*</span>
                   </label>
                   <textarea
                     value={editFormData.rejectionReason}
                     onChange={(e) => setEditFormData({ ...editFormData, rejectionReason: e.target.value })}
-                    className="w-full border border-slate-200 rounded-xl px-3 py-3 text-sm font-medium focus:ring-2 focus:ring-slate-400 outline-none bg-white text-slate-700 min-h-[100px] resize-none"
+                    className="w-full border border-border-subtle rounded-xl px-3 py-3 text-sm font-medium focus:ring-2 focus:ring-slate-400 outline-none bg-white text-main min-h-[100px] resize-none"
                     placeholder="Please provide a reason for rejection..."
                   />
 
@@ -463,7 +453,7 @@ const ExpenseManagement = () => {
                         setEditingExpense(null);
                         setEditMode("edit");
                       }}
-                      className="flex-1 py-2 text-xs font-bold text-slate-500 hover:text-slate-700 uppercase tracking-wider transition-colors"
+                      className="flex-1 py-2 text-xs font-bold text-muted hover:text-main uppercase tracking-wider transition-colors"
                     >
                       Cancel
                     </button>
@@ -554,7 +544,7 @@ const ExpenseManagement = () => {
                       <button 
                         type="button"
                         onClick={() => downloadFile(editFormData.receiptPublicId || editFormData.receiptUrl, `receipt-${editFormData.title}`)}
-                        className="flex items-center gap-2 text-blue-600 hover:underline text-sm font-medium transition-all"
+                        className="flex items-center gap-2 text-amber-600 hover:underline text-sm font-medium transition-all"
                       >
                         <FileText size={16} />
                         View Receipt
@@ -586,7 +576,7 @@ const ExpenseManagement = () => {
           </div>
         </div>
       )}
-    </div>
+    </PageContainer>
   );
 };
 

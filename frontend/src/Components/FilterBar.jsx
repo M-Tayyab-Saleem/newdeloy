@@ -47,13 +47,13 @@ const FilterBar = ({
         {/* Search Input */}
         {filters.find(f => f.type === 'search') && (
           <div className="relative w-full md:max-w-md group">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-blue-500 transition-colors" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-amber-500 transition-colors" />
             <input
               type="text"
               placeholder={filters.find(f => f.type === 'search').placeholder || "Search..."}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-11 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none"
+              className="w-full pl-11 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm font-medium focus:bg-white focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 transition-all outline-none"
             />
             {searchTerm && (
               <button 
@@ -84,7 +84,7 @@ const FilterBar = ({
               <Filter className="w-4 h-4" />
               <span>Filters</span>
               {activeFilterCount > 0 && (
-                <span className="bg-blue-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-black">
+                <span className="bg-amber-500 text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-black">
                   {activeFilterCount}
                 </span>
               )}
@@ -128,7 +128,7 @@ const FilterBar = ({
                   <select
                     value={values[filter.key] || ''}
                     onChange={(e) => onChange(filter.key, e.target.value)}
-                    className="w-full pl-4 pr-10 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-700 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none cursor-pointer appearance-none"
+                    className="w-full pl-4 pr-10 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-bold text-slate-700 focus:ring-4 focus:ring-amber-500/10 focus:border-amber-500 transition-all outline-none cursor-pointer appearance-none"
                   >
                     {filter.options.map((opt, i) => {
                       const val = typeof opt === 'object' ? opt.value : opt;
@@ -136,7 +136,7 @@ const FilterBar = ({
                       return <option key={i} value={val}>{label}</option>;
                     })}
                   </select>
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none group-focus-within:text-blue-500 transition-colors" />
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none group-focus-within:text-amber-500 transition-colors" />
                 </div>
               </div>
             );
@@ -145,7 +145,7 @@ const FilterBar = ({
             return (
               <div key={idx} className="flex flex-col gap-2 w-full sm:w-auto">
                 {filter.label && <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest px-1">{filter.label}</label>}
-                <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-xl p-1 focus-within:ring-4 focus-within:ring-blue-500/10 focus-within:border-blue-500 transition-all">
+                <div className="flex items-center gap-2 bg-white border border-slate-200 rounded-xl p-1 focus-within:ring-4 focus-within:ring-amber-500/10 focus-within:border-amber-500 transition-all">
                   <DatePicker
                     selected={values[`${filter.key}Start`]}
                     onChange={(date) => onChange(`${filter.key}Start`, date)}

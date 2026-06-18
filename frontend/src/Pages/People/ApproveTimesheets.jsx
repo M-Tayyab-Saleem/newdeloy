@@ -430,14 +430,14 @@ const ApproveTimesheets = () => {
       return [{
         icon: <FaEye size={14} />,
         title: "View & Approve/Reject",
-        className: "bg-blue-50 text-blue-600 hover:bg-blue-100",
+        className: "bg-amber-50 text-amber-600 hover:bg-amber-100",
         onClick: (row) => handleViewDetails(row)
       }];
     } else {
       return [{
         icon: <FaEye size={14} />,
         title: "View Details",
-        className: "bg-slate-50 text-slate-600 hover:bg-slate-100",
+        className: "bg-surface text-muted hover:bg-surface",
         onClick: (row) => handleViewDetails(row)
       }];
     }
@@ -457,7 +457,7 @@ const ApproveTimesheets = () => {
       label: (
         <input 
           type="checkbox" 
-          className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+          className="w-4 h-4 rounded border-border-primary text-amber-600 focus:ring-amber-500"
           onChange={handleSelectAll}
           checked={selectedIds.length > 0 && selectedIds.length === getFilteredData().length}
         />
@@ -466,7 +466,7 @@ const ApproveTimesheets = () => {
       render: (row) => (
         <input 
           type="checkbox" 
-          className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+          className="w-4 h-4 rounded border-border-primary text-amber-600 focus:ring-amber-500"
           checked={selectedIds.includes(row._id)}
           onChange={() => handleSelectRow(row._id)}
           onClick={(e) => e.stopPropagation()}
@@ -482,11 +482,11 @@ const ApproveTimesheets = () => {
            {row.employee?.avatar ? (
                <img src={row.employee.avatar} alt="" className="w-6 h-6 rounded-full object-cover" />
            ) : (
-               <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">
+               <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold">
                    {row.employee?.name?.charAt(0) || "U"}
                </div>
            )}
-           <span className="text-slate-700 font-medium">{row.employee?.name || row.employeeName || "Unknown"}</span>
+           <span className="text-main font-medium">{row.employee?.name || row.employeeName || "Unknown"}</span>
         </div>
       )
     },
@@ -497,7 +497,7 @@ const ApproveTimesheets = () => {
       render: (row) => {
         const dateObj = ensureDate(row.date);
         return (
-          <span className="text-slate-700 font-medium">
+          <span className="text-main font-medium">
             {isNaN(dateObj.getTime()) ? "Invalid Date" : dateObj.toLocaleDateString('en-US', {
               weekday: 'short', month: 'short', day: 'numeric'
             })}
@@ -510,7 +510,7 @@ const ApproveTimesheets = () => {
       label: "Timesheet Name",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-700 font-medium truncate max-w-[150px] inline-block" title={row.name || "Unnamed"}>
+        <span className="text-main font-medium truncate max-w-[150px] inline-block" title={row.name || "Unnamed"}>
            {row.name || "Unnamed"}
         </span>
       )
@@ -519,13 +519,13 @@ const ApproveTimesheets = () => {
       key: "submittedHours",
       label: "Submitted Hours",
       sortable: true,
-      render: (row) => <span className="text-slate-700 font-medium">{(row.submittedHours || 0).toFixed(1)}</span>
+      render: (row) => <span className="text-main font-medium">{(row.submittedHours || 0).toFixed(1)}</span>
     },
     {
       key: "approvedHours",
       label: activeTab === 0 ? "To Approve" : "Approved Hours",
       sortable: true,
-      render: (row) => <span className="text-slate-700 font-medium">{(row.approvedHours || 0).toFixed(1)}</span>
+      render: (row) => <span className="text-main font-medium">{(row.approvedHours || 0).toFixed(1)}</span>
     },
     {
       key: "status",
@@ -547,10 +547,10 @@ const ApproveTimesheets = () => {
       render: (row) => {
         const commentCount = row.comments?.length || 0;
         if (commentCount === 0) {
-          return <span className="text-slate-400 text-xs">No comments</span>;
+          return <span className="text-muted text-xs">No comments</span>;
         }
         return (
-          <div className="flex items-center gap-1 text-blue-600">
+          <div className="flex items-center gap-1 text-amber-600">
             <FaCommentDots size={14} />
             <span className="text-xs font-medium">{commentCount} comment{commentCount !== 1 ? 's' : ''}</span>
           </div>
@@ -560,7 +560,7 @@ const ApproveTimesheets = () => {
   ];
 
   return (
-    <div className="font-sans text-slate-600">
+    <div className="font-sans text-muted">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4 pr-4">
         <div className="bg-white/80 backdrop-blur-sm p-2 rounded-2xl shadow-sm inline-flex border border-white/50">
           {tabs.map((item, index) => (
@@ -569,13 +569,13 @@ const ApproveTimesheets = () => {
               onClick={() => setActiveTab(index)}
               className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
                 activeTab === index 
-                ? "bg-white text-blue-600 shadow-md transform scale-[1.02]" 
-                : "text-slate-500 hover:bg-white/50 hover:text-slate-700"
+                ? "bg-white text-amber-600 shadow-md transform scale-[1.02]" 
+                : "text-muted hover:bg-white/50 hover:text-main"
               }`}
             >
               {item.title.split(' ')[0]} {/* Shorter titles for tabs */}
               {item.count > 0 && (
-                <span className={`ml-2 px-2 py-0.5 rounded-lg text-[10px] ${activeTab === index ? 'bg-blue-50 text-blue-600' : 'bg-slate-100 text-slate-500'}`}>
+                <span className={`ml-2 px-2 py-0.5 rounded-lg text-[10px] ${activeTab === index ? 'bg-amber-50 text-amber-600' : 'bg-surface text-muted'}`}>
                   {item.count}
                 </span>
               )}
@@ -590,15 +590,15 @@ const ApproveTimesheets = () => {
                 placeholder="Search..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 pr-10 py-2.5 bg-white border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-blue-50 focus:border-blue-400 transition-all w-48 md:w-64"
+                className="pl-10 pr-10 py-2.5 bg-white border border-border-subtle rounded-2xl text-sm focus:outline-none focus:ring-4 focus:ring-amber-50 focus:border-amber-400 transition-all w-48 md:w-64"
               />
-              <svg className="absolute left-3.5 top-3 w-4 h-4 text-slate-400 group-focus-within:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="absolute left-3.5 top-3 w-4 h-4 text-muted group-focus-within:text-amber-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               {searchTerm && (
                 <button 
                   onClick={() => setSearchTerm("")}
-                  className="absolute right-3 top-3 text-slate-400 hover:text-slate-600 transition-colors"
+                  className="absolute right-3 top-3 text-muted hover:text-muted transition-colors"
                 >
                   <X size={16} />
                 </button>
@@ -609,7 +609,7 @@ const ApproveTimesheets = () => {
               <button
                 onClick={handleBulkApprove}
                 disabled={updating}
-                className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 text-[11px] font-black uppercase tracking-widest active:scale-95 disabled:opacity-50"
+                className="flex items-center gap-2 px-5 py-2.5 bg-amber-600 text-white rounded-2xl hover:bg-amber-700 transition-all shadow-lg shadow-amber-100 text-[11px] font-black uppercase tracking-widest active:scale-95 disabled:opacity-50"
               >
                 Bulk Approve ({selectedIds.length})
               </button>
@@ -617,7 +617,7 @@ const ApproveTimesheets = () => {
 
             <button
               onClick={() => setIsAddTimeLogOpen(true)}
-              className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 text-[11px] font-black uppercase tracking-widest active:scale-95"
+              className="flex items-center gap-2 px-5 py-2.5 bg-amber-600 text-white rounded-2xl hover:bg-amber-700 transition-all shadow-lg shadow-amber-100 text-[11px] font-black uppercase tracking-widest active:scale-95"
             >
               <Plus size={16} strokeWidth={3} /> Time Log
             </button>
@@ -630,29 +630,29 @@ const ApproveTimesheets = () => {
         </div>
       </div>
 
-      <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-4 mb-6 transition-all">
+      <div className="bg-white rounded-[2rem] shadow-sm border border-border-subtle p-4 mb-6 transition-all">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 px-2">
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
             <div className="flex flex-col">
-              <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-0.5">Management</span>
-              <h2 className="text-lg font-black text-slate-800 uppercase tracking-tight leading-none">{tabs[activeTab].title}</h2>
+              <span className="text-[10px] font-black text-amber-500 uppercase tracking-widest mb-0.5">Management</span>
+              <h2 className="text-lg font-black text-heading uppercase tracking-tight leading-none">{tabs[activeTab].title}</h2>
             </div>
 
             {activeTab === 3 ? (
-              <div className="flex flex-wrap items-center gap-3 pl-0 md:pl-6 md:border-l border-slate-100">
+              <div className="flex flex-wrap items-center gap-3 pl-0 md:pl-6 md:border-l border-border-subtle">
                 {/* Employee Filter */}
                 <div className="relative">
                    <select
                     value={filterEmployee}
                     onChange={(e) => setFilterEmployee(e.target.value)}
-                    className="h-10 pl-3 pr-8 bg-slate-50 border-none rounded-xl text-xs font-bold focus:ring-2 focus:ring-blue-100 transition-all min-w-[160px] text-slate-700 appearance-none cursor-pointer hover:bg-slate-100"
+                    className="h-10 pl-3 pr-8 bg-surface border-none rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-100 transition-all min-w-[160px] text-main appearance-none cursor-pointer hover:bg-surface"
                   >
                     <option value="All">All Employees</option>
                     {allUsers.map(user => (
                       <option key={user._id} value={user._id}>{user.name}</option>
                     ))}
                   </select>
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted">
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
                   </div>
                 </div>
@@ -664,9 +664,9 @@ const ApproveTimesheets = () => {
                     onChange={(date) => setFilterDate(date)}
                     placeholderText="Select Date"
                     isClearable
-                    className="h-10 pl-9 pr-3 bg-slate-50 border-none rounded-xl text-xs font-bold focus:ring-2 focus:ring-blue-100 transition-all min-w-[140px] text-slate-700 w-full cursor-pointer hover:bg-slate-100"
+                    className="h-10 pl-9 pr-3 bg-surface border-none rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-100 transition-all min-w-[140px] text-main w-full cursor-pointer hover:bg-surface"
                   />
-                  <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted">
                     <IoCalendarNumberOutline size={16} />
                   </div>
                 </div>
@@ -676,14 +676,14 @@ const ApproveTimesheets = () => {
                   <select
                     value={filterStatus}
                     onChange={(e) => setFilterStatus(e.target.value)}
-                    className="h-10 pl-3 pr-8 bg-slate-50 border-none rounded-xl text-xs font-bold focus:ring-2 focus:ring-blue-100 transition-all min-w-[130px] text-slate-700 appearance-none cursor-pointer hover:bg-slate-100"
+                    className="h-10 pl-3 pr-8 bg-surface border-none rounded-xl text-xs font-bold focus:ring-2 focus:ring-amber-100 transition-all min-w-[130px] text-main appearance-none cursor-pointer hover:bg-surface"
                   >
                     <option value="All">All Status</option>
                     <option value="Pending">Pending</option>
                     <option value="Approved">Approved</option>
                     <option value="Rejected">Rejected</option>
                   </select>
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted">
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
                   </div>
                 </div>
@@ -694,20 +694,20 @@ const ApproveTimesheets = () => {
                     setFilterDate(null);
                     setFilterStatus("All");
                   }}
-                  className="h-10 px-4 text-[10px] font-black text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-xl uppercase tracking-widest transition-all"
+                  className="h-10 px-4 text-[10px] font-black text-muted hover:text-red-500 hover:bg-red-50 rounded-xl uppercase tracking-widest transition-all"
                 >
                   Reset
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 pl-0 md:pl-6 md:border-l border-slate-100">
-                <button onClick={navigateToPreviousWeek} disabled={loading} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-all border border-slate-100">
+              <div className="flex items-center gap-2 pl-0 md:pl-6 md:border-l border-border-subtle">
+                <button onClick={navigateToPreviousWeek} disabled={loading} className="w-9 h-9 flex items-center justify-center rounded-xl bg-surface text-muted hover:bg-amber-50 hover:text-amber-600 transition-all border border-border-subtle">
                   <FaAngleLeft size={14} />
                 </button>
 
                 <div className="relative" ref={calendarRef}>
-                  <button onClick={() => setShowCalendar(!showCalendar)} disabled={loading} className="h-9 px-4 flex items-center gap-2 bg-white border border-slate-100 text-slate-700 rounded-xl font-bold text-xs hover:border-blue-200 hover:bg-blue-50/30 transition-all min-w-[180px] justify-center shadow-sm">
-                    <IoCalendarNumberOutline size={16} className="text-blue-500" />
+                  <button onClick={() => setShowCalendar(!showCalendar)} disabled={loading} className="h-9 px-4 flex items-center gap-2 bg-white border border-border-subtle text-main rounded-xl font-bold text-xs hover:border-amber-200 hover:bg-amber-50/30 transition-all min-w-[180px] justify-center shadow-sm">
+                    <IoCalendarNumberOutline size={16} className="text-amber-500" />
                     <span>{formatWeekRange(weeklyData.weekStart, weeklyData.weekEnd)}</span>
                   </button>
                   <AnimatePresence>
@@ -729,14 +729,14 @@ const ApproveTimesheets = () => {
                   </AnimatePresence>
                 </div>
 
-                <button onClick={navigateToNextWeek} disabled={loading} className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-all border border-slate-100">
+                <button onClick={navigateToNextWeek} disabled={loading} className="w-9 h-9 flex items-center justify-center rounded-xl bg-surface text-muted hover:bg-amber-50 hover:text-amber-600 transition-all border border-border-subtle">
                   <FaAngleRight size={14} />
                 </button>
 
                 <button 
                   onClick={handleClearDateRange}
                   title="Reset to current week"
-                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-slate-50 text-slate-400 hover:text-red-500 hover:bg-red-50 transition-all border border-slate-100"
+                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-surface text-muted hover:text-red-500 hover:bg-red-50 transition-all border border-border-subtle"
                 >
                   <X size={14} />
                 </button>
@@ -752,11 +752,11 @@ const ApproveTimesheets = () => {
                 <Download size={16} /> Export CSV
               </button>
 
-              <div className="bg-slate-50 border border-slate-100 px-5 py-2.5 rounded-2xl flex flex-col items-end">
-                  <span className="text-[9px] font-black uppercase tracking-widest text-slate-400">
+              <div className="bg-surface border border-border-subtle px-5 py-2.5 rounded-2xl flex flex-col items-end">
+                  <span className="text-[9px] font-black uppercase tracking-widest text-muted">
                       {activeTab === 0 ? "Total Submitted" : "Total Approved"}
                   </span>
-                  <span className="text-sm font-black text-slate-800">
+                  <span className="text-sm font-black text-heading">
                       {activeTab === 0 
                           ? (weeklyData.weeklySubmitted || 0).toFixed(2) 
                           : (activeTab === 3 
@@ -764,20 +764,20 @@ const ApproveTimesheets = () => {
                               : (weeklyData.approvedTimesheets?.reduce((sum, ts) => sum + (ts.approvedHours || 0), 0) || 0).toFixed(2)
                             )
                       }
-                      <span className="ml-1 text-[10px] text-slate-400">HRS</span>
+                      <span className="ml-1 text-[10px] text-muted">HRS</span>
                   </span>
               </div>
           </div>
         </div>
       </div>
 
-      <div className="rounded-[1.5rem] shadow-sm border border-slate-100 overflow-hidden">
+      <div className="rounded-[1.5rem] shadow-sm border border-border-subtle overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div key={`${activeTab}-${selectedWeekStart}`} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -5 }} transition={{ duration: 0.2 }}>
             {loading || allLoading ? (
               <div className="flex flex-col items-center justify-center py-12">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4"></div>
-                <p className="text-sm font-medium text-slate-500">Loading data...</p>
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600 mb-4"></div>
+                <p className="text-sm font-medium text-muted">Loading data...</p>
               </div>
             ) : (
               <TableWithPagination

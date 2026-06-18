@@ -59,7 +59,7 @@ export default function NotificationItem({ notif, onClick, isDense = false, chil
 
         <div className="flex items-center gap-2 mt-2.5">
           {notif.type.startsWith('LEAVE') && (
-            <span className="px-1.5 py-0.5 bg-blue-50 text-blue-600 text-[8px] font-black rounded uppercase border border-blue-100">Leave</span>
+            <span className="px-1.5 py-0.5 bg-amber-50 text-amber-600 text-[8px] font-black rounded uppercase border border-amber-100">Leave</span>
           )}
           {notif.type.startsWith('EXPENSE') && (
             <span className="px-1.5 py-0.5 bg-amber-50 text-amber-600 text-[8px] font-black rounded uppercase border border-amber-100">Expense</span>

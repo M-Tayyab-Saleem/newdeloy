@@ -47,7 +47,7 @@ export default function UpcomingDeadlinesCard() {
         </div>
 
         <div className="flex items-start gap-2">
-          <button className="flex items-center text-blue-600 text-sm hover:underline">
+          <button className="flex items-center text-amber-600 text-sm hover:underline">
             View All
             <ArrowRightIcon className="h-4 w-4 ml-1" />
           </button>
@@ -71,7 +71,7 @@ export default function UpcomingDeadlinesCard() {
             d.status === "High Priority"
               ? "bg-red-100 text-red-600"
               : d.status === "Scheduled"
-              ? "bg-blue-100 text-blue-600"
+              ? "bg-amber-100 text-amber-600"
               : d.status === "In Progress"
               ? "bg-yellow-100 text-yellow-700"
               : "bg-gray-100 text-gray-600";

@@ -89,8 +89,8 @@ const FileTable = ({ files, onDownload, loading, searchTerm = "" }) => {
                             className="w-6 h-6 object-cover rounded"
                           />
                         ) : (
-                          <div className="w-6 h-6 bg-blue-100 rounded flex items-center justify-center">
-                            <span className="text-xs text-blue-600 font-bold">
+                          <div className="w-6 h-6 bg-amber-100 rounded flex items-center justify-center">
+                            <span className="text-xs text-amber-600 font-bold">
                               {file.name?.split('.').pop()?.charAt(0).toUpperCase() || 'F'}
                             </span>
                           </div>

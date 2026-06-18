@@ -256,7 +256,7 @@ const TimeTracker = () => {
       label: "Job Title",
       sortable: true,
       render: (row) => (
-        <span className="font-medium text-slate-700">{row.job || "-"}</span>
+        <span className="font-medium text-main">{row.job || "-"}</span>
       )
     },
     {
@@ -264,7 +264,7 @@ const TimeTracker = () => {
       label: "Date",
       sortable: true,
       render: (row) => (
-        <span className="text-slate-600">{formatBackendDate(row.date)}</span>
+        <span className="text-muted">{formatBackendDate(row.date)}</span>
       )
     },
     {
@@ -272,7 +272,7 @@ const TimeTracker = () => {
       label: "Description",
       sortable: false,
       render: (row) => (
-        <div className="max-w-xs truncate text-slate-600">{row.description}</div>
+        <div className="max-w-xs truncate text-muted">{row.description}</div>
       )
     },
     {
@@ -280,7 +280,7 @@ const TimeTracker = () => {
       label: "Hours",
       sortable: true,
       render: (row) => (
-        <span className="font-medium text-slate-700">{row.hours}</span>
+        <span className="font-medium text-main">{row.hours}</span>
       )
     }
   ];
@@ -290,7 +290,7 @@ const TimeTracker = () => {
     {
       icon: <IoEye size={16} />,
       title: "View",
-      className: "bg-blue-50 text-blue-600 hover:bg-blue-100",
+      className: "bg-amber-50 text-amber-600 hover:bg-amber-100",
       onClick: (row) => handleViewLog(row)
     },
     {
@@ -324,8 +324,8 @@ const TimeTracker = () => {
                 <button
                   className={`px-5 py-2.5 text-sm font-medium transition-all duration-200 rounded-xl
                   ${activeTab === index
-                      ? "text-slate-800 bg-white shadow-sm font-bold"
-                      : "text-slate-600 hover:text-slate-800 hover:bg-slate-50/80"
+                      ? "text-heading bg-white shadow-sm font-bold"
+                      : "text-muted hover:text-heading hover:bg-surface/50"
                     }`}
                   onClick={() => setActiveTab(index)}
                 >
@@ -348,7 +348,7 @@ const TimeTracker = () => {
                 setIsCreateTimesheetModalOpen(true);
               }
             }}
-            className="w-full sm:w-auto px-6 py-3 bg-[#64748b] text-white rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg shadow-slate-100 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto btn btn-primary flex items-center justify-center gap-2"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -360,21 +360,21 @@ const TimeTracker = () => {
         {activeTab === 0 && (
           <>
             {/* Header Card */}
-            <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-2 relative z-20">
+            <div className="glass-card mb-4 p-2 relative z-20">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Time Logs</h2>
+                <h2 className="text-base font-bold text-heading uppercase tracking-tight">Time Logs</h2>
 
                 <div className="flex flex-wrap items-center gap-3">
                   <button
                     onClick={navigateToPreviousDay}
-                    className="p-2.5 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+                    className="p-2.5 rounded-lg bg-amber-100 text-amber-800 hover:bg-amber-200 transition shadow-sm"
                   >
                     <FaAngleLeft size={18} />
                   </button>
 
                   <div className="relative" ref={calendarRef}>
                     <button
-                      className="px-3 py-2 text-blue-800 bg-blue-100 rounded-lg flex items-center gap-2 hover:bg-blue-200 transition shadow-sm text-sm font-medium"
+                      className="px-3 py-2 text-amber-800 bg-amber-100 rounded-lg flex items-center gap-2 hover:bg-amber-200 transition shadow-sm text-sm font-medium"
                       onClick={() => setShowCalendar(!showCalendar)}
                     >
                       <IoCalendarNumberOutline size={18} />
@@ -408,14 +408,14 @@ const TimeTracker = () => {
                   <button
                     onClick={navigateToNextDay}
                     disabled={selectedDate >= new Date().setHours(0, 0, 0, 0)} // Disable if today
-                    className={`p-2.5 rounded-lg transition shadow-sm ${selectedDate >= new Date().setHours(0, 0, 0, 0) ? 'bg-slate-100 text-slate-400 cursor-not-allowed' : 'bg-blue-100 text-blue-800 hover:bg-blue-200'}`}
+                    className={`p-2.5 rounded-lg transition shadow-sm ${selectedDate >= new Date().setHours(0, 0, 0, 0) ? 'bg-surface text-muted cursor-not-allowed' : 'bg-amber-100 text-amber-800 hover:bg-amber-200'}`}
                   >
                     <FaAngleRight size={18} />
                   </button>
                 </div>
-                <div className="bg-blue-50 px-3 py-2 rounded-lg shadow-sm">
-                  <span className="text-xs font-medium text-slate-800 uppercase tracking-wide">
-                    Submitted Hours: <span className="font-bold text-slate-800">{totalHours.toFixed(2)}</span>
+                <div className="bg-amber-50 px-3 py-2 rounded-lg shadow-sm">
+                  <span className="text-xs font-medium text-heading uppercase tracking-wide">
+                    Submitted Hours: <span className="font-bold text-heading">{totalHours.toFixed(2)}</span>
                   </span>
                 </div>
               </div>
@@ -423,9 +423,9 @@ const TimeTracker = () => {
 
             {/* Loading State */}
             {loading && (
-              <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50">
+              <div className="text-center p-6 glass-card">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
-                <p className="mt-3 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading time logs...</p>
+                <p className="mt-3 text-muted text-xs font-medium uppercase tracking-wide">Loading time logs...</p>
               </div>
             )}
 
@@ -456,8 +456,8 @@ const TimeTracker = () => {
                     onClick={() => setIsCreateTimesheetModalOpen(true)}
                     className="group relative flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-slate-700 to-slate-800 text-white rounded-[1.5rem] font-bold text-xs uppercase tracking-[0.15em] shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-slate-300/60 hover:-translate-y-1 active:translate-y-0 transition-all duration-300 overflow-hidden"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <svg className="w-5 h-5 text-blue-300 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <svg className="w-5 h-5 text-amber-300 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                     <span>Create Timesheet for this date</span>
@@ -514,16 +514,16 @@ const TimeTracker = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
               </div>
-              <h3 className="text-base font-black text-slate-800 uppercase tracking-wider mb-2">
+              <h3 className="text-base font-black text-heading uppercase tracking-wider mb-2">
                 Delete Time Log
               </h3>
-              <p className="text-xs text-slate-500 font-medium mb-6">
+              <p className="text-xs text-muted font-medium mb-6">
                 Are you sure you want to delete this time log? This action cannot be undone.
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={handleCancelDelete}
-                  className="flex-1 py-3 bg-slate-100 text-slate-700 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
+                  className="flex-1 py-3 bg-surface text-main rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-200 transition-all"
                 >
                   Cancel
                 </button>

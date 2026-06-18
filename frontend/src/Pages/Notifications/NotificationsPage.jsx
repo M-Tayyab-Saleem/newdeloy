@@ -136,7 +136,7 @@ export default function NotificationsPage() {
                   </p>
                 </div>
                 {!notif.isRead && (
-                  <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mt-2 shrink-0" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
                 )}
               </div>
               

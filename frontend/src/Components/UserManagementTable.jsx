@@ -31,7 +31,7 @@ const UserManagementTable = ({ users }) => {
                       #{user.empID || user.id}
                     </td>
                     <td className="p-4">
-                        <span className="text-sm font-bold text-slate-700 group-hover:text-blue-600 transition-colors">
+                        <span className="text-sm font-bold text-slate-700 group-hover:text-amber-600 transition-colors">
                           {user.name}
                         </span>
                     </td>
@@ -47,7 +47,7 @@ const UserManagementTable = ({ users }) => {
                       <span
                         className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border ${user.role === "Admin"
                             ? "bg-purple-50 text-purple-600 border-purple-100"
-                            : "bg-blue-50 text-blue-600 border-blue-100"
+                            : "bg-amber-50 text-amber-600 border-amber-100"
                           }`}
                       >
                         {user.role}

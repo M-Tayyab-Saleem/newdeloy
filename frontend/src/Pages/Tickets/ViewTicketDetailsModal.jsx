@@ -10,8 +10,8 @@ import { validateDescription } from "../../utils/validationUtils";
 
 const DetailItem = ({ label, value }) => (
   <div className="space-y-1">
-    <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest">{label}</label>
-    <div className="text-sm sm:text-base text-slate-700 font-bold truncate">{value}</div>
+    <label className="block text-[10px] font-black text-muted uppercase tracking-widest">{label}</label>
+    <div className="text-sm sm:text-base text-main font-bold truncate">{value}</div>
   </div>
 );
 
@@ -69,10 +69,10 @@ const ViewTicketDetailsModal = ({ ticket: initialTicket, onClose }) => {
         {/* Header */}
         <div className="px-6 py-5 border-b border-slate-50 flex justify-between items-center bg-white z-10">
           <div>
-            <h2 className="text-lg font-black text-slate-800 uppercase tracking-widest">TICKET OVERVIEW</h2>
-            <p className="text-[10px] text-slate-400 font-bold mt-1">ID: {ticket.ticketID}</p>
+            <h2 className="text-lg font-black text-heading uppercase tracking-widest">TICKET OVERVIEW</h2>
+            <p className="text-[10px] text-muted font-bold mt-1">ID: {ticket.ticketID}</p>
           </div>
-          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-50 text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all">
+          <button onClick={onClose} className="w-8 h-8 flex items-center justify-center rounded-full bg-surface text-muted hover:bg-red-50 hover:text-red-500 transition-all">
             <XMarkIcon className="w-5 h-5" />
           </button>
         </div>
@@ -82,7 +82,7 @@ const ViewTicketDetailsModal = ({ ticket: initialTicket, onClose }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             <DetailItem label="Created On" value={new Date(ticket.createdAt).toLocaleDateString()} />
             <div>
-              <label className="block text-[10px] font-black text-slate-400 mb-1 uppercase tracking-widest">STATUS</label>
+              <label className="block text-[10px] font-black text-muted mb-1 uppercase tracking-widest">STATUS</label>
               <span className={`inline-block px-3 py-1 text-[10px] font-black uppercase tracking-wider rounded-lg border ${statusStyles}`}>{ticket.status}</span>
             </div>
             <DetailItem label="Subject" value={ticket.subject} />
@@ -90,16 +90,16 @@ const ViewTicketDetailsModal = ({ ticket: initialTicket, onClose }) => {
           </div>
 
           <div className="mb-6">
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">DESCRIPTION</label>
-            <div className="bg-slate-50 border border-slate-100 p-4 rounded-xl text-sm text-slate-600 leading-relaxed font-medium">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">DESCRIPTION</label>
+            <div className="bg-surface border border-border-subtle p-4 rounded-xl text-sm text-muted leading-relaxed font-medium">
               {ticket.description}
             </div>
           </div>
 
           {/* Attachments */}
           {ticket.attachments?.length > 0 && (
-            <div className="mb-6 p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest flex items-center gap-2">
+            <div className="mb-6 p-4 bg-surface rounded-xl border border-dashed border-border-subtle">
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest flex items-center gap-2">
                 <PaperClipIcon className="w-3 h-3" /> ATTACHMENTS
               </label>
               <div className="grid gap-2">
@@ -107,15 +107,15 @@ const ViewTicketDetailsModal = ({ ticket: initialTicket, onClose }) => {
                   <button 
                     key={idx}
                     onClick={(e) => { e.preventDefault(); downloadFile(file.blobName || file.url, file.name); }}
-                    className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-all group cursor-pointer text-left"
+                    className="w-full flex items-center justify-between p-3 bg-surface rounded-xl border border-border-subtle hover:bg-amber-50 hover:border-amber-200 transition-all group cursor-pointer text-left"
                   >
                     <div className="flex items-center gap-2 overflow-hidden">
-                      <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs shrink-0">
+                      <div className="w-8 h-8 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold text-xs shrink-0">
                         {file.name.split('.').pop().toUpperCase()}
                       </div>
-                      <span className="text-xs font-bold text-slate-700 truncate">{file.name}</span>
+                      <span className="text-xs font-bold text-main truncate">{file.name}</span>
                     </div>
-                    <div className="text-slate-400 group-hover:text-blue-600">
+                    <div className="text-muted group-hover:text-amber-600">
                       <Paperclip size={16}/>
                     </div>
                   </button>
@@ -125,30 +125,30 @@ const ViewTicketDetailsModal = ({ ticket: initialTicket, onClose }) => {
           )}
 
           {/* --- TRIANGULAR CHAT SECTION --- */}
-          <div className="border-t border-slate-100 pt-6">
-            <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">DISCUSSION HISTORY</h3>
+          <div className="border-t border-border-subtle pt-6">
+            <h3 className="text-xs font-black text-muted uppercase tracking-widest mb-4">DISCUSSION HISTORY</h3>
             
             {/* Message List */}
             <div className="space-y-4 mb-4">
               {ticket.responses?.length > 0 ? (
                 ticket.responses.map((res, i) => (
-                  <div key={i} className="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm">
+                  <div key={i} className="bg-white border border-border-subtle p-4 rounded-2xl shadow-sm">
                     <div className="flex justify-between items-start mb-2">
                       <div className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">
+                        <div className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold">
                           {res.author.charAt(0)}
                         </div>
-                        <span className="text-xs font-bold text-slate-800">{res.author}</span>
+                        <span className="text-xs font-bold text-heading">{res.author}</span>
                       </div>
-                      <span className="text-[10px] text-slate-400 font-medium">
+                      <span className="text-[10px] text-muted font-medium">
                         {format(new Date(res.time), "MMM dd, HH:mm")}
                       </span>
                     </div>
-                    <p className="text-sm text-slate-600 pl-8">{res.content}</p>
+                    <p className="text-sm text-muted pl-8">{res.content}</p>
                   </div>
                 ))
               ) : (
-                <p className="text-center text-xs text-slate-400 italic py-4">No messages yet.</p>
+                <p className="text-center text-xs text-muted italic py-4">No messages yet.</p>
               )}
             </div>
 
@@ -161,13 +161,13 @@ const ViewTicketDetailsModal = ({ ticket: initialTicket, onClose }) => {
                   if (errors.response) setErrors(prev => ({ ...prev, response: null }));
                 }}
                 placeholder="Type your reply..."
-                className={`w-full bg-slate-50 border ${errors.response ? 'border-red-400' : 'border-slate-200'} rounded-xl pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100 resize-none h-14 transition-all`}
+                className={`w-full bg-surface border ${errors.response ? 'border-red-400' : 'border-border-subtle'} rounded-xl pl-4 pr-12 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-100 resize-none h-14 transition-all`}
               />
               <div className="flex justify-between items-center mt-1 px-1">
                 {errors.response ? (
                   <p className="text-[10px] text-red-500 font-bold">{errors.response}</p>
                 ) : <div />}
-                <p className="text-[10px] text-slate-400 uppercase tracking-widest">{commentText.length}/500</p>
+                <p className="text-[10px] text-muted uppercase tracking-widest">{commentText.length}/500</p>
               </div>
               <button
                 onClick={handleSendResponse}

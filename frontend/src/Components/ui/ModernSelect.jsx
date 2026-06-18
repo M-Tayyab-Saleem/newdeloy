@@ -98,7 +98,7 @@ const ModernSelect = ({
               className={`px-4 py-2.5 text-sm cursor-pointer transition-colors text-left
                 ${
                   opt.value === value
-                    ? "bg-blue-50 text-blue-600 font-semibold"
+                    ? "bg-amber-50 text-amber-600 font-semibold"
                     : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                 }
               `}
@@ -131,7 +131,7 @@ const ModernSelect = ({
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className={`w-full bg-white border rounded-xl px-4 py-3 text-sm font-medium outline-none flex justify-between items-center transition-all shadow-sm text-left
-              ${isOpen ? "border-blue-400 ring-2 ring-blue-100" : (error ? "border-red-400" : "border-slate-200 hover:border-slate-300")}
+              ${isOpen ? "border-amber-400 ring-2 ring-amber-100" : (error ? "border-red-400" : "border-slate-200 hover:border-slate-300")}
               ${!selectedOption ? "text-slate-400" : "text-slate-700"}
             `}
           >
@@ -140,7 +140,7 @@ const ModernSelect = ({
             </span>
             <FiChevronDown
               className={`w-4 h-4 text-slate-400 transition-transform duration-200 flex-shrink-0 ml-2 ${
-                isOpen ? "rotate-180 text-blue-500" : ""
+                isOpen ? "rotate-180 text-amber-500" : ""
               }`}
             />
           </button>

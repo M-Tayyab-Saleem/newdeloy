@@ -3,40 +3,45 @@
 @tailwind utilities;
 
 :root {
-  /* ===== COLOR PALETTE ===== */
+  /* ===== COLOR PALETTE (Golden White Glassmorphism) ===== */
   
   /* Primary Colors */
   --color-white: #ffffff;
   --color-black: #000000;
   
   /* Brand Colors */
-  --color-brand-primary: #3b82f6;
-  --color-brand-secondary: #93c5fd;
-  --color-brand-accent: #8b5cf6;
+  --color-brand-primary: #D4AF37;         /* Golden Accent */
+  --color-brand-secondary: #F3E5AB;       /* Light Gold */
+  --color-brand-accent: #B8860B;          /* Dark Goldenrod */
   
   /* Background Colors */
-  --color-bg-app: #CDD9EA;                /* Main app background */
-  --color-bg-primary: #F7FAFC;            /* Main content background */
-  --color-bg-secondary: #ffffff;          /* Card backgrounds */
-  --color-bg-tertiary: #f8fafc;           /* Tertiary background */
-  --color-bg-navbar: #ffffff;             /* Navbar background */
-  --color-bg-sidebar: #ffffff;            /* Sidebar background */
-  --color-bg-card: #ffffff;               /* Card background */
-  --color-bg-hover: #f1f5f9;              /* Hover state background */
-  --color-bg-active: #E0E5EA;             /* Active state background */
+  --color-bg-app: #FDFCF8;                
+  --bg-app-gradient: radial-gradient(circle at 10% 20%, rgba(218, 165, 32, 0.25) 0%, transparent 45%),
+                     radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.25) 0%, transparent 45%),
+                     radial-gradient(circle at 50% 50%, rgba(255, 235, 180, 0.4) 0%, transparent 60%),
+                     var(--color-bg-app);
+  --color-bg-primary: #FFFFFF;            
+  --color-bg-secondary: rgba(255, 255, 255, 0.55); /* Increased opacity for distinct glass */
+  --color-bg-tertiary: rgba(255, 255, 255, 0.35);  
+  --color-bg-navbar: rgba(255, 255, 255, 0.85);   /* Navbar background */
+  --color-bg-sidebar: rgba(255, 255, 255, 0.85);  /* Sidebar background */
+  --color-bg-card: rgba(255, 255, 255, 0.6);      
+  --color-bg-hover: rgba(212, 175, 55, 0.1);      /* Gold hover state */
+  --color-bg-active: rgba(212, 175, 55, 0.2);     /* Gold active state */
   
   /* Text Colors */
-  --color-text-primary: #1e293b;          /* Primary text - darker for better readability */
+  --color-text-primary: #1e293b;          /* Primary text */
   --color-text-secondary: #475569;        /* Secondary text */
   --color-text-tertiary: #64748b;         /* Tertiary text */
   --color-text-heading: #0f172a;          /* Headings */
   --color-text-muted: #94a3b8;            /* Muted text */
   --color-text-light: #cbd5e1;            /* Light text */
+  --color-text-on-brand: #ffffff;         /* Text on brand color */
   
   /* Border Colors */
-  --color-border-primary: #e2e8f0;        /* Primary borders */
-  --color-border-secondary: #f1f5f9;      /* Secondary borders */
-  --color-border-accent: #cbd5e1;         /* Accent borders */
+  --color-border-primary: rgba(255, 255, 255, 0.7);   /* Glass edge highlight */
+  --color-border-secondary: rgba(255, 255, 255, 0.4); /* Subtle glass edge */
+  --color-border-accent: rgba(212, 175, 55, 0.3);   /* Gold borders */
   
   /* Status Colors */
   --color-success: #10b981;               /* Green */
@@ -184,7 +189,7 @@ body {
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
-  background-color: var(--color-bg-app);
+  background: var(--bg-app-gradient, var(--color-bg-app));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -314,44 +319,79 @@ body {
 
 /* ===== COMPONENT CLASSES ===== */
 
-/* Card Component */
-.card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--card-border);
-  border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow);
-  padding: var(--card-padding);
+/* Glass Card Component */
+.glass-card {
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 8px 32px 0 rgba(218, 165, 32, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: var(--spacing-4);
   transition: all var(--transition-normal) var(--transition-timing);
 }
 
-.card:hover {
-  box-shadow: var(--shadow-md);
+.glass-card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  border-color: var(--color-border-accent);
 }
 
-/* Glass Effect */
-.glass {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Glass Input */
+.glass-input {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-xl);
+  color: var(--color-text-primary);
+  padding: var(--spacing-3) var(--spacing-4);
+  transition: all var(--transition-fast) var(--transition-timing);
+  outline: none;
 }
 
-/* Button Base */
+.glass-input:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+}
+
+/* Base Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-2) var(--spacing-4);
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  border-radius: var(--radius-lg);
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--text-xs);
+  font-weight: var(--font-black);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-widest);
+  border-radius: var(--radius-xl);
   transition: all var(--transition-fast) var(--transition-timing);
   cursor: pointer;
   border: none;
   outline: none;
 }
 
+.btn-primary {
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-brand);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+.btn-primary:hover {
+  background-color: var(--color-brand-accent);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-brand-primary);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(8px);
+}
+.btn-secondary:hover {
+  background-color: var(--color-bg-hover);
+  transform: translateY(-1px);
+}
+
 .btn:active {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
 /* ===== ANIMATIONS ===== */
@@ -431,16 +471,40 @@ body {
   z-index: var(--z-tooltip);
 }
 
-/* Dark mode support (optional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg-app: #0f172a;
-    --color-bg-primary: #1e293b;
-    --color-bg-secondary: #334155;
-    --color-text-primary: #f1f5f9;
-    --color-text-secondary: #cbd5e1;
-    --color-border-primary: #475569;
-  }
+/* Dark mode support */
+.dark, [data-theme="dark"] {
+  /* Brand Colors */
+  --color-brand-primary: #FBBF24;         /* Bright Gold */
+  --color-brand-secondary: #FDE68A;
+  --color-brand-accent: #D97706;
+
+  /* Background Colors */
+  --color-bg-app: #0f172a;                /* Obsidian */
+  --bg-app-gradient: radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.08) 0%, transparent 40%),
+                     radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 40%),
+                     var(--color-bg-app);
+  --color-bg-primary: #1e293b;
+  --color-bg-secondary: rgba(30, 41, 59, 0.6); /* Dark Glass */
+  --color-bg-tertiary: rgba(15, 23, 42, 0.8);
+  --color-bg-navbar: rgba(30, 41, 59, 0.85);
+  --color-bg-sidebar: rgba(30, 41, 59, 0.85);
+  --color-bg-card: rgba(30, 41, 59, 0.6);
+  --color-bg-hover: rgba(251, 191, 36, 0.1);
+  --color-bg-active: rgba(251, 191, 36, 0.2);
+
+  /* Text Colors */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  --color-text-heading: #ffffff;
+  --color-text-muted: #64748b;
+  --color-text-light: #475569;
+  --color-text-on-brand: #0f172a;
+
+  /* Border Colors */
+  --color-border-primary: rgba(255, 255, 255, 0.1);
+  --color-border-secondary: rgba(255, 255, 255, 0.05);
+  --color-border-accent: rgba(251, 191, 36, 0.3);
 }
 /* index.css */
 
@@ -467,25 +531,28 @@ body {
   padding: 0;
 }
 
-/* --- MODERN CALENDAR OVERRIDES --- */
+/* --- MODERN CALENDAR OVERRIDES (GOLDEN GLASS) --- */
 .react-datepicker {
-  font-family: 'Segoe UI', sans-serif;
-  border: none !important;
-  border-radius: 1rem !important;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-  background-color: white !important;
+  font-family: var(--font-family-sans) !important;
+  border: 1px solid var(--color-border-primary) !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-xl) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px) !important;
   padding: 10px !important;
 }
 
 .react-datepicker__header {
-  background-color: white !important;
-  border-bottom: 1px solid #f1f5f9 !important;
+  background-color: rgba(245, 158, 11, 0.1) !important; /* amber-500/10 */
+  border-bottom: 1px solid var(--color-border-primary) !important;
   padding-top: 10px !important;
+  border-top-left-radius: var(--radius-xl) !important;
+  border-top-right-radius: var(--radius-xl) !important;
 }
 
 .react-datepicker__current-month {
-  color: #1e293b !important; /* slate-800 */
-  font-weight: 700 !important;
+  color: #78350f !important; /* amber-900 */
+  font-weight: 800 !important;
   font-size: 0.9rem !important;
   margin-bottom: 10px !important;
   text-transform: uppercase;
@@ -493,59 +560,91 @@ body {
 }
 
 .react-datepicker__day-name {
-  color: #94a3b8 !important; /* slate-400 */
-  font-weight: 600 !important;
+  color: #92400e !important; /* amber-800 */
+  font-weight: 800 !important;
   text-transform: uppercase !important;
   font-size: 0.7rem !important;
   width: 2rem !important;
 }
 
 .react-datepicker__day {
-  color: #475569 !important; /* slate-600 */
+  color: #78350f !important; /* amber-900 */
   width: 2rem !important;
   line-height: 2rem !important;
   margin: 0.1rem !important;
-  border-radius: 9999px !important; /* Circle */
+  border-radius: 0.5rem !important; 
   transition: all 0.2s ease-in-out !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 .react-datepicker__day:hover {
-  background-color: #eff6ff !important; /* blue-50 */
-  color: #2563eb !important; /* blue-600 */
-  font-weight: bold !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  color: #d97706 !important; /* amber-600 */
+  font-weight: 800 !important;
 }
 
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
-  background-color: #2563eb !important; /* blue-600 */
+  background-color: #f59e0b !important; /* amber-500 */
   color: white !important;
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3) !important;
+  font-weight: 800 !important;
+  box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3) !important;
 }
 
 .react-datepicker__day--today {
-  color: #2563eb !important;
-  font-weight: bold !important;
+  color: #d97706 !important; /* amber-600 */
+  font-weight: 800 !important;
   background-color: transparent !important;
-  border: 1px solid #bfdbfe !important; /* blue-200 */
+  border: 1px solid #fde68a !important; /* amber-200 */
 }
 
 .react-datepicker__navigation {
   top: 12px !important;
 }
 
+.react-datepicker__navigation-icon::before {
+  border-color: #d97706 !important; /* amber-600 */
+}
+
 .react-datepicker__triangle {
   display: none !important;
 }
 
-/* --- Clean up the inputs globally --- */
-input[type="text"], select, textarea {
-  transition: all 0.2s;
+.react-datepicker-wrapper {
+  width: 100%;
 }
-input[type="text"]:focus, select:focus, textarea:focus {
+
+/* --- Clean up the inputs globally (Glassmorphism) --- */
+input[type="text"], input[type="date"], select, textarea {
+  transition: all 0.2s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-xl);
+  color: #78350f; /* amber-900 */
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23b45309%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem top 50%;
+  background-size: 0.65rem auto;
+  padding-right: 2.5rem;
+}
+
+input[type="text"]:focus, input[type="date"]:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #3b82f6; /* blue-500 */
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #fbbf24; /* amber-400 */
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 /* --- PORTAL STYLES --- */

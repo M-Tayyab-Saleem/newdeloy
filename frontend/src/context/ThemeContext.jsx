@@ -14,39 +14,40 @@ function safeJSONParse(key, fallback) {
 }
 
 export const ThemeProvider = ({ children }) => {
- const [themes] = useState(() => {
-  // Try to load an array; if missing or empty, use predefinedThemes
-  const parsed = safeJSONParse("themes", []);
-  return Array.isArray(parsed) && parsed.length 
-    ? parsed 
-    : predefinedThemes;
-});
+  const [themes] = useState(() => {
+    const parsed = safeJSONParse("themes", []);
+    return Array.isArray(parsed) && parsed.length 
+      ? parsed 
+      : predefinedThemes;
+  });
 
-const [selectedTheme, setSelectedTheme] = useState(() => {
-  // Default to the first theme if nothing saved
-  return safeJSONParse("selectedTheme", themes[0]);
-});
+  const [selectedTheme, setSelectedTheme] = useState(() => {
+    return safeJSONParse("selectedTheme", themes[0]);
+  });
+
   useEffect(() => {
     applyTheme(selectedTheme);
   }, [selectedTheme]);
 
   const applyTheme = (theme) => {
     const root = document.documentElement;
-    for (let key in theme.colors) {
-      root.style.setProperty(`--color-${key}`, theme.colors[key]);
-  
-      // Add RGB version if hex
-      if (theme.colors[key].startsWith("#")) {
-        const hex = theme.colors[key].replace("#", "");
-        const r = parseInt(hex.slice(0, 2), 16);
-        const g = parseInt(hex.slice(2, 4), 16);
-        const b = parseInt(hex.slice(4, 6), 16);
-        root.style.setProperty(`--color-${key}-rgb`, `${r}, ${g}, ${b}`);
+    
+    // Toggle dark mode class for Tailwind
+    if (theme.isDark) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    
+    // Inject any custom CSS variables from the theme definition
+    if (theme.colors) {
+      for (let key in theme.colors) {
+        root.style.setProperty(`--color-${key}`, theme.colors[key]);
       }
     }
+    
     localStorage.setItem("selectedTheme", JSON.stringify(theme));
   };
-  
 
   const value = {
     themes,

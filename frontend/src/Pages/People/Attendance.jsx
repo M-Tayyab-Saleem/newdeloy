@@ -16,18 +16,19 @@ import {
 } from "react-icons/fa";
 import api from "../../axios";
 import { toast } from "react-toastify";
+import PageContainer from "../../Components/ui/PageContainer";
 
 const StatusBadge = ({ status }) => {
   const statusConfig = {
     Present: { icon: <FaCheckCircle className="mr-1" />, color: "bg-green-100 text-green-800" },
     Absent: { icon: <FaTimesCircle className="mr-1" />, color: "bg-red-100 text-red-800" },
     "Half Day": { icon: <FaClock className="mr-1" />, color: "bg-yellow-100 text-yellow-800" },
-    Leave: { icon: <FaUmbrellaBeach className="mr-1" />, color: "bg-blue-100 text-blue-800" },
+    Leave: { icon: <FaUmbrellaBeach className="mr-1" />, color: "bg-amber-100 text-amber-800" },
     Holiday: { icon: <FaBusinessTime className="mr-1" />, color: "bg-purple-100 text-purple-800" }
   };
 
   return (
-    <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium uppercase tracking-wide ${statusConfig[status]?.color || "bg-slate-100 text-slate-800"}`}>
+    <span className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium uppercase tracking-wide ${statusConfig[status]?.color || "bg-surface text-heading"}`}>
       {statusConfig[status]?.icon || <FaRegClock className="mr-1" />}
       {status}
     </span>
@@ -198,40 +199,39 @@ const Attendance = () => {
   };
 
   return (
-    <div className="min-h-screen bg-transparent p-2">
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4 relative z-50">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <div className="flex items-center gap-4">
-            <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Attendance</h2>
-            <button
-              onClick={() => setExpandedView(!expandedView)}
-              className="text-xs text-slate-600 flex items-center gap-1 hover:text-slate-800 transition-colors font-medium"
-            >
-              <FaInfoCircle size={14} />
-              {expandedView ? "Compact view" : "Detailed view"}
-            </button>
-          </div>
-
+    <>
+      <PageContainer
+      title="Attendance"
+      loading={loading}
+      headerActions={
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <button
+            onClick={() => setExpandedView(!expandedView)}
+            className="text-xs text-muted flex items-center gap-1 hover:text-heading transition-colors font-medium mr-4"
+          >
+            <FaInfoCircle size={14} />
+            {expandedView ? "Compact view" : "Detailed view"}
+          </button>
           <div className="flex flex-row items-center gap-3">
             <button
               onClick={navigateToPreviousPeriod}
-              className="p-2.5 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+              className="p-2.5 rounded-lg bg-surface text-muted hover:bg-hover border border-border-subtle transition shadow-sm"
             >
               <FaAngleLeft size={18} />
             </button>
 
             <div className="relative">
               <button
-                className="px-3 py-2 text-blue-800 bg-blue-100 rounded-lg flex items-center gap-2 hover:bg-blue-200 transition shadow-sm text-sm font-medium"
+                className="px-3 py-2 bg-surface border border-border-subtle text-main rounded-lg flex items-center gap-2 hover:bg-hover transition shadow-sm text-sm font-medium"
                 onClick={() => setShowCalendar(!showCalendar)}
               >
-                <IoCalendarNumberOutline size={18} />
+                <IoCalendarNumberOutline size={18} className="text-muted" />
                 <span className="text-sm font-medium">{formatWeekRange()}</span>
-                <FaRegCalendarAlt size={14} />
+                <FaRegCalendarAlt size={14} className="text-muted" />
               </button>
 
               {showCalendar && (
-                <div className="absolute z-[100] mt-2 right-0 sm:left-0 bg-white shadow-2xl rounded-xl border border-slate-200 p-2">
+                <div className="absolute z-[100] mt-2 right-0 sm:left-0 bg-white dark:bg-slate-800 shadow-2xl rounded-xl border border-border-subtle p-2">
                   <DatePicker
                     selected={selectedDate}
                     onChange={handleDateChange}
@@ -244,25 +244,46 @@ const Attendance = () => {
 
             <button
               onClick={navigateToNextPeriod}
-              className="p-2.5 rounded-lg bg-blue-100 text-blue-800 hover:bg-blue-200 transition shadow-sm"
+              className="p-2.5 rounded-lg bg-surface text-muted hover:bg-hover border border-border-subtle transition shadow-sm"
             >
               <FaAngleRight size={18} />
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-2 w-full overflow-x-auto relative z-0">
-        {loading ? (
-          <div className="text-center p-6">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
-            <p className="mt-3 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading attendance data...</p>
+      }
+      bottomWidgets={
+        <div className="p-4 flex flex-wrap justify-between items-center gap-4">
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+            <span className="text-xs font-medium text-heading uppercase tracking-wide">
+              {weeklyData.filter((d) => d.status === "Present").length} Present
+            </span>
           </div>
-        ) : (
-          <div className="relative">
-            <div className="absolute left-20 top-0 h-full w-0.5 bg-slate-200 transform translate-x-1/2"></div>
-            <div className="space-y-4">
-              {weeklyData.map((day, index) => (
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+            <span className="text-xs font-medium text-heading uppercase tracking-wide">
+              {weeklyData.filter((d) => d.status === "Absent").length} Absent
+            </span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+            <span className="text-xs font-medium text-heading uppercase tracking-wide">
+              {weeklyData.filter((d) => d.status === "Half Day").length} Half Day
+            </span>
+          </div>
+          <div className="flex items-center">
+            <div className="w-3 h-3 rounded-full bg-amber-500 mr-2"></div>
+            <span className="text-xs font-medium text-heading uppercase tracking-wide">
+              {weeklyData.filter((d) => d.status === "Leave").length} Leave
+            </span>
+          </div>
+        </div>
+      }
+    >
+      <div className="relative p-2 w-full">
+        <div className="absolute left-20 top-0 h-full w-0.5 bg-border-subtle transform translate-x-1/2"></div>
+        <div className="space-y-4">
+          {weeklyData.map((day, index) => (
                 <div
                   key={index}
                   className="relative flex items-start group transition-all duration-150"
@@ -271,15 +292,15 @@ const Attendance = () => {
                     day.status === "Present" ? "bg-green-500" :
                     day.status === "Absent" ? "bg-red-500" :
                     day.status === "Half Day" ? "bg-yellow-500" :
-                    day.status === "Leave" ? "bg-blue-500" : "bg-purple-500"
+                    day.status === "Leave" ? "bg-amber-500" : "bg-purple-500"
                   } ${new Date(day.fullDate).toDateString() === today.toDateString() ? "animate-pulse shadow-lg" : ""}`}></div>
 
                   <div className="flex-shrink-0 w-20 text-center pt-1">
-                    <div className={`text-xs text-slate-600 font-medium uppercase tracking-wide ${day.dayName === 'Sat' || day.dayName === 'Sun' ? 'text-blue-600' : ''}`}>
+                    <div className={`text-xs text-muted font-medium uppercase tracking-wide ${day.dayName === 'Sat' || day.dayName === 'Sun' ? 'text-amber-600' : ''}`}>
                       {day.dayName}
                     </div>
-                    <div className={`text-xl font-bold mt-1 ${day.dayName === 'Sat' || day.dayName === 'Sun' ? 'text-blue-800' : 'text-slate-800'} ${
-                      new Date(day.fullDate).toDateString() === today.toDateString() ? "text-blue-600" : ""
+                    <div className={`text-xl font-bold mt-1 ${day.dayName === 'Sat' || day.dayName === 'Sun' ? 'text-amber-800' : 'text-heading'} ${
+                      new Date(day.fullDate).toDateString() === today.toDateString() ? "text-amber-600" : ""
                     }`}>
                       {day.date}
                     </div>
@@ -287,7 +308,7 @@ const Attendance = () => {
 
                   <div
                     className={`flex-grow ml-8 p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer ${
-                      selectedDay === index ? "border-blue-300 shadow-md bg-blue-50/80" : "border-slate-100 hover:border-slate-200"
+                      selectedDay === index ? "border-amber-300 shadow-md bg-amber-50/80" : "border-border-subtle hover:border-border-subtle"
                     } border`}
                     onClick={() => toggleDayDetails(index, day)}
                   >
@@ -295,15 +316,15 @@ const Attendance = () => {
                       <StatusBadge status={day.status} />
 
                       {day.totalHours > 0 && (
-                        <div className="text-base font-bold text-slate-800 flex items-center">
-                          <span className="text-xs font-normal text-slate-600 mr-1">Total:</span>
-                          {day.totalHours} <span className="text-xs font-normal text-slate-600 ml-1">hrs</span>
+                        <div className="text-base font-bold text-heading flex items-center">
+                          <span className="text-xs font-normal text-muted mr-1">Total:</span>
+                          {day.totalHours} <span className="text-xs font-normal text-muted ml-1">hrs</span>
                         </div>
                       )}
                     </div>
 
                     {(day.checkIn || day.checkOut) && (
-                      <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-slate-700">
+                      <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-main">
                         {day.checkIn && (
                           <div className="flex items-center">
                             <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
@@ -320,16 +341,16 @@ const Attendance = () => {
                     )}
 
                     {expandedView && (
-                      <div className="mt-3 text-sm text-slate-600">
+                      <div className="mt-3 text-sm text-muted">
                         {day.notes && (
                           <div className="flex items-start">
-                            <span className="text-slate-400 mr-2">•</span>
+                            <span className="text-muted mr-2">•</span>
                             <span>{day.notes}</span>
                           </div>
                         )}
                         {day.status === "Present" && (
                           <div className="flex items-start mt-1">
-                            <span className="text-slate-400 mr-2">•</span>
+                            <span className="text-muted mr-2">•</span>
                             <span>Regular working day</span>
                           </div>
                         )}
@@ -340,54 +361,18 @@ const Attendance = () => {
               ))}
             </div>
           </div>
-        )}
-      </div>
-
-      <div className="mt-6 bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
-        <div className="flex flex-wrap justify-between items-center gap-4">
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-            <span className="text-xs font-medium text-slate-800 uppercase tracking-wide">
-              Present: <span className="font-bold">{weeklyData.filter(d => d.status === "Present").length} days</span>
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-            <span className="text-xs font-medium text-slate-800 uppercase tracking-wide">
-              Half Day: <span className="font-bold">{weeklyData.filter(d => d.status === "Half Day").length} days</span>
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
-            <span className="text-xs font-medium text-slate-800 uppercase tracking-wide">
-              Leave: <span className="font-bold">{weeklyData.filter(d => d.status === "Leave").length} days</span>
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
-            <span className="text-xs font-medium text-slate-800 uppercase tracking-wide">
-              Absent: <span className="font-bold">{weeklyData.filter(d => d.status === "Absent").length} days</span>
-            </span>
-          </div>
-          <div className="flex items-center">
-            <div className="w-3 h-3 rounded-full bg-purple-500 mr-2"></div>
-            <span className="text-xs font-medium text-slate-800 uppercase tracking-wide">
-              Holiday: <span className="font-bold">{weeklyData.filter(d => d.status === "Holiday").length} days</span>
-            </span>
-          </div>
-        </div>
-      </div>
+      </PageContainer>
 
       {isModalOpen && selectedAbsentDay && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[9999] flex justify-center items-center p-4">
           <div className="bg-white rounded-3xl shadow-2xl w-full max-w-sm overflow-hidden animate-fadeIn">
-            <div className="px-6 py-5 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+            <div className="px-6 py-5 border-b border-border-subtle flex justify-between items-center bg-white/40 dark:bg-black/20">
               <h3 className="text-sm font-black text-rose-600 uppercase tracking-widest flex items-center gap-2">
                 <FaTimesCircle /> Absence Reason
               </h3>
               <button 
                 onClick={() => setIsModalOpen(false)} 
-                className="text-slate-400 hover:text-slate-600 transition-colors"
+                className="text-muted hover:text-muted transition-colors"
                 title="Close"
               >
                 <div className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-slate-200 transition-all">
@@ -398,18 +383,18 @@ const Attendance = () => {
             
             <div className="p-6">
               <div className="mb-5">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Date</p>
-                <p className="text-sm font-bold text-slate-800">{selectedAbsentDay.fullDate}</p>
+                <p className="text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Date</p>
+                <p className="text-sm font-bold text-heading">{selectedAbsentDay.fullDate}</p>
               </div>
               <div>
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Reason / Notes</p>
+                <p className="text-[10px] font-bold text-muted uppercase tracking-wider mb-1">Reason / Notes</p>
                 <div className="bg-rose-50/50 border border-rose-100 rounded-xl p-4 text-sm text-rose-800 font-medium whitespace-pre-wrap shadow-sm">
                   {selectedAbsentDay.notes || "No reason specified."}
                 </div>
               </div>
             </div>
 
-            <div className="px-6 py-4 border-t border-slate-100 bg-slate-50/50 flex justify-end">
+            <div className="px-6 py-4 border-t border-border-subtle bg-white/40 dark:bg-black/20 flex justify-end">
               <button 
                 onClick={() => setIsModalOpen(false)}
                 className="px-5 py-2.5 bg-slate-800 text-white rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-700 shadow-md hover:shadow-lg shadow-slate-200 transition-all cursor-pointer"
@@ -420,7 +405,7 @@ const Attendance = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -84,7 +84,7 @@ const LeaveSummary = () => {
             icon: <FaHospital />,
             label: "Sick Leave",
             available: leaveBalances.sick || 0,
-            badgeColor: "bg-gradient-to-r from-blue-500 to-blue-600",
+            badgeColor: "bg-gradient-to-r from-amber-500 to-amber-600",
         }
     ];
 
@@ -199,7 +199,7 @@ const LeaveSummary = () => {
                                 </span>
                             </div>
                             <div className="flex items-center">
-                                <div className="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+                                <div className="w-2 h-2 rounded-full bg-amber-500 mr-2"></div>
                                 <span className="text-xs text-slate-700 font-medium">
                                     Booked Leaves: <span className="font-bold text-slate-800">{bookedLeaves}</span>
                                 </span>
@@ -229,7 +229,7 @@ const LeaveSummary = () => {
                 <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
                     <div className="flex items-center justify-between mb-3">
                         <div className="text-slate-700 text-sm font-medium uppercase tracking-wide">Total Leaves</div>
-                        <div className="text-blue-600">
+                        <div className="text-amber-600">
                             <MdEventAvailable size={20} />
                         </div>
                     </div>
@@ -341,7 +341,7 @@ const LeaveSummary = () => {
                                                 {item.status === 'Pending' && (
                                                     <button
                                                         onClick={() => handleEditLeave(item)}
-                                                        className="flex items-center gap-1 px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg text-xs font-medium hover:bg-blue-200 transition-colors"
+                                                        className="flex items-center gap-1 px-3 py-1.5 bg-amber-100 text-amber-700 rounded-lg text-xs font-medium hover:bg-amber-200 transition-colors"
                                                     >
                                                         <FaEdit size={12} />
                                                         Edit

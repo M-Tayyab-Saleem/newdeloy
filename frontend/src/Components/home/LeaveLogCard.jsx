@@ -56,7 +56,7 @@ const LeaveLogCard = ({ onDelete }) => {
     return (
       <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-3 h-full w-full">
          <div className="flex items-center gap-2 mb-2">
-            <BeachIcon className="w-3.5 h-3.5 text-blue-600" />
+            <BeachIcon className="w-3.5 h-3.5 text-amber-600" />
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Leave Logs</h3>
          </div>
          <p className="text-[10px] text-slate-500">Loading...</p>
@@ -70,7 +70,7 @@ const LeaveLogCard = ({ onDelete }) => {
       <div className="flex justify-between items-start mb-2">
         <div>
           <div className="flex items-center gap-2 mb-0.5">
-            <BeachIcon className="w-3.5 h-3.5 text-blue-600" />
+            <BeachIcon className="w-3.5 h-3.5 text-amber-600" />
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Leave Logs</h3>
           </div>
           <p className="text-[9px] font-medium text-slate-500">Track your leave history</p>

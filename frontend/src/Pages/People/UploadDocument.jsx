@@ -221,12 +221,12 @@ const UploadDocument = () => {
       {shareModalOpen && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="bg-white/95 backdrop-blur-sm rounded-[1.2rem] shadow-lg border border-white/50 p-6 w-full max-w-md">
-            <h3 className="text-base font-bold text-slate-800 uppercase tracking-tight mb-4">
+            <h3 className="text-base font-bold text-heading uppercase tracking-tight mb-4">
               Share {currentFile?.name || files.find(f => f._id === selectedFileId)?.name}
             </h3>
             
             <div className="mb-4">
-              <label className="flex items-center text-sm text-slate-700">
+              <label className="flex items-center text-sm text-main">
                 <input 
                   type="checkbox" 
                   checked={accessSettings.isPublic}
@@ -234,14 +234,14 @@ const UploadDocument = () => {
                     ...accessSettings,
                     isPublic: e.target.checked
                   })}
-                  className="mr-2 h-4 w-4 text-blue-600"
+                  className="mr-2 h-4 w-4 text-amber-600"
                 />
                 Make public (anyone with link can view)
               </label>
             </div>
 
             <div className="mb-4">
-              <label className="block text-xs font-medium text-slate-600 uppercase tracking-wide mb-2">
+              <label className="block text-xs font-medium text-muted uppercase tracking-wide mb-2">
                 Share with roles:
               </label>
               <div className="flex flex-wrap gap-2">
@@ -259,16 +259,16 @@ const UploadDocument = () => {
                           sharedWithRoles: newRoles
                         });
                       }}
-                      className="mr-1.5 h-3.5 w-3.5 text-blue-600"
+                      className="mr-1.5 h-3.5 w-3.5 text-amber-600"
                     />
-                    <span className="text-sm text-slate-700 capitalize">{role}</span>
+                    <span className="text-sm text-main capitalize">{role}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div className="mb-4">
-              <label className="block text-xs font-medium text-slate-600 uppercase tracking-wide mb-2">
+              <label className="block text-xs font-medium text-muted uppercase tracking-wide mb-2">
                 Share with specific people:
               </label>
               <input
@@ -283,18 +283,18 @@ const UploadDocument = () => {
                     e.target.value = '';
                   }
                 }}
-                className="w-full p-2.5 border border-slate-200 rounded-lg text-sm bg-white/80 focus:outline-none focus:ring-2 focus:ring-blue-300"
+                className="w-full p-2.5 border border-border-subtle rounded-lg text-sm bg-white/80 focus:outline-none focus:ring-2 focus:ring-amber-300"
               />
               <div className="mt-2 flex flex-wrap gap-2">
                 {accessSettings.userEmails.map(email => (
-                  <span key={email} className="bg-blue-50 text-blue-700 px-3 py-1.5 rounded-full text-xs font-medium flex items-center">
+                  <span key={email} className="bg-amber-50 text-amber-700 px-3 py-1.5 rounded-full text-xs font-medium flex items-center">
                     {email}
                     <button
                       onClick={() => setAccessSettings({
                         ...accessSettings,
                         userEmails: accessSettings.userEmails.filter(e => e !== email)
                       })}
-                      className="ml-2 text-blue-500 hover:text-blue-700"
+                      className="ml-2 text-amber-500 hover:text-amber-700"
                     >
                       ×
                     </button>
@@ -309,7 +309,7 @@ const UploadDocument = () => {
                   setShareModalOpen(false);
                   setCurrentFile(null);
                 }}
-                className="px-4 py-2.5 border border-slate-200 text-slate-700 rounded-xl text-sm font-medium hover:bg-slate-50/80 transition shadow-sm"
+                className="px-4 py-2.5 border border-border-subtle text-main rounded-xl text-sm font-medium hover:bg-surface/50 transition shadow-sm"
               >
                 Cancel
               </button>
@@ -328,7 +328,7 @@ const UploadDocument = () => {
       {/* Create Folder Drawer */}
       <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
         <div className="w-full sm:w-80 md:w-96 h-full bg-white/95 backdrop-blur-sm p-6 flex flex-col gap-4">
-          <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Create Folder</h2>
+          <h2 className="text-base font-bold text-heading uppercase tracking-tight">Create Folder</h2>
           <TextField
             label="Folder Name"
             variant="outlined"
@@ -351,11 +351,11 @@ const UploadDocument = () => {
 
       <div className="min-h-screen bg-transparent p-2">
         {/* Header Controls Card */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4">
+        <div className="glass-card mb-4 p-4">
           {/* Breadcrumb */}
-          <div className="flex items-center gap-1 text-sm text-slate-600 mb-3">
+          <div className="flex items-center gap-1 text-sm text-muted mb-3">
             <button 
-              className="hover:text-blue-600 transition"
+              className="hover:text-amber-600 transition"
               onClick={() => setFolderStack([])}
             >
               Root
@@ -364,7 +364,7 @@ const UploadDocument = () => {
               <span key={folder._id}>
                 <span className="mx-1">/</span>
                 <button 
-                  className="hover:text-blue-600 transition"
+                  className="hover:text-amber-600 transition"
                   onClick={() => setFolderStack(folderStack.slice(0, index + 1))}
                 >
                   {folder.name}
@@ -376,18 +376,18 @@ const UploadDocument = () => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <div className="flex items-center gap-2">
-                <label className="text-xs font-medium text-slate-700 uppercase tracking-wide">Show</label>
-                <select className="text-sm px-3 py-1.5 text-slate-700 bg-white/80 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+                <label className="text-xs font-medium text-main uppercase tracking-wide">Show</label>
+                <select className="text-sm px-3 py-1.5 text-main bg-white/80 border border-border-subtle rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-300">
                   <option>10</option>
                   <option>25</option>
                   <option>50</option>
                 </select>
-                <span className="text-xs font-medium text-slate-700 uppercase tracking-wide">entries</span>
+                <span className="text-xs font-medium text-main uppercase tracking-wide">entries</span>
               </div>
               <input
                 type="text"
                 placeholder="Search files and folders..."
-                className="px-3 py-1.5 border border-slate-200 rounded-lg text-sm bg-white/80 text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-300 w-full sm:w-64"
+                className="px-3 py-1.5 border border-border-subtle rounded-lg text-sm bg-white/80 text-main focus:outline-none focus:ring-2 focus:ring-amber-300 w-full sm:w-64"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -416,7 +416,7 @@ const UploadDocument = () => {
               />
               <label
                 htmlFor="file-upload-with-share"
-                className="cursor-pointer bg-blue-100 text-blue-800 text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-blue-200 transition shadow-sm hover:shadow-md flex items-center gap-2"
+                className="cursor-pointer bg-amber-100 text-amber-800 text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-amber-200 transition shadow-sm hover:shadow-md flex items-center gap-2"
               >
                 <FaShare size={14} />
                 Upload & Share
@@ -431,7 +431,7 @@ const UploadDocument = () => {
               {folderStack.length > 0 && (
                 <button 
                   onClick={handleGoBack} 
-                  className="bg-slate-100 text-slate-700 text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-slate-200 transition shadow-sm hover:shadow-md"
+                  className="bg-surface text-main text-sm font-medium px-4 py-2.5 rounded-xl hover:bg-slate-200 transition shadow-sm hover:shadow-md"
                 >
                   Go Back
                 </button>
@@ -448,15 +448,15 @@ const UploadDocument = () => {
 
         {/* Files and Folders Grid */}
         <Spin spinning={loading || uploading || creating || fileDeleteLoading || folderDeleteLoading || downloadLoading}>
-          <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+          <div className="glass-card p-4">
             {/* Show empty state if no folders and no files */}
             {folders.length === 0 && files.length === 0 && !loading && (
               <div className="text-center py-12">
                 <div className="text-slate-300 text-4xl mb-3">📁</div>
-                <p className="text-slate-500 text-sm font-medium">
+                <p className="text-muted text-sm font-medium">
                   {currentFolder.name === 'Root' ? 'No folders or files yet' : 'This folder is empty'}
                 </p>
-                <p className="text-slate-400 text-xs mt-1">
+                <p className="text-muted text-xs mt-1">
                   Upload files or create folders to get started
                 </p>
               </div>
@@ -472,24 +472,24 @@ const UploadDocument = () => {
                     e.stopPropagation()
                     handleOpenFolder(folder)
                   }}
-                  className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-slate-100 hover:shadow-md transition-all duration-200 hover:border-slate-200 cursor-pointer"
+                  className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-border-subtle hover:shadow-md transition-all duration-200 hover:border-border-subtle cursor-pointer"
                 >
                   <div className="flex justify-between items-center">
                     <div className="flex items-center min-w-0">
-                      <div className="p-2 rounded-lg bg-blue-100 text-blue-800 mr-3">
+                      <div className="p-2 rounded-lg bg-amber-100 text-amber-800 mr-3">
                         <FaFolder size={18} />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-bold text-slate-800 truncate">{folder.name}</p>
-                        <p className="text-xs text-slate-500">Folder</p>
+                        <p className="text-sm font-bold text-heading truncate">{folder.name}</p>
+                        <p className="text-xs text-muted">Folder</p>
                       </div>
                     </div>
                     <IconButton 
                       size="small" 
                       onClick={(e) => handleFolderMenuClick(e, folder._id)} 
-                      className="p-1 hover:bg-slate-100"
+                      className="p-1 hover:bg-surface"
                     >
-                      <IoEllipsisVertical className="text-slate-600" />
+                      <IoEllipsisVertical className="text-muted" />
                     </IconButton>
                   </div>
                 </div>
@@ -497,15 +497,15 @@ const UploadDocument = () => {
 
               {/* Files */}
               {files.map((file) => (
-                <div key={file._id} className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-slate-100 hover:shadow-md transition-all duration-200 hover:border-slate-200">
+                <div key={file._id} className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-border-subtle hover:shadow-md transition-all duration-200 hover:border-border-subtle">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center min-w-0">
                       <div className="p-2 rounded-lg bg-green-100 text-green-800 mr-3">
                         <FaFile size={18} />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-sm font-bold text-slate-800 truncate" title={file.name}>{file.name}</p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-sm font-bold text-heading truncate" title={file.name}>{file.name}</p>
+                        <p className="text-xs text-muted">
                           {file.size ? `${(file.size / 1024).toFixed(1)} KB` : 'File'}
                         </p>
                       </div>
@@ -513,9 +513,9 @@ const UploadDocument = () => {
                     <IconButton 
                       size="small" 
                       onClick={(e) => handleFileMenuClick(e, file._id)} 
-                      className="p-1 hover:bg-slate-100"
+                      className="p-1 hover:bg-surface"
                     >
-                      <IoEllipsisVertical className="text-slate-600" />
+                      <IoEllipsisVertical className="text-muted" />
                     </IconButton>
                   </div>
                 </div>
@@ -585,7 +585,7 @@ const UploadDocument = () => {
               fontSize: "14px",
               padding: "8px 16px"
             }}
-            className="flex items-center gap-2 text-slate-700"
+            className="flex items-center gap-2 text-main"
           >
             <FaShare size={14} />
             Share
@@ -600,7 +600,7 @@ const UploadDocument = () => {
               fontSize: "14px",
               padding: "8px 16px"
             }}
-            className="flex items-center gap-2 text-slate-700"
+            className="flex items-center gap-2 text-main"
           >
             <Paperclip size={14} />
             Download

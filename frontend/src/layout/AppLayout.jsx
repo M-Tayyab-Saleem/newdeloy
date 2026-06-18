@@ -53,10 +53,10 @@ const AppLayout = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full bg-[#FAFAFA] font-sans overflow-hidden">
+    <div className="flex flex-col h-screen w-full bg-transparent font-sans overflow-hidden text-main">
       <NotificationModal isOpen={isNotificationOpen} onClose={() => setIsNotificationOpen(false)} />
       {/* --- MOBILE HEADER --- */}
-      <div className="md:hidden flex items-center justify-between px-4 py-3 bg-[#FAFAFA] z-50 shrink-0">
+      <div className="md:hidden flex items-center justify-between px-4 py-3 bg-transparent z-50 shrink-0">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center text-white text-sm font-bold shadow-md">
             A
@@ -112,8 +112,8 @@ const AppLayout = () => {
         </aside>
 
         {/* --- MAIN CONTENT AREA --- */}
-        <main className="flex-1 m-2 md:m-4 md:ml-2 md:mr-2 rounded-[1.5rem] md:rounded-[2rem] bg-slate-50 shadow-inner border border-amber-200 text-slate-800 relative transition-all duration-500 ease-in-out overflow-visible flex flex-col">
-          <div className="flex-1 p-4 md:p-6 overflow-y-auto scrollbar-on-hover">
+        <main className="flex-1 m-2 md:m-4 md:ml-2 md:mr-2 rounded-[1.5rem] md:rounded-[2rem] bg-white/30 dark:bg-black/20 backdrop-blur-[60px] shadow-[0_8px_32px_rgba(0,0,0,0.05)] border border-white/60 dark:border-white/10 text-main relative transition-all duration-500 ease-in-out overflow-hidden flex flex-col">
+          <div className="flex-1 p-3 md:p-4 overflow-y-auto scrollbar-on-hover">
             <Outlet />
           </div>
         </main>

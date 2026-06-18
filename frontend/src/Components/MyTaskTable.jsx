@@ -57,7 +57,7 @@ const MyTasksTable = ({ tasks, setTasks, children }) => {
               ? tasks.map((task, index) => (
                   <tr
                     onClick={() => openModal(task)}
-                    className="cursor-pointer hover:bg-blue-50"
+                    className="cursor-pointer hover:bg-amber-50"
                     key={index}
                   >
                     <td className="p-3 whitespace-nowrap">{task.name}</td>

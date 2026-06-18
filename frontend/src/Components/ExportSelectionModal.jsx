@@ -83,7 +83,7 @@ const ExportSelectionModal = ({
               placeholder="Search by employee or timesheet name..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-sm outline-none focus:ring-2 focus:ring-blue-100 transition-all font-medium"
+              className="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-sm outline-none focus:ring-2 focus:ring-amber-100 transition-all font-medium"
             />
           </div>
           
@@ -93,7 +93,7 @@ const ExportSelectionModal = ({
                 onClick={toggleSelectAll}
                 className={`w-5 h-5 rounded-md border-2 transition-all flex items-center justify-center ${
                   selectedIds.size === filteredItems.length && filteredItems.length > 0
-                    ? "bg-blue-600 border-blue-600" 
+                    ? "bg-amber-600 border-amber-600" 
                     : "border-slate-200 group-hover:border-slate-400"
                 }`}
               >
@@ -113,11 +113,11 @@ const ExportSelectionModal = ({
                   key={item._id}
                   onClick={() => toggleItem(item._id)}
                   className={`flex items-center gap-4 p-3 rounded-xl cursor-pointer transition-all ${
-                    selectedIds.has(item._id) ? "bg-blue-50/50" : "hover:bg-slate-50"
+                    selectedIds.has(item._id) ? "bg-amber-50/50" : "hover:bg-slate-50"
                   }`}
                 >
                   <div className={`w-5 h-5 rounded-md border-2 transition-all flex items-center justify-center ${
-                    selectedIds.has(item._id) ? "bg-blue-600 border-blue-600" : "border-slate-200"
+                    selectedIds.has(item._id) ? "bg-amber-600 border-amber-600" : "border-slate-200"
                   }`}>
                     {selectedIds.has(item._id) && <Check size={12} className="text-white" />}
                   </div>
@@ -133,7 +133,7 @@ const ExportSelectionModal = ({
                     </div>
                     <div className="flex justify-between items-center mt-0.5">
                       <p className="text-xs text-slate-500 font-medium">{item.name || "Unnamed Timesheet"}</p>
-                      <p className="text-xs font-black text-blue-600">{(item.submittedHours || 0).toFixed(1)} hrs</p>
+                      <p className="text-xs font-black text-amber-600">{(item.submittedHours || 0).toFixed(1)} hrs</p>
                     </div>
                   </div>
                 </div>

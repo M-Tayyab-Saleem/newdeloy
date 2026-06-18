@@ -77,7 +77,7 @@ const TaskDetailModal = ({ task, onClose }) => {
           <div className="space-y-4">
             <div className="flex items-center justify-between border-b border-slate-50 pb-2">
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ASSIGNED TO</span>
-              <span className="text-sm font-bold text-blue-600">{task.assignee}</span>
+              <span className="text-sm font-bold text-amber-600">{task.assignee}</span>
             </div>
             <div className="flex items-center justify-between border-b border-slate-50 pb-2">
               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">ASSIGNED BY</span>

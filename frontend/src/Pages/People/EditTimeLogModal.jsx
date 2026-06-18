@@ -106,41 +106,41 @@ const EditTimeLogModal = ({ isOpen, onClose, initialData, timeLogId, onTimeLogUp
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 hover:text-red-500 transition-all text-2xl font-light z-10"
+          className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-muted hover:bg-surface hover:text-red-500 transition-all text-2xl font-light z-10"
         >
           &times;
         </button>
 
         <div className="px-6 py-6 sm:px-10 sm:py-8 border-b border-slate-50 text-center flex-shrink-0">
-          <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-widest uppercase">
+          <h2 className="text-base sm:text-lg font-black text-heading tracking-widest uppercase">
             EDIT TIME LOG
           </h2>
         </div>
 
         <form id="editLogForm" onSubmit={handleSave} className="p-6 sm:p-10 space-y-6 overflow-y-auto custom-scrollbar">
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">JOB TITLE</label>
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">JOB TITLE</label>
             <input
               type="text"
               value={jobTitle}
               onChange={(e) => setJobTitle(e.target.value)}
-              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium"
+              className="w-full bg-white border border-border-subtle rounded-xl px-4 py-3 text-sm text-main outline-none focus:ring-2 focus:ring-amber-100 font-medium"
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">DATE*</label>
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">DATE*</label>
               <input
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100"
+                className="w-full bg-white border border-border-subtle rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100"
                 required
               />
             </div>
             <div>
-              <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">HOURS*</label>
+              <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">HOURS*</label>
               <input
                 type="number"
                 step="0.1"
@@ -150,7 +150,7 @@ const EditTimeLogModal = ({ isOpen, onClose, initialData, timeLogId, onTimeLogUp
                   setErrors((prev) => ({ ...prev, hours: validateHours(e.target.value) }));
                 }}
                 onBlur={() => setErrors((prev) => ({ ...prev, hours: validateHours(hours) }))}
-                className={`w-full bg-white border ${errors.hours ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100`}
+                className={`w-full bg-white border ${errors.hours ? "border-red-400" : "border-border-subtle"} rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100`}
                 required
               />
               {errors.hours && (
@@ -160,32 +160,32 @@ const EditTimeLogModal = ({ isOpen, onClose, initialData, timeLogId, onTimeLogUp
           </div>
 
           <div>
-            <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">DESCRIPTION*</label>
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">DESCRIPTION*</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
-              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full bg-white border border-border-subtle rounded-xl px-4 py-3 text-sm text-main font-medium outline-none focus:ring-2 focus:ring-amber-100"
               required
             />
           </div>
 
-          <div className="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200">
-            <label className="block text-[10px] font-black text-slate-500 mb-2 uppercase tracking-widest">ATTACHMENT</label>
+          <div className="p-4 bg-surface rounded-xl border border-dashed border-border-subtle">
+            <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">ATTACHMENT</label>
             <input
               type="file"
               accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.csv,image/png,image/jpeg,image/jpg"
               onChange={(e) => setNewAttachment(e.target.files[0])}
-              className="text-[11px] text-slate-400 file:mr-4 file:py-1 file:px-3 file:rounded-full file:bg-slate-200 file:text-slate-600 cursor-pointer"
+              className="text-[11px] text-muted file:mr-4 file:py-1 file:px-3 file:rounded-full file:bg-slate-200 file:text-muted cursor-pointer"
             />
             {attachmentName && !newAttachment && (
-              <p className="text-[10px] font-bold text-slate-400 mt-2 truncate">CURRENT: {attachmentName}</p>
+              <p className="text-[10px] font-bold text-muted mt-2 truncate">CURRENT: {attachmentName}</p>
             )}
           </div>
         </form>
 
-        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-slate-100 flex gap-4 bg-white flex-shrink-0">
-          <button onClick={onClose} className="flex-1 py-4 font-black text-[10px] text-slate-400 uppercase tracking-widest">CANCEL</button>
+        <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-border-subtle flex gap-4 bg-white flex-shrink-0">
+          <button onClick={onClose} className="flex-1 py-4 font-black text-[10px] text-muted uppercase tracking-widest">CANCEL</button>
           <button
             type="submit"
             form="editLogForm"

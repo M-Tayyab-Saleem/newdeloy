@@ -138,7 +138,7 @@ export default function NotificationBell() {
                 onClick={() => handleNotifClick(notif)}
                 role="listitem"
                 className={`flex items-start gap-3 px-4 py-3 cursor-pointer transition-all duration-150 hover:bg-teal-50 ${
-                  !notif.isRead ? 'bg-blue-50/60' : 'bg-white'
+                  !notif.isRead ? 'bg-amber-50/60' : 'bg-white'
                 }`}
               >
                 {/* Icon */}
@@ -159,7 +159,7 @@ export default function NotificationBell() {
 
                 {/* Unread dot */}
                 {!notif.isRead && (
-                  <span className="shrink-0 mt-2 w-2 h-2 rounded-full bg-blue-500 flex-none" aria-label="Unread" />
+                  <span className="shrink-0 mt-2 w-2 h-2 rounded-full bg-amber-500 flex-none" aria-label="Unread" />
                 )}
               </li>
             ))}

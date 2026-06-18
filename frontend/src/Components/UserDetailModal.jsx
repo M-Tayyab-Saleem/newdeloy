@@ -211,7 +211,7 @@ const UserDetailModal = ({ user, currentUser, isOpen, onClose, onUserUpdated, al
           return (
             <div className="flex gap-2 items-end">
               <ModernSelect label={label} name={name} value={value} onChange={handleChange} options={formattedOptions} required={required} placeholder={`SELECT ${label}`} className="flex-1" />
-              <button type="button" onClick={() => setIsDeptModalOpen(true)} className="px-4 bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-100 h-[46px] flex items-center">
+              <button type="button" onClick={() => setIsDeptModalOpen(true)} className="px-4 bg-amber-50 text-amber-600 rounded-xl hover:bg-amber-100 h-[46px] flex items-center">
                 <FaPlus />
               </button>
             </div>
@@ -265,7 +265,7 @@ const UserDetailModal = ({ user, currentUser, isOpen, onClose, onUserUpdated, al
             <div className="flex gap-2">
               {!isEditing && <button onClick={handleResendInvite} className="px-3 py-2 bg-amber-50 text-amber-600 rounded-xl">Invite</button>}
               {!isEditing && <button onClick={handleDeleteUser} className="px-3 py-2 bg-red-50 text-red-600 rounded-xl">Delete</button>}
-              <button onClick={() => setIsEditing(!isEditing)} className="px-3 py-2 bg-blue-50 text-blue-600 rounded-xl">Edit</button>
+              <button onClick={() => setIsEditing(!isEditing)} className="px-3 py-2 bg-amber-50 text-amber-600 rounded-xl">Edit</button>
               <button onClick={onClose} className="text-xl text-slate-400">&times;</button>
             </div>
           </div>

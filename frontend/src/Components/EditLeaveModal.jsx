@@ -224,7 +224,7 @@ const EditLeaveModal = ({ isOpen, setIsOpen, leaveData, onLeaveEdited }) => {
                   setErrors(prev => ({ ...prev, startDate: null }));
                   setStartDate(date);
                 }}
-                className={`w-full bg-white border ${errors.startDate ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 disabled:opacity-50 cursor-pointer`}
+                className={`w-full bg-white border ${errors.startDate ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 disabled:opacity-50 cursor-pointer`}
                 placeholderText="Select Date"
                 dateFormat="yyyy-MM-dd"
                 required
@@ -253,7 +253,7 @@ const EditLeaveModal = ({ isOpen, setIsOpen, leaveData, onLeaveEdited }) => {
                   setErrors(prev => ({ ...prev, endDate: null }));
                   setEndDate(date);
                 }}
-                className={`w-full bg-white border ${errors.endDate ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 disabled:opacity-50 cursor-pointer`}
+                className={`w-full bg-white border ${errors.endDate ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 disabled:opacity-50 cursor-pointer`}
                 placeholderText="Select Date"
                 dateFormat="yyyy-MM-dd"
                 required
@@ -280,7 +280,7 @@ const EditLeaveModal = ({ isOpen, setIsOpen, leaveData, onLeaveEdited }) => {
               REASON FOR LEAVE
             </label>
             <textarea
-              className={`w-full bg-white border ${errors.reason ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-slate-300 resize-none disabled:opacity-50`}
+              className={`w-full bg-white border ${errors.reason ? 'border-red-400' : 'border-slate-200'} rounded-xl px-4 py-3 text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-amber-100 placeholder:text-slate-300 resize-none disabled:opacity-50`}
               rows={3}
               value={reason}
               onChange={(e) => setReason(e.target.value)}

@@ -102,7 +102,7 @@ const NotesCard = ({ onDelete }) => {
         />
         <button
           onClick={addNote}
-          className="bg-blue-100 text-blue-700 px-3 py-2 rounded-lg text-xs font-medium hover:bg-blue-200 transition flex items-center justify-center gap-1.5"
+          className="bg-amber-100 text-amber-700 px-3 py-2 rounded-lg text-xs font-medium hover:bg-amber-200 transition flex items-center justify-center gap-1.5"
         >
           <FiPlus className="w-3 h-3" />
           Add
@@ -151,7 +151,7 @@ const NotesCard = ({ onDelete }) => {
                   ) : (
                     <button
                       onClick={() => saveEdit(note.id)}
-                      className="text-blue-600 hover:text-blue-800 p-1.5"
+                      className="text-amber-600 hover:text-amber-800 p-1.5"
                       title="Save"
                     >
                       <FiCheck className="h-3 w-3" />

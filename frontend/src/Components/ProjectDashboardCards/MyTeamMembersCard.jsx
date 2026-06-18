@@ -47,7 +47,7 @@ export default function MyTeamMembersCard() {
   return (
     <div className="relative bg-background rounded-xl shadow-md p-5 pt-10 overflow-visible ">
       {/* Icon top left */}
-      <div className="absolute -top-4 left-4 bg-blue-200 text-blue-800 w-10 h-10 flex items-center justify-center rounded-md shadow z-99">
+      <div className="absolute -top-4 left-4 bg-amber-200 text-amber-800 w-10 h-10 flex items-center justify-center rounded-md shadow z-99">
         <FiUsers className="text-xl" />
       </div>
 
@@ -61,7 +61,7 @@ export default function MyTeamMembersCard() {
         </div>
 
           <div className="flex items-start gap-2">
-          <button className="flex items-center text-blue-600 text-sm hover:underline">
+          <button className="flex items-center text-amber-600 text-sm hover:underline">
             View All
             <ArrowRightIcon className="h-4 w-4 ml-1" />
           </button>

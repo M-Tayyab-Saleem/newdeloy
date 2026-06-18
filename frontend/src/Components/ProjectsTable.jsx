@@ -84,7 +84,7 @@ const ProjectsTable = ({
                     {/* Hover button */}
                     <button
                       onClick={() => console.log("View project:", project)}
-                      className="absolute right-0 top-1/2 -translate-y-1/2 bg-blue-200 text-blue-700 px-3 py-1 rounded hover:bg-blue-300 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute right-0 top-1/2 -translate-y-1/2 bg-amber-200 text-amber-700 px-3 py-1 rounded hover:bg-amber-300 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     >
                       View Project
                     </button>
@@ -100,7 +100,7 @@ const ProjectsTable = ({
                         project.Status === "Active"
                           ? "bg-green-100 text-green-800"
                           : project.Status === "Completed"
-                          ? "bg-blue-100 text-blue-800"
+                          ? "bg-amber-100 text-amber-800"
                           : "bg-gray-100 text-gray-800"
                       }`}
                     >

@@ -43,7 +43,7 @@ const DropDownPicker = ({
     <div className={`w-full ${className}`} ref={containerRef}>
       {/* Label */}
       {label && (
-        <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+        <label className="block text-[10px] font-black text-amber-700/70 mb-2 uppercase tracking-widest">
           {label} {required && <span className="text-red-500">*</span>}
         </label>
       )}
@@ -53,34 +53,34 @@ const DropDownPicker = ({
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className={`w-full bg-white border rounded-xl px-4 py-3 text-sm font-medium outline-none flex justify-between items-center transition-all shadow-sm
-            ${isOpen ? "border-blue-400 ring-2 ring-blue-100" : "border-slate-200 hover:border-slate-300"}
-            ${!selectedOption ? "text-slate-400" : "text-slate-700"}
+          className={`w-full bg-white/60 backdrop-blur-md border rounded-xl px-4 py-3 text-sm font-bold outline-none flex justify-between items-center transition-all shadow-sm
+            ${isOpen ? "border-amber-400 ring-2 ring-amber-200 shadow-md bg-white/90" : "border-white/60 hover:border-amber-300 hover:bg-white/80"}
+            ${!selectedOption ? "text-amber-900/50" : "text-amber-900"}
           `}
         >
           <span className="truncate">
             {selectedOption ? selectedOption.label : placeholder}
           </span>
           <FiChevronDown
-            className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
-              isOpen ? "rotate-180 text-blue-500" : ""
+            className={`w-4 h-4 transition-transform duration-200 ${
+              isOpen ? "rotate-180 text-amber-600" : "text-amber-700/50"
             }`}
           />
         </button>
 
         {/* The Custom Dropdown Menu */}
         {isOpen && (
-          <div className="absolute z-50 w-full mt-2 bg-white border border-slate-100 rounded-xl shadow-xl max-h-60 overflow-y-auto custom-scrollbar animate-fadeIn">
+          <div className="absolute z-50 w-full mt-2 bg-white/90 backdrop-blur-xl border border-white/60 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] max-h-60 overflow-y-auto custom-scrollbar animate-fadeIn">
             {options.length > 0 ? (
               options.map((opt) => (
                 <div
                   key={opt.value}
                   onClick={() => handleSelect(opt.value)}
-                  className={`px-4 py-2.5 text-sm cursor-pointer transition-colors
+                  className={`px-4 py-3 text-sm cursor-pointer transition-all duration-200
                     ${
                       opt.value === value
-                        ? "bg-blue-50 text-blue-600 font-semibold"
-                        : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                        ? "bg-amber-500/10 text-amber-700 font-black border-l-4 border-amber-500"
+                        : "text-amber-900/80 font-medium hover:bg-white hover:text-amber-700 border-l-4 border-transparent"
                     }
                   `}
                 >
@@ -88,7 +88,7 @@ const DropDownPicker = ({
                 </div>
               ))
             ) : (
-              <div className="px-4 py-3 text-xs text-slate-400 text-center">
+              <div className="px-4 py-4 text-xs font-bold uppercase tracking-widest text-amber-700/50 text-center">
                 No options available
               </div>
             )}

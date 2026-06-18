@@ -381,7 +381,7 @@ console.log(user)
                       <div className="flex items-center gap-3 mb-2">
                         <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Leave Type</span>
                       </div>
-                      <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 uppercase">
+                      <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 uppercase">
                         {leaveData.leaveType}
                       </span>
                     </div>
@@ -492,7 +492,7 @@ console.log(user)
                       <div key={response._id} className="bg-slate-50/80 rounded-xl p-3 border border-slate-100">
                         <div className="flex items-start gap-3">
                           {/* Avatar */}
-                          <div className="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-800 rounded-full text-sm font-bold shrink-0">
+                          <div className="w-8 h-8 flex items-center justify-center bg-amber-100 text-amber-800 rounded-full text-sm font-bold shrink-0">
                             {getAvatarContent(response)}
                           </div>
                          
@@ -522,7 +522,7 @@ console.log(user)
                                         setEditingResponseId(response._id);
                                         setEditContent(response.content);
                                       }}
-                                      className="p-1 text-slate-400 hover:text-blue-600 transition"
+                                      className="p-1 text-slate-400 hover:text-amber-600 transition"
                                       title="Edit"
                                     >
                                       <Edit2 size={12} />
@@ -545,7 +545,7 @@ console.log(user)
                                 <textarea
                                   value={editContent}
                                   onChange={(e) => setEditContent(e.target.value)}
-                                    className={`w-full border ${errors.editContent ? 'border-red-400' : 'border-slate-200'} rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-100 min-h-[60px] resize-none`}
+                                    className={`w-full border ${errors.editContent ? 'border-red-400' : 'border-slate-200'} rounded-lg p-2 text-sm focus:ring-2 focus:ring-amber-100 min-h-[60px] resize-none`}
                                   rows="3"
                                 />
                                   <p className="text-[10px] text-slate-400 text-right">
@@ -598,7 +598,7 @@ console.log(user)
                       value={newResponse}
                       onChange={(e) => setNewResponse(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      className={`w-full border ${errors.newResponse ? 'border-red-400' : 'border-slate-200'} rounded-xl p-3 pr-24 text-sm focus:ring-2 focus:ring-blue-100 min-h-[80px] resize-none`}
+                      className={`w-full border ${errors.newResponse ? 'border-red-400' : 'border-slate-200'} rounded-xl p-3 pr-24 text-sm focus:ring-2 focus:ring-amber-100 min-h-[80px] resize-none`}
                       placeholder="Type your response here..."
                       rows="3"
                     />
@@ -623,7 +623,7 @@ console.log(user)
                    
                     {/* Attachment Preview */}
                     {attachment && (
-                      <div className="absolute left-12 bottom-3 flex items-center gap-2 bg-blue-50 text-blue-700 px-2 py-1 rounded-lg text-xs">
+                      <div className="absolute left-12 bottom-3 flex items-center gap-2 bg-amber-50 text-amber-700 px-2 py-1 rounded-lg text-xs">
                         <Paperclip size={12} />
                         <span className="truncate max-w-[100px]">{attachment.name}</span>
                         <button
@@ -631,7 +631,7 @@ console.log(user)
                             setAttachment(null);
                             setNewResponse(prev => prev.replace(`\n[Attached: ${attachment.name}]`, ''));
                           }}
-                          className="text-blue-700 hover:text-red-600"
+                          className="text-amber-700 hover:text-red-600"
                         >
                           <FaTimes size={10} />
                         </button>
@@ -642,7 +642,7 @@ console.log(user)
                     <button
                       onClick={handleSubmitResponse}
                       disabled={!newResponse.trim() || isSubmitting}
-                      className="absolute right-3 bottom-3 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                      className="absolute right-3 bottom-3 p-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                       title="Send response"
                     >
                       <Send size={16} />

@@ -110,7 +110,7 @@ const AttendanceCard = ({ onDelete }) => {
       <div className="flex justify-between items-start mb-3">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <GoGraph className="w-4 h-4 text-blue-600" />
+            <GoGraph className="w-4 h-4 text-amber-600" />
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Weekly Attendance</h3>
           </div>
           <p className="text-[10px] font-medium text-slate-500">{totalHours} total hours</p>
@@ -146,7 +146,7 @@ const AttendanceCard = ({ onDelete }) => {
               if (status === 'Absent') color = "bg-red-500";
               else if (status === 'Present' && hours >= 7) color = "bg-green-500";
               else if (status === 'Half Day') color = "bg-yellow-500";
-              else if (status === 'Present') color = "bg-blue-400";
+              else if (status === 'Present') color = "bg-amber-400";
               else if (status === 'Upcoming') color = "bg-slate-300";
 
               const barHeight = Math.min((hours / 10) * maxBarHeight, maxBarHeight);

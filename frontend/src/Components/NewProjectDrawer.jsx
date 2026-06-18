@@ -19,9 +19,9 @@ const NewProjectDrawer = ({ isOpen, onClose }) => {
             <input
               type="text"
               placeholder="Project Name"
-              className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+              className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-amber-200"
             />
-            <select className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
+            <select className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-amber-200">
               <option value="">Project Owner</option>
               <option value="Alice">Alice</option>
               <option value="Bob">Bob</option>
@@ -34,7 +34,7 @@ const NewProjectDrawer = ({ isOpen, onClose }) => {
               <input
                 type="date"
                 placeholder="Start Date"
-                className="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring focus:ring-blue-200"
+                className="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring focus:ring-amber-200"
               />
               <FaCalendarAlt className="absolute top-3 right-3 text-gray-400" />
             </div>
@@ -42,7 +42,7 @@ const NewProjectDrawer = ({ isOpen, onClose }) => {
               <input
                 type="date"
                 placeholder="End Date"
-                className="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring focus:ring-blue-200"
+                className="w-full border rounded-md px-3 py-2 pr-10 focus:outline-none focus:ring focus:ring-amber-200"
               />
               <FaCalendarAlt className="absolute top-3 right-3 text-gray-400" />
             </div>
@@ -51,17 +51,17 @@ const NewProjectDrawer = ({ isOpen, onClose }) => {
           <textarea
             placeholder="Description"
             rows="3"
-            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200"
+            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-amber-200"
           ></textarea>
 
-          <select className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
+          <select className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-amber-200">
             <option value="">Department</option>
             <option value="IT">IT</option>
             <option value="Marketing">Marketing</option>
             <option value="HR">HR</option>
           </select>
 
-          <select className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-blue-200">
+          <select className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:ring-amber-200">
             <option value="">Users</option>
             <option value="User A">User A</option>
             <option value="User B">User B</option>

@@ -6,6 +6,8 @@ import { FaPlus, FaSearch, FaSortDown } from "react-icons/fa";
 import UserDetailModal from "../../Components/UserDetailModal";
 import api from "../../axios";
 import { toast } from "react-toastify";
+import PageContainer from "../../Components/ui/PageContainer";
+import GlassInput from "../../Components/ui/GlassInput";
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -108,7 +110,7 @@ const UserManagement = () => {
   const canAddUser = currentUser && ["Super Admin", "Admin"].includes(currentUser.role);
 
   return (
-    <div className="w-full bg-transparent min-h-screen p-4">
+    <>
       <style>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: scale(0.95); }
@@ -124,39 +126,18 @@ const UserManagement = () => {
         .animate-slideIn {
           animation: slideIn 0.3s ease-out;
         }
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #f1f5f9;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #cbd5e1;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #94a3b8;
-        }
       `}</style>
 
-      {/* HEADER */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <div>
-            <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">
-              User Management
-            </h2>
-            <p className="text-slate-500 text-xs font-medium uppercase tracking-wide">
-              Manage users, roles, and permissions
-            </p>
-          </div>
-
-          <div className="flex gap-2">
+      <PageContainer
+        title="User Management"
+        subtitle="Manage users, roles, and permissions"
+        loading={loading}
+        headerActions={
+          <>
             {canAddUser && (
               <button
                 onClick={() => setIsDeptModalOpen(true)}
-                className="px-6 py-3 bg-emerald-600 text-white rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg shadow-emerald-100 hover:bg-emerald-700 active:scale-95 transition-all flex items-center gap-2"
+                className="btn btn-secondary flex items-center gap-2"
               >
                 <FaPlus className="text-xs" /> Add Department
               </button>
@@ -164,120 +145,102 @@ const UserManagement = () => {
             {canAddUser && (
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-6 py-3 bg-[#64748b] text-white rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg shadow-slate-100 hover:brightness-110 active:scale-95 transition-all flex items-center gap-2"
+                className="btn btn-primary flex items-center gap-2"
               >
                 <FaPlus className="text-xs" /> Add User
               </button>
             )}
-          </div>
-        </div>
-      </div>
-
-      {/* SEARCH + SORT */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 mb-4">
-        <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
-          <div className="relative flex-1 w-full">
-            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm" />
-            <input
-              type="text"
+          </>
+        }
+        filters={
+          <>
+            <GlassInput
               placeholder="Search by name, email, ID, or department..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 placeholder:text-slate-400"
             />
-          </div>
-
-          <div className="flex gap-2 flex-wrap">
-            {["name", "department", "role", "empStatus", "hourlyWage"].map((key) => (
-              <button
-                key={key}
-                onClick={() => handleSort(key)}
-                className={`px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${sortConfig.key === key
-                    ? "bg-blue-100 text-blue-700"
-                    : "bg-slate-50 text-slate-600 hover:bg-slate-100"
-                  }`}
-              >
-                {key === "empStatus" ? "Status" : key === "hourlyWage" ? "Wage" : key}
-                {sortConfig.key === key && (
-                  <FaSortDown className={`inline ml-1 ${sortConfig.direction === "desc" ? "rotate-180" : ""}`} />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* TABLE */}
-      <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
-        <div className="overflow-x-auto rounded-xl border border-slate-200/60 shadow-sm">
-          {loading ? (
-            <div className="p-12 text-center">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-slate-600"></div>
-              <p className="mt-4 text-slate-600 text-sm font-medium">Loading users...</p>
+            <div className="flex gap-2 flex-wrap">
+              {["name", "department", "role", "empStatus", "hourlyWage"].map((key) => (
+                <button
+                  key={key}
+                  onClick={() => handleSort(key)}
+                  className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all ${sortConfig.key === key
+                      ? "bg-brand-primary text-white shadow-md shadow-brand-primary/30"
+                      : "bg-surface text-muted hover:bg-hover border border-border-subtle"
+                    }`}
+                >
+                  {key === "empStatus" ? "Status" : key === "hourlyWage" ? "Wage" : key}
+                  {sortConfig.key === key && (
+                    <FaSortDown className={`inline ml-1 ${sortConfig.direction === "desc" ? "rotate-180" : ""}`} />
+                  )}
+                </button>
+              ))}
             </div>
-          ) : (
-            <table className="min-w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-slate-50/80 border-b border-slate-200">
-                  {["ID", "Name", "Email", "Department", "Role", "Wage", "Status"].map((h) => (
-                    <th
-                      key={h}
-                      className="p-4 text-xs font-bold text-slate-500 uppercase tracking-wider cursor-pointer hover:bg-slate-100"
-                      onClick={() => handleSort(h === "Wage" ? "hourlyWage" : h.toLowerCase())}
-                    >
-                      {h}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-
-              <tbody className="bg-white">
-                {filteredUsers.map((user) => (
-                  <tr
-                    key={user._id}
-                    onClick={() => handleUserClick(user)}
-                    className="border-b border-slate-100 hover:bg-slate-50/50 cursor-pointer"
+          </>
+        }
+        bottomWidgets={
+          <div className="flex justify-between text-xs font-bold uppercase tracking-wide px-2">
+            <span className="text-muted">Active: <span className="text-main">{activeUsers}</span></span>
+            <span className="text-muted">Inactive: <span className="text-main">{inactiveUsers}</span></span>
+            <span className="text-muted">Total Users: <span className="text-main">{users.length}</span></span>
+          </div>
+        }
+      >
+        <div className="bg-white/30 backdrop-blur-md rounded-2xl border border-white/60 shadow-[inset_0_2px_10px_rgba(255,255,255,0.3)] overflow-hidden">
+          <table className="min-w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-gradient-to-r from-white/60 to-white/40 border-b border-border-subtle shadow-sm">
+                {["ID", "Name", "Email", "Department", "Role", "Wage", "Status"].map((h) => (
+                  <th
+                    key={h}
+                    className="p-4 text-[11px] font-black text-heading uppercase tracking-widest cursor-pointer hover:bg-white/30 transition-colors"
+                    onClick={() => handleSort(h === "Wage" ? "hourlyWage" : h.toLowerCase())}
                   >
-                    <td className="p-4 text-sm font-medium text-slate-500">#{user.empID}</td>
-                    <td className="p-4 text-sm font-bold text-slate-700">{user.name}</td>
-                    <td className="p-4 text-sm font-medium text-slate-500">{user.email}</td>
-                    <td className="p-4 text-xs font-semibold bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
-                      {user.department?.name || "-"}
-                    </td>
-                    <td className="p-4">
-                      <span className="bg-purple-50 text-purple-600 border border-purple-100 px-2.5 py-1 rounded-full text-xs font-bold">
-                        {user.role}
-                      </span>
-                    </td>
-                    <td className="p-4 text-sm font-bold text-slate-700">
-                      {user.hourlyWage ? `$${user.hourlyWage}` : "-"}
-                    </td>
-                    <td className="p-4">
-                      <span
-                        className={`px-2.5 py-1 rounded-full text-xs font-bold border ${user.empStatus === "Active"
-                            ? "bg-emerald-50 text-emerald-600 border-emerald-100"
-                            : "bg-rose-50 text-rose-600 border-rose-100"
-                          }`}
-                      >
-                        {user.empStatus}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
+                  {h}
+                  {sortConfig.key === (h === "Wage" ? "hourlyWage" : h.toLowerCase()) && (
+                    <FaSortDown className={`inline ml-1 ${sortConfig.direction === "desc" ? "rotate-180" : ""}`} />
+                  )}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border-subtle">
+            {filteredUsers.map((user) => (
+              <tr
+                key={user._id}
+                onClick={() => handleUserClick(user)}
+                className="hover:bg-white/40 dark:hover:bg-black/20 cursor-pointer transition-colors"
+              >
+                <td className="p-4 text-sm font-medium text-muted">#{user.empID}</td>
+                <td className="p-4 text-sm font-bold text-main">{user.name}</td>
+                <td className="p-4 text-sm font-medium text-muted">{user.email}</td>
+                <td className="p-4 text-xs font-semibold bg-white/50 dark:bg-black/20 px-2.5 py-1 rounded-md border border-border-subtle text-main">
+                  {user.department?.name || "-"}
+                </td>
+                <td className="p-4">
+                  <span className="bg-brand/10 text-brand border border-brand/20 px-2.5 py-1 rounded-full text-xs font-bold">
+                    {user.role}
+                  </span>
+                </td>
+                <td className="p-4 text-sm font-bold text-main">
+                  {user.hourlyWage ? `$${user.hourlyWage}` : "-"}
+                </td>
+                <td className="p-4">
+                  <span
+                    className={`px-2.5 py-1 rounded-full text-xs font-bold border ${user.empStatus === "Active"
+                        ? "bg-green-500/10 text-green-600 border-green-500/20"
+                        : "bg-red-500/10 text-red-600 border-red-500/20"
+                      }`}
+                  >
+                    {user.empStatus}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         </div>
-      </div>
-
-      {/* FOOTER STATS */}
-      <div className="mt-4 bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
-        <div className="flex justify-between text-xs font-bold uppercase tracking-wide">
-          <span className="text-slate-500">Active: <span className="text-slate-800">{activeUsers}</span></span>
-          <span className="text-slate-500">Inactive: <span className="text-slate-800">{inactiveUsers}</span></span>
-          <span className="text-slate-500">Total Users: <span className="text-slate-800">{users.length}</span></span>
-        </div>
-      </div>
+      </PageContainer>
 
       <CreateUserModal
         isOpen={isModalOpen}
@@ -285,17 +248,6 @@ const UserManagement = () => {
         onUserCreated={handleUserCreated}
         allDepartments={departments}
         allManagers={users}
-      />
-
-      <CreateDepartmentModal
-        isOpen={isDeptModalOpen}
-        onClose={() => setIsDeptModalOpen(false)}
-        onDepartmentCreated={() => {
-          fetchData();
-          setIsDeptModalOpen(false);
-          toast.success("Department created successfully");
-        }}
-        potentialManagers={users}
       />
 
       <UserDetailModal
@@ -316,7 +268,7 @@ const UserManagement = () => {
         onDepartmentCreated={handleDepartmentCreated}
         potentialManagers={users}
       />
-    </div>
+    </>
   );
 };
 

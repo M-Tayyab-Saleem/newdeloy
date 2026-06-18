@@ -12,7 +12,7 @@ const ComingSoon = () => {
       </p>
       <button 
         onClick={() => navigate(-1)}
-        className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
+        className="px-6 py-2 bg-amber-600 text-white rounded-md hover:bg-amber-700 transition"
       >
         Go Back
       </button>

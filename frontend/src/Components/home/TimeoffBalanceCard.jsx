@@ -57,7 +57,7 @@ const TimeoffBalanceCard = ({ onDelete, userId }) => {
     return (
       <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-4">
         <div className="flex items-center gap-2 mb-3">
-          <FiCalendar className="w-4 h-4 text-blue-600" />
+          <FiCalendar className="w-4 h-4 text-amber-600" />
           <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Available Leaves</h3>
         </div>
         <p className="text-[10px] font-medium text-slate-500">Loading...</p>
@@ -71,7 +71,7 @@ const TimeoffBalanceCard = ({ onDelete, userId }) => {
       <div className="flex justify-between items-start mb-3">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <FiCalendar className="w-4 h-4 text-blue-600" />
+            <FiCalendar className="w-4 h-4 text-amber-600" />
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Available Leaves</h3>
           </div>
           <p className="text-[10px] font-medium text-slate-500">

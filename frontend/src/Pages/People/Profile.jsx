@@ -90,9 +90,9 @@ export default function Profile({ userId: propUserId }) {
   };
 
   if (loading) return (
-    <div className="text-center p-6 bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 m-4">
+    <div className="text-center p-6 glass-card m-4">
       <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
-      <p className="mt-3 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading...</p>
+      <p className="mt-3 text-muted text-xs font-medium uppercase tracking-wide">Loading...</p>
     </div>
   );
 
@@ -102,7 +102,7 @@ export default function Profile({ userId: propUserId }) {
     { icon: MapPin, label: "Location", value: user.branch || "N/A", bg: "bg-green-100", iconColor: "text-green-600" },
     { icon: Briefcase, label: "Department", value: user?.department?.name || "N/A", bg: "bg-yellow-100", iconColor: "text-yellow-600" },
     { icon: Clock, label: "Time Zone", value: user.timeZone || "N/A", bg: "bg-orange-100", iconColor: "text-orange-600" },
-    { icon: Mail, label: "Email ID", value: user.email, bg: "bg-blue-100", iconColor: "text-blue-600" },
+    { icon: Mail, label: "Email ID", value: user.email, bg: "bg-amber-100", iconColor: "text-amber-600" },
     { icon: Briefcase, label: "Shift", value: user.empType || "N/A", bg: "bg-indigo-100", iconColor: "text-indigo-600" },
     { icon: Phone, label: "Work phone", value: user.phoneNumber || "N/A", bg: "bg-green-100", iconColor: "text-green-600" },
   ];
@@ -130,11 +130,11 @@ export default function Profile({ userId: propUserId }) {
                 <>
                   <label
                       htmlFor="cover-upload"
-                      className="bg-white/90 backdrop-blur-md text-slate-800 font-bold px-3 py-2 rounded-xl shadow-sm hover:bg-white transition-all text-xs flex items-center justify-center cursor-pointer"
+                      className="bg-white/90 backdrop-blur-md text-heading font-bold px-3 py-2 rounded-xl shadow-sm hover:bg-white transition-all text-xs flex items-center justify-center cursor-pointer"
                       title="Change Cover Image"
                   >
                       {uploadingCover ? (
-                        <div className="animate-spin h-4 w-4 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+                        <div className="animate-spin h-4 w-4 border-2 border-amber-600 border-t-transparent rounded-full"></div>
                       ) : (
                         <FiCamera size={16} />
                       )}
@@ -152,7 +152,7 @@ export default function Profile({ userId: propUserId }) {
                 {/* Edit Profile Button */}
                 <button
                 onClick={() => navigate("/people/edit-profile")}
-                className="bg-white/90 backdrop-blur-md text-slate-800 font-bold px-4 py-2 rounded-xl shadow-sm hover:bg-white transition-all text-xs flex items-center gap-2"
+                className="bg-white/90 backdrop-blur-md text-heading font-bold px-4 py-2 rounded-xl shadow-sm hover:bg-white transition-all text-xs flex items-center gap-2"
                 >
                 <FiEdit2 size={16} /> <span className="hidden sm:inline">Edit Profile</span>
                 </button>
@@ -174,11 +174,11 @@ export default function Profile({ userId: propUserId }) {
                 <>
                 <label
                     htmlFor="avatar-upload"
-                    className="absolute bottom-0 right-0 bg-slate-50 text-slate-700 p-2 md:p-2.5 rounded-full shadow-md cursor-pointer border border-slate-200 hover:bg-blue-50 hover:text-blue-600 transition-all"
+                    className="absolute bottom-0 right-0 bg-surface text-main p-2 md:p-2.5 rounded-full shadow-md cursor-pointer border border-border-subtle hover:bg-amber-50 hover:text-amber-600 transition-all"
                     title="Change Profile Picture"
                 >
                     {uploadingAvatar ? (
-                    <div className="animate-spin h-4 w-4 md:h-5 md:w-5 border-2 border-blue-600 border-t-transparent rounded-full"></div>
+                    <div className="animate-spin h-4 w-4 md:h-5 md:w-5 border-2 border-amber-600 border-t-transparent rounded-full"></div>
                     ) : (
                     <FiCamera className="w-4 h-4 md:w-5 md:h-5" />
                     )}
@@ -200,20 +200,20 @@ export default function Profile({ userId: propUserId }) {
       {/* --- INFO SECTION --- */}
       <div className="bg-white/80 backdrop-blur-md rounded-[1.5rem] py-5 px-6 flex flex-col md:flex-row md:justify-between gap-4 shadow-sm border border-white/50 mb-6 relative z-0 mt-14 md:mt-0 pt-2 md:pt-5 md:pl-48 lg:pl-52">
         <div className="flex flex-col min-w-0">
-          <h1 className="font-black text-xl md:text-2xl text-slate-800 tracking-tight break-words">
+          <h1 className="font-black text-xl md:text-2xl text-heading tracking-tight break-words">
             {user.name}
           </h1>
-          <p className="text-slate-500 font-bold text-xs uppercase tracking-wider mt-1">{user.designation || user.role}</p>
-          <p className="text-slate-400 text-xs font-mono mt-0.5">{user.empID || "ID: --"}</p>
+          <p className="text-muted font-bold text-xs uppercase tracking-wider mt-1">{user.designation || user.role}</p>
+          <p className="text-muted text-xs font-mono mt-0.5">{user.empID || "ID: --"}</p>
         </div>
-        <div className="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-2xl border border-slate-100 self-start md:self-center">
+        <div className="flex items-center gap-3 bg-surface px-4 py-2 rounded-2xl border border-border-subtle self-start md:self-center">
             <div>
-                <p className="text-slate-400 font-bold text-[10px] uppercase tracking-widest mb-0.5">Reporting To</p>
-                 <p className="font-bold text-slate-700 text-xs">
+                <p className="text-muted font-bold text-[10px] uppercase tracking-widest mb-0.5">Reporting To</p>
+                 <p className="font-bold text-main text-xs">
                   {user.reportsTo?.name || "Not Assigned"}
                 </p>
             </div>
-             <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xs font-bold">
+             <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold">
                 {user.reportsTo?.name?.charAt(0) || "?"}
              </div>
         </div>
@@ -222,13 +222,13 @@ export default function Profile({ userId: propUserId }) {
       {/* Grid Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 my-6">
         {profileCards.map((item, idx) => (
-          <div key={idx} className="flex items-center gap-3 p-4 bg-white rounded-[1.2rem] shadow-sm border border-slate-100/50 hover:shadow-md transition-all">
+          <div key={idx} className="flex items-center gap-3 p-4 bg-white rounded-[1.2rem] shadow-sm border border-border-subtle/50 hover:shadow-md transition-all">
             <div className={`w-10 h-10 flex items-center justify-center rounded-xl shadow-sm ${item.bg} shrink-0`}>
               <item.icon className={`h-5 w-5 ${item.iconColor}`} />
             </div>
             <div className="overflow-hidden">
-              <div className="text-[10px] text-slate-400 font-black uppercase tracking-wider truncate">{item.label}</div>
-              <div className="text-sm font-bold text-slate-700 truncate" title={item.value}>{item.value}</div>
+              <div className="text-[10px] text-muted font-black uppercase tracking-wider truncate">{item.label}</div>
+              <div className="text-sm font-bold text-main truncate" title={item.value}>{item.value}</div>
             </div>
           </div>
         ))}
@@ -236,62 +236,62 @@ export default function Profile({ userId: propUserId }) {
 
       {/* About */}
       {user.about && (
-        <div className="mb-6 bg-white rounded-[1.2rem] shadow-sm p-6 border border-slate-100/50">
-          <h3 className="font-black mb-3 text-slate-800 text-xs uppercase tracking-widest flex items-center gap-2">
-            <span className="w-1 h-4 bg-blue-500 rounded-full"></span> About
+        <div className="mb-6 bg-white rounded-[1.2rem] shadow-sm p-6 border border-border-subtle/50">
+          <h3 className="font-black mb-3 text-heading text-xs uppercase tracking-widest flex items-center gap-2">
+            <span className="w-1 h-4 bg-amber-500 rounded-full"></span> About
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed whitespace-pre-wrap">{user.about}</p>
+          <p className="text-sm text-muted leading-relaxed whitespace-pre-wrap">{user.about}</p>
         </div>
       )}
 
       {/* Experience & Education */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Work */}
-        <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100/50 hover:shadow-md transition-all">
-          <div className="flex items-center gap-3 mb-5 border-b border-slate-100 pb-3">
+        <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-border-subtle/50 hover:shadow-md transition-all">
+          <div className="flex items-center gap-3 mb-5 border-b border-border-subtle pb-3">
             <div className="p-2 bg-purple-50 rounded-lg text-purple-600">
                <Briefcase size={18} />
             </div>
-            <h3 className="text-sm font-black text-slate-800 uppercase tracking-wider">Experience</h3>
+            <h3 className="text-sm font-black text-heading uppercase tracking-wider">Experience</h3>
           </div>
           <div className="space-y-6">
             {user.experience?.length > 0 ? (
               user.experience.map((exp, idx) => (
-                <div key={idx} className="relative pl-4 border-l-2 border-slate-100">
+                <div key={idx} className="relative pl-4 border-l-2 border-border-subtle">
                   <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-purple-400"></div>
-                  <h4 className="font-bold text-sm text-slate-800">{exp.company}</h4>
+                  <h4 className="font-bold text-sm text-heading">{exp.company}</h4>
                   <p className="italic text-xs text-purple-600 font-medium mb-1">{exp.jobType}</p>
-                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wide mb-2">
+                  <p className="text-[10px] text-muted uppercase font-bold tracking-wide mb-2">
                     {new Date(exp.startDate).toLocaleDateString()} – {exp.endDate ? new Date(exp.endDate).toLocaleDateString() : "Present"}
                   </p>
-                  <p className="text-xs text-slate-600 leading-relaxed whitespace-pre-wrap">{exp.description}</p>
+                  <p className="text-xs text-muted leading-relaxed whitespace-pre-wrap">{exp.description}</p>
                 </div>
               ))
-            ) : <p className="text-slate-400 text-xs italic">No experience added.</p>}
+            ) : <p className="text-muted text-xs italic">No experience added.</p>}
           </div>
         </div>
 
         {/* Education */}
-        <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-slate-100/50 hover:shadow-md transition-all">
-           <div className="flex items-center gap-3 mb-5 border-b border-slate-100 pb-3">
-            <div className="p-2 bg-blue-50 rounded-lg text-blue-600">
+        <div className="bg-white p-6 rounded-[1.5rem] shadow-sm border border-border-subtle/50 hover:shadow-md transition-all">
+           <div className="flex items-center gap-3 mb-5 border-b border-border-subtle pb-3">
+            <div className="p-2 bg-amber-50 rounded-lg text-amber-600">
                <GraduationCap size={18} />
             </div>
-            <h3 className="text-sm font-black text-slate-800 uppercase tracking-wider">Education</h3>
+            <h3 className="text-sm font-black text-heading uppercase tracking-wider">Education</h3>
           </div>
           <div className="space-y-6">
             {user.education?.length > 0 ? (
               user.education.map((edu, idx) => (
-                <div key={idx} className="relative pl-4 border-l-2 border-slate-100">
-                  <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-blue-400"></div>
-                  <h4 className="font-bold text-sm text-slate-800">{edu.degree}</h4>
-                  <p className="text-xs text-slate-600 font-medium mb-1">{edu.institution}</p>
-                  <p className="text-[10px] text-slate-400 uppercase font-bold tracking-wide">
+                <div key={idx} className="relative pl-4 border-l-2 border-border-subtle">
+                  <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-amber-400"></div>
+                  <h4 className="font-bold text-sm text-heading">{edu.degree}</h4>
+                  <p className="text-xs text-muted font-medium mb-1">{edu.institution}</p>
+                  <p className="text-[10px] text-muted uppercase font-bold tracking-wide">
                     {edu.startYear} – {edu.endYear}
                   </p>
                 </div>
               ))
-            ) : <p className="text-slate-400 text-xs italic">No education added.</p>}
+            ) : <p className="text-muted text-xs italic">No education added.</p>}
           </div>
         </div>
       </div>

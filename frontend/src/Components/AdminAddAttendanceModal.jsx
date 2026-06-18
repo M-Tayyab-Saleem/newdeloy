@@ -145,7 +145,7 @@ export default function AdminAddAttendanceModal({ open, onClose, onSuccess, allU
               }}
               showTimeSelect
               dateFormat="Pp"
-              className={`w-full bg-white border ${errors.checkInTime ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium`}
+              className={`w-full bg-white border ${errors.checkInTime ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium`}
               popperProps={{ strategy: "fixed" }}
               portalId="portal-root"
               required
@@ -162,7 +162,7 @@ export default function AdminAddAttendanceModal({ open, onClose, onSuccess, allU
               onChange={(date) => setFormData({ ...formData, checkOutTime: date })}
               showTimeSelect
               dateFormat="Pp"
-              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium"
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium"
               popperProps={{ strategy: "fixed" }}
               portalId="portal-root"
             />
@@ -194,7 +194,7 @@ export default function AdminAddAttendanceModal({ open, onClose, onSuccess, allU
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="e.g. Forgot to punch in"
-              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium"
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium"
             />
           </div>
         </form>

@@ -57,14 +57,14 @@ const UploadModal = ({ onCreate }) => {
             {/* Close Cross Button */}
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:bg-slate-50 hover:text-red-500 transition-all text-2xl font-light z-10"
+              className="absolute top-4 right-4 sm:top-5 sm:right-6 w-10 h-10 flex items-center justify-center rounded-full text-muted hover:bg-surface hover:text-red-500 transition-all text-2xl font-light z-10"
             >
               &times;
             </button>
 
             {/* Header */}
             <div className="px-6 py-6 sm:px-10 sm:py-8 border-b border-slate-50 text-center flex-shrink-0">
-              <h2 className="text-base sm:text-lg font-black text-slate-800 tracking-widest uppercase">
+              <h2 className="text-base sm:text-lg font-black text-heading tracking-widest uppercase">
                 CREATE FOLDER
               </h2>
             </div>
@@ -76,7 +76,7 @@ const UploadModal = ({ onCreate }) => {
               onSubmit={handleSubmit}
             >
               <div>
-                <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">
+                <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">
                   FOLDER NAME*
                 </label>
                 <input
@@ -84,25 +84,25 @@ const UploadModal = ({ onCreate }) => {
                   placeholder="enter folder name"
                   value={folderName}
                   onChange={(e) => setFolderName(e.target.value)}
-                  className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm sm:text-base text-slate-700 font-medium outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 transition-all placeholder:text-slate-300"
+                  className="w-full bg-white border border-border-subtle rounded-xl px-4 py-3 text-sm sm:text-base text-main font-medium outline-none focus:ring-2 focus:ring-amber-100 focus:border-amber-300 transition-all placeholder:text-slate-300"
                   required
                 />
               </div>
 
               {/* Optional: Placeholder for File Upload UI if needed later */}
-              <div className="p-4 bg-slate-50 rounded-xl border border-dashed border-slate-200 flex flex-col items-center justify-center gap-2">
-                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">
+              <div className="p-4 bg-surface rounded-xl border border-dashed border-border-subtle flex flex-col items-center justify-center gap-2">
+                <p className="text-[9px] font-black text-muted uppercase tracking-widest">
                   Drop files here or click to browse
                 </p>
               </div>
             </form>
 
             {/* Footer Actions */}
-            <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-slate-100 flex gap-3 sm:gap-4 bg-white flex-shrink-0">
+            <div className="px-6 py-6 sm:px-10 sm:py-8 border-t border-border-subtle flex gap-3 sm:gap-4 bg-white flex-shrink-0">
               <button
                 type="button"
                 onClick={handleClose}
-                className="flex-1 py-3 sm:py-4 font-black text-[10px] text-slate-400 uppercase tracking-widest hover:text-slate-600 transition-colors"
+                className="flex-1 py-3 sm:py-4 font-black text-[10px] text-muted uppercase tracking-widest hover:text-muted transition-colors"
               >
                 CANCEL
               </button>

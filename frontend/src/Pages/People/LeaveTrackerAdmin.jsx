@@ -260,32 +260,32 @@ const LeaveTrackerAdmin = () => {
       key: "date",
       label: "Date",
       sortable: true,
-      render: (row) => <span className="text-slate-700">{row.date}</span>
+      render: (row) => <span className="text-main">{row.date}</span>
     },
     {
       key: "id",
       label: "ID",
       sortable: true,
-      render: (row) => <span className="text-slate-700 font-mono text-xs">{row.id.substring(0, 8)}...</span>
+      render: (row) => <span className="text-main font-mono text-xs">{row.id.substring(0, 8)}...</span>
     },
     {
       key: "name",
       label: "Name",
       sortable: true,
-      render: (row) => <span className="text-slate-700 font-medium">{row.name}</span>
+      render: (row) => <span className="text-main font-medium">{row.name}</span>
     },
     {
       key: "email",
       label: "Email",
       sortable: true,
-      render: (row) => <span className="text-slate-600">{row.email}</span>
+      render: (row) => <span className="text-muted">{row.email}</span>
     },
     {
       key: "leaveType",
       label: "Leave Type",
       sortable: true,
       render: (row) => (
-        <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 whitespace-nowrap">
+        <span className="px-2 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 whitespace-nowrap">
           {row.leaveType}
         </span>
       )
@@ -295,7 +295,7 @@ const LeaveTrackerAdmin = () => {
       label: "Reason",
       sortable: false,
       render: (row) => (
-        <div className="max-w-[220px] text-slate-600" title={row.reason}>
+        <div className="max-w-[220px] text-muted" title={row.reason}>
           <span
             style={{
               display: "-webkit-box",
@@ -313,7 +313,7 @@ const LeaveTrackerAdmin = () => {
       key: "duration",
       label: "Duration",
       sortable: true,
-      render: (row) => <span className="text-slate-700 font-medium whitespace-nowrap">{row.duration}</span>
+      render: (row) => <span className="text-main font-medium whitespace-nowrap">{row.duration}</span>
     },
     {
       key: "status",
@@ -331,7 +331,7 @@ const LeaveTrackerAdmin = () => {
     {
       icon: <FaEye size={12} />,
       title: "View",
-      className: "bg-slate-100 text-slate-700 hover:bg-slate-200",
+      className: "bg-surface text-main hover:bg-slate-200",
       onClick: (row) => handleViewLeave(row)
     }
   ];
@@ -342,7 +342,7 @@ const LeaveTrackerAdmin = () => {
       label: "Leave Type",
       sortable: true,
       render: (row) => (
-        <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700 whitespace-nowrap">
+        <span className="px-2 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 whitespace-nowrap">
           {row.leaveType}
         </span>
       )
@@ -351,13 +351,13 @@ const LeaveTrackerAdmin = () => {
       key: "startDate",
       label: "Start Date",
       sortable: true,
-      render: (row) => <span className="text-slate-600 whitespace-nowrap">{formatDisplayDate(row.startDate)}</span>
+      render: (row) => <span className="text-muted whitespace-nowrap">{formatDisplayDate(row.startDate)}</span>
     },
     {
       key: "endDate",
       label: "End Date",
       sortable: true,
-      render: (row) => <span className="text-slate-600 whitespace-nowrap">{formatDisplayDate(row.endDate)}</span>
+      render: (row) => <span className="text-muted whitespace-nowrap">{formatDisplayDate(row.endDate)}</span>
     },
     {
       key: "duration",
@@ -365,7 +365,7 @@ const LeaveTrackerAdmin = () => {
       sortable: true,
       render: (row) => {
         const duration = Math.ceil((parseISOToLocalDate(row.endDate) - parseISOToLocalDate(row.startDate)) / (1000 * 60 * 60 * 24)) + 1;
-        return <span className="text-slate-700 font-medium">{duration} days</span>;
+        return <span className="text-main font-medium">{duration} days</span>;
       }
     },
     {
@@ -382,7 +382,7 @@ const LeaveTrackerAdmin = () => {
       key: "reason",
       label: "Reason",
       sortable: false,
-      render: (row) => <div className="max-w-[150px] truncate text-slate-600" title={row.reason}>{row.reason || "-"}</div>
+      render: (row) => <div className="max-w-[150px] truncate text-muted" title={row.reason}>{row.reason || "-"}</div>
     }
   ];
 
@@ -430,8 +430,8 @@ const LeaveTrackerAdmin = () => {
               <button
                 className={`px-5 py-2.5 text-sm font-medium transition-all duration-200 rounded-xl
                   ${activeTab === index
-                    ? "text-slate-800 bg-white shadow-sm font-bold"
-                    : "text-slate-600 hover:text-slate-800 hover:bg-slate-50/80"
+                    ? "text-heading bg-white shadow-sm font-bold"
+                    : "text-muted hover:text-heading hover:bg-surface/50"
                   }`}
                 onClick={() => setActiveTab(index)}
               >
@@ -448,7 +448,7 @@ const LeaveTrackerAdmin = () => {
         {activeTab === 1 && (
           <button
             onClick={() => setIsOpen(true)}
-            className="w-full sm:w-auto px-6 py-3 bg-[#64748b] text-white rounded-2xl font-black text-[10px] sm:text-[11px] uppercase tracking-widest shadow-lg shadow-slate-100 hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto btn btn-primary flex items-center justify-center gap-2"
           >
             <FaPlus size={14} />
             Add Holidays
@@ -458,10 +458,10 @@ const LeaveTrackerAdmin = () => {
 
       {/* ==================== TAB 0: LEAVE REQUESTS ==================== */}
       {activeTab === 0 && (
-        <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+        <div className="glass-card p-4">
           <div className="mb-4">
-            <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Applied Leave</h2>
-            <p className="text-[10px] font-medium text-slate-500 mt-1">Leave requests awaiting approval</p>
+            <h2 className="text-base font-bold text-heading uppercase tracking-tight">Applied Leave</h2>
+            <p className="text-[10px] font-medium text-muted mt-1">Leave requests awaiting approval</p>
           </div>
 
           <TableWithPagination
@@ -478,16 +478,16 @@ const LeaveTrackerAdmin = () => {
 
       {/* ==================== TAB 1: HOLIDAYS & LEAVES ==================== */}
       {activeTab === 1 && (
-        <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+        <div className="glass-card p-4">
           <div className="mb-4">
-            <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Upcoming Holidays & Leaves</h2>
-            <p className="text-[10px] font-medium text-slate-500 mt-1">Company holidays and scheduled leaves</p>
+            <h2 className="text-base font-bold text-heading uppercase tracking-tight">Upcoming Holidays & Leaves</h2>
+            <p className="text-[10px] font-medium text-muted mt-1">Company holidays and scheduled leaves</p>
           </div>
 
           {loadingHolidays ? (
             <div className="text-center p-6">
               <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-slate-600"></div>
-              <p className="mt-2 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading holidays...</p>
+              <p className="mt-2 text-muted text-xs font-medium uppercase tracking-wide">Loading holidays...</p>
             </div>
           ) : (
             <HolidayTable holidays={holidays} key={refreshHolidayKey} />
@@ -499,10 +499,10 @@ const LeaveTrackerAdmin = () => {
       {activeTab === 2 && (
         <div className="space-y-4 overflow-visible">
           {/* Update User Leave Balances */}
-          <div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+          <div className="glass-card p-4">
             <div className="mb-4">
-              <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Update User Leave Balances</h2>
-              <p className="text-[10px] font-medium text-slate-500 mt-1">Adjust leave balances for employees</p>
+              <h2 className="text-base font-bold text-heading uppercase tracking-tight">Update User Leave Balances</h2>
+              <p className="text-[10px] font-medium text-muted mt-1">Adjust leave balances for employees</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
@@ -521,7 +521,7 @@ const LeaveTrackerAdmin = () => {
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">PTO Balance</label>
+                <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">PTO Balance</label>
                 <input
                   type="number"
                   min="0"
@@ -530,13 +530,13 @@ const LeaveTrackerAdmin = () => {
                     const val = Math.max(0, Number(e.target.value));
                     setLeaveBalances(prev => ({ ...prev, pto: val }));
                   }}
-                  className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all text-sm font-medium"
+                  className="w-full px-4 py-3 bg-white border border-border-subtle rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-100 transition-all text-sm font-medium"
                   disabled={!selectedUser}
                 />
               </div>
 
               <div>
-                <label className="block text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">Sick Leaves</label>
+                <label className="block text-[10px] font-black text-muted mb-2 uppercase tracking-widest">Sick Leaves</label>
                 <input
                   type="number"
                   min="0"
@@ -545,7 +545,7 @@ const LeaveTrackerAdmin = () => {
                     const val = Math.max(0, Number(e.target.value));
                     setLeaveBalances(prev => ({ ...prev, sick: val }));
                   }}
-                  className="w-full px-4 py-3 bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all text-sm font-medium"
+                  className="w-full px-4 py-3 bg-white border border-border-subtle rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-100 transition-all text-sm font-medium"
                   disabled={!selectedUser}
                 />
               </div>
@@ -563,10 +563,10 @@ const LeaveTrackerAdmin = () => {
           </div>
 
           {/* Employee Leave History */}
-          <div className="z-0 bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+          <div className="z-0 glass-card p-4">
             <div className="mb-4">
-              <h2 className="text-base font-bold text-slate-800 uppercase tracking-tight">Employee Leave History</h2>
-              <p className="text-[10px] font-medium text-slate-500 mt-1">View complete leave history for any employee</p>
+              <h2 className="text-base font-bold text-heading uppercase tracking-tight">Employee Leave History</h2>
+              <p className="text-[10px] font-medium text-muted mt-1">View complete leave history for any employee</p>
             </div>
 
             {/* Employee Selector */}
@@ -588,15 +588,15 @@ const LeaveTrackerAdmin = () => {
             {loadingHistory ? (
               <div className="text-center p-6">
                 <div className="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-slate-600"></div>
-                <p className="mt-2 text-slate-600 text-xs font-medium uppercase tracking-wide">Loading leave history...</p>
+                <p className="mt-2 text-muted text-xs font-medium uppercase tracking-wide">Loading leave history...</p>
               </div>
             ) : leaveHistory.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="min-w-full text-sm border-separate border-spacing-0">
                   <thead>
-                    <tr className="bg-slate-100/80 backdrop-blur-sm text-slate-800">
+                    <tr className="bg-surface/80 backdrop-blur-sm text-heading">
                       {["Leave Type", "Start Date", "End Date", "Duration", "Status", "Reason", "Actions"].map((heading) => (
-                        <th key={heading} className="p-3 font-semibold text-xs uppercase tracking-wide border-b border-slate-200 text-left">
+                        <th key={heading} className="p-3 font-semibold text-xs uppercase tracking-wide border-b border-border-subtle text-left">
                           {heading}
                         </th>
                       ))}
@@ -609,25 +609,25 @@ const LeaveTrackerAdmin = () => {
                       const duration = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24)) + 1;
 
                       return (
-                        <tr key={leave._id || index} className="border-b border-slate-100 hover:bg-slate-50/80 transition-colors">
-                          <td className="p-3 text-slate-700">
-                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                        <tr key={leave._id || index} className="border-b border-border-subtle hover:bg-surface/50 transition-colors">
+                          <td className="p-3 text-main">
+                            <span className="px-2 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700">
                               {leave.leaveType}
                             </span>
                           </td>
-                          <td className="p-3 text-slate-600">{startDate.toLocaleDateString()}</td>
-                          <td className="p-3 text-slate-600">{endDate.toLocaleDateString()}</td>
-                          <td className="p-3 text-slate-700 font-medium">{duration} days</td>
+                          <td className="p-3 text-muted">{startDate.toLocaleDateString()}</td>
+                          <td className="p-3 text-muted">{endDate.toLocaleDateString()}</td>
+                          <td className="p-3 text-main font-medium">{duration} days</td>
                           <td className="p-3">
                             <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${getStatusColor(leave.status)}`}>
                               {leave.status}
                             </span>
                           </td>
-                          <td className="p-3 text-slate-600 max-w-xs truncate">{leave.reason || "-"}</td>
+                          <td className="p-3 text-muted max-w-xs truncate">{leave.reason || "-"}</td>
                           <td className="p-3">
                             <button
                               onClick={() => handleViewHistoryLeave(leave)}
-                              className="flex items-center gap-1 px-3 py-1.5 bg-slate-100 text-slate-700 rounded-lg text-xs font-medium hover:bg-slate-200 transition-colors"
+                              className="flex items-center gap-1 px-3 py-1.5 bg-surface text-main rounded-lg text-xs font-medium hover:bg-slate-200 transition-colors"
                             >
                               <FaEye size={12} />
                               View
@@ -644,14 +644,14 @@ const LeaveTrackerAdmin = () => {
                 <svg className="w-12 h-12 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                <p className="text-sm font-medium text-slate-500">No leave history found for this employee</p>
+                <p className="text-sm font-medium text-muted">No leave history found for this employee</p>
               </div>
             ) : (
               <div className="text-center p-8">
                 <svg className="w-12 h-12 text-slate-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
-                <p className="text-sm font-medium text-slate-500">Select an employee to view their leave history</p>
+                <p className="text-sm font-medium text-muted">Select an employee to view their leave history</p>
               </div>
             )}
           </div>

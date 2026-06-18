@@ -196,7 +196,7 @@ export default function AdminAddTimeLogModal({ open, onClose, onSuccess, allUser
               onChange={(e) => handleChange("job", e.target.value)}
               onBlur={() => setErrors((prev) => ({ ...prev, job: validateField("job", formData.job) }))}
               placeholder="e.g. Website Overhaul"
-              className={`w-full bg-white border ${errors.job ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium`}
+              className={`w-full bg-white border ${errors.job ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium`}
             />
             {errors.job && <p className="text-xs text-red-500 mt-1">{errors.job}</p>}
           </div>
@@ -228,7 +228,7 @@ export default function AdminAddTimeLogModal({ open, onClose, onSuccess, allUser
               onChange={(e) => handleChange("hours", e.target.value)}
               onBlur={() => setErrors((prev) => ({ ...prev, hours: validateField("hours", formData.hours) }))}
               placeholder="e.g. 4.5"
-              className={`w-full bg-white border ${errors.hours ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium`}
+              className={`w-full bg-white border ${errors.hours ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium`}
             />
             {errors.hours && <p className="text-xs text-red-500 mt-1">{errors.hours}</p>}
           </div>
@@ -245,7 +245,7 @@ export default function AdminAddTimeLogModal({ open, onClose, onSuccess, allUser
                 setErrors((prev) => ({ ...prev, description: validateField("description", formData.description) }))
               }
               placeholder="Describe what this person worked on in detail..."
-              className={`w-full bg-white border ${errors.description ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 min-h-[80px]`}
+              className={`w-full bg-white border ${errors.description ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 min-h-[80px]`}
             />
             <div className="flex justify-between items-center mt-1">
               {errors.description ? (

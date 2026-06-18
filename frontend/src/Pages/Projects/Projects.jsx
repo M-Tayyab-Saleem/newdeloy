@@ -5,6 +5,7 @@ import NewProjectDrawer from "../../Components/NewProjectDrawer";
 import useProjects from "../../Hooks/useProjects";
 import projectApi from "../../api/projectApi";
 import { toast } from "react-toastify";
+import PageContainer from "../../Components/ui/PageContainer";
 
 const Projects = () => {
   const { projects, loading, error, refetch } = useProjects(); // autoFetch true
@@ -42,27 +43,29 @@ const Projects = () => {
   };
 
   return (
-    <div className="px-4 py-2">
-      <div className="p-8 rounded-xl bg-primary">
-        <div className="bg-white px-8 py-4 font-semibold rounded-lg">Projects</div>
-        <div className="my-6">
-          <ProjectsTable
-            projects={projects}
-            loading={loading}
-            onUpdate={handleUpdateProject}
-            onDelete={handleDeleteProject}
-            openModal={() => setShowModal(true)}
-          />
-          {error && <div className="text-red-500 mt-2">{String(error)}</div>}
-        </div>
-
-        <NewProjectDrawer
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
-          onSubmit={handleCreateProject}
+    <PageContainer
+      title="Projects"
+      subtitle="Manage and track company projects"
+      loading={loading}
+      isCard={true}
+    >
+      <div className="my-2">
+        <ProjectsTable
+          projects={projects}
+          loading={loading}
+          onUpdate={handleUpdateProject}
+          onDelete={handleDeleteProject}
+          openModal={() => setShowModal(true)}
         />
+        {error && <div className="text-red-500 mt-2">{String(error)}</div>}
       </div>
-    </div>
+
+      <NewProjectDrawer
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onSubmit={handleCreateProject}
+      />
+    </PageContainer>
   );
 };
 

@@ -121,7 +121,7 @@ const HistoryViewLeaveModal = ({
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Leave Type</span>
                 </div>
-                <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 uppercase">
+                <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 uppercase">
                   {leaveData.leaveType}
                 </span>
               </div>
@@ -150,8 +150,8 @@ const HistoryViewLeaveModal = ({
             </div>
 
             {/* Read Only Notice */}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <p className="text-xs text-blue-700 font-medium text-center">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <p className="text-xs text-amber-700 font-medium text-center">
                 This is a read-only view of the leave request from employee history.
               </p>
             </div>

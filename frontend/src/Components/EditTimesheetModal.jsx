@@ -197,7 +197,7 @@ export default function EditTimesheetModal({ open, onClose, timesheet, onTimeshe
               maxDate={new Date()}
               dateFormat="yyyy-MM-dd"
               wrapperClassName="w-full"
-              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium"
+              className="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium"
               placeholderText="Select date"
               required
             />
@@ -215,7 +215,7 @@ export default function EditTimesheetModal({ open, onClose, timesheet, onTimeshe
                 setNameError(validateName(e.target.value));
               }}
               onBlur={() => setNameError(validateName(timesheetName))}
-              className={`w-full bg-white border ${nameError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 font-medium`}
+              className={`w-full bg-white border ${nameError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 font-medium`}
               required
             />
             {nameError && (
@@ -234,7 +234,7 @@ export default function EditTimesheetModal({ open, onClose, timesheet, onTimeshe
                 setDescriptionError(validateDescription(e.target.value, { min: 10, max: 500, required: true }));
               }}
               onBlur={() => setDescriptionError(validateDescription(description, { min: 10, max: 500, required: true }))}
-              className={`w-full bg-white border ${descriptionError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 min-h-[100px]`}
+              className={`w-full bg-white border ${descriptionError ? "border-red-400" : "border-slate-200"} rounded-xl px-4 py-3 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-amber-100 min-h-[100px]`}
               placeholder="Describe your work in detail (at least 3 meaningful words)..."
             />
             <div className="flex justify-between items-center mt-1">

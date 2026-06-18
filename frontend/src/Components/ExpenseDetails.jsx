@@ -72,7 +72,7 @@ const ExpenseDetail = ({
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-widest">
               Expense Details
             </h3>
-            <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${expense.status === 'approved' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : expense.status === 'rejected' ? 'bg-rose-50 text-rose-600 border-rose-100' : 'bg-blue-50 text-blue-600 border-blue-100'} uppercase tracking-wide`}>
+            <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold border ${expense.status === 'approved' ? 'bg-emerald-50 text-emerald-600 border-emerald-100' : expense.status === 'rejected' ? 'bg-rose-50 text-rose-600 border-rose-100' : 'bg-amber-50 text-amber-600 border-amber-100'} uppercase tracking-wide`}>
               {expense.status}
             </span>
           </div>
@@ -187,10 +187,10 @@ const ExpenseDetail = ({
               </p>
               <button 
                 onClick={handleViewReceipt}
-                className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-blue-50 hover:border-blue-200 transition-all group text-left"
+                className="w-full flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-200 hover:bg-amber-50 hover:border-amber-200 transition-all group text-left"
               >
                 <div className="flex items-center gap-2 overflow-hidden">
-                  <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center font-bold text-xs shrink-0">
+                  <div className="w-8 h-8 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center font-bold text-xs shrink-0">
                     {(expense.receiptUrl?.split('.').pop().split('?')[0] || "IMG").toUpperCase()}
                   </div>
                   <div>
@@ -198,7 +198,7 @@ const ExpenseDetail = ({
                     <p className="text-[10px] text-slate-400 font-medium">Click to download recipient</p>
                   </div>
                 </div>
-                <div className="text-slate-400 group-hover:text-blue-600">
+                <div className="text-slate-400 group-hover:text-amber-600">
                   <Paperclip size={16} />
                 </div>
               </button>

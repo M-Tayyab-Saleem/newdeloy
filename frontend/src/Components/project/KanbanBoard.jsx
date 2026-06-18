@@ -9,7 +9,7 @@ const KanbanBoard = ({ tasks, onDragEnd, loading }) => {
 
   const kanbanColumns = [
     { id: 'backlog', title: 'Backlog', bgColor: 'bg-gray-50', borderColor: 'border-gray-200' },
-    { id: 'todo', title: 'To Do', bgColor: 'bg-blue-50', borderColor: 'border-blue-200' },
+    { id: 'todo', title: 'To Do', bgColor: 'bg-amber-50', borderColor: 'border-amber-200' },
     { id: 'in-progress', title: 'In Progress', bgColor: 'bg-yellow-50', borderColor: 'border-yellow-200' },
     { id: 'under-review', title: 'Under Review', bgColor: 'bg-purple-50', borderColor: 'border-purple-200' },
     { id: 'done', title: 'Done', bgColor: 'bg-green-50', borderColor: 'border-green-200' }

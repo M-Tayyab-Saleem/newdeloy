@@ -6,6 +6,8 @@ import LeaveSummary from "../../Components/tabs/LeaveSummary";
 import LeaveRequest from "./LeaveRequest";
 import AddHolidayModal from "../../Components/AddHolidayModal";
 
+import PageContainer from "../../Components/ui/PageContainer";
+
 const LeaveTracker = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [holidayModal, setHolidayModal] = useState(false);
@@ -17,10 +19,12 @@ const LeaveTracker = () => {
     setAdminRefresh(i => ++i)
   };
   return (
-    <div className="min-h-screen bg-transparent p-2">
-
-      {/* Content Area */}
-      <div className="bg-transparent">
+    <PageContainer
+      title="Leave Tracker"
+      subtitle="Manage and track employee leaves"
+      isCard={false}
+    >
+      <div className="w-full">
         <LeaveSummary />
       </div>
 
@@ -37,7 +41,7 @@ const LeaveTracker = () => {
         setIsOpen={setHolidayModal}
         onHolidayAdded={handleHolidayAdded}
       />
-    </div>
+    </PageContainer>
   );
 };
 
