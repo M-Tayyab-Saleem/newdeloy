@@ -92,8 +92,8 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => {
         }
 
         return (
-            <div className={`${sizeClasses} rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 border-2 border-white shadow-sm flex items-center justify-center`}>
-                <span className={`${size === 'lg' ? 'text-lg' : 'text-xs'} font-bold text-indigo-600`}>
+            <div className={`${sizeClasses} rounded-full bg-gradient-to-br from-amber-50 to-amber-100 border-2 border-white shadow-sm flex items-center justify-center`}>
+                <span className={`${size === 'lg' ? 'text-lg' : 'text-xs'} font-bold text-amber-600`}>
                     {name?.charAt(0).toUpperCase() || "U"}
                 </span>
             </div>
@@ -187,22 +187,22 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => {
             </button>
 
             {/* Sidebar Content */}
-            <div className={`h-full w-full bg-[#ECF0F3] backdrop-blur-sm rounded-[2rem] shadow-lg border border-white/50 flex flex-col items-center py-5 px-4 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+            <div className={`h-full w-full bg-white backdrop-blur-sm rounded-[2rem] shadow-lg border border-amber-200 flex flex-col items-center py-5 px-4 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
                 }`}>
 
                 {/* Profile Section */}
                 <div className="flex flex-col items-center w-full">
-                    <div className="w-20 h-20 rounded-full border-2 border-white shadow-md overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-100 mb-2">
+                    <div className="w-20 h-20 rounded-full border-2 border-white shadow-md overflow-hidden bg-gradient-to-br from-amber-50 to-amber-100 mb-2">
                         {profileImage ? (
                             <img src={profileImage} alt={firstName} className="w-full h-full object-cover" />
                         ) : (
-                            <div className="h-full w-full rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 text-slate-700 flex items-center justify-center text-2xl font-bold">
+                            <div className="h-full w-full rounded-full bg-gradient-to-br from-amber-50 to-amber-100 text-amber-700 flex items-center justify-center text-2xl font-bold">
                                 {firstName.charAt(0).toUpperCase()}
                             </div>
                         )}
                     </div>
 
-                    <div className="text-center bg-white rounded-xl px-4 py-2 w-full mb-2 shadow-sm border border-slate-100">
+                    <div className="text-center bg-white rounded-xl px-4 py-2 w-full mb-2 shadow-sm border border-amber-100">
                         <h3 className="text-sm font-bold text-slate-800">
                             {currentUser?.name || "- Name -"}
                         </h3>
@@ -245,7 +245,7 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => {
                 </div>
 
                 {/* Reporting Manager */}
-                <div className="w-full bg-white rounded-xl p-3 mb-3 shadow-sm border border-slate-100">
+                <div className="w-full bg-white rounded-xl p-3 mb-3 shadow-sm border border-amber-100">
                     <div className="flex items-center justify-between mb-2">
                         <p className="text-[9px] font-bold text-slate-500 uppercase">Reporting Manager</p>
                         <UserIcon className="w-4 h-4 text-slate-400" />
@@ -280,7 +280,7 @@ const RightSidebar = ({ isOpen, toggleSidebar }) => {
                 </div>
 
                 {/* Team Overview */}
-                <div className="w-full bg-white rounded-xl p-3 flex-1 shadow-sm border border-slate-100 flex flex-col min-h-0">
+                <div className="w-full bg-white rounded-xl p-3 flex-1 shadow-sm border border-amber-100 flex flex-col min-h-0">
                     <div className="flex items-center justify-between mb-3">
                         <p className="text-[9px] font-bold text-slate-500 uppercase">Team Overview</p>
                         <div className="flex items-center gap-1">

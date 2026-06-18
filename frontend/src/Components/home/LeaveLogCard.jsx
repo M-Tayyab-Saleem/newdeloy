@@ -54,7 +54,7 @@ const LeaveLogCard = ({ onDelete }) => {
   // Loading State
   if (loading) {
     return (
-      <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-3 h-full w-full">
+      <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-3 h-full w-full">
          <div className="flex items-center gap-2 mb-2">
             <BeachIcon className="w-3.5 h-3.5 text-blue-600" />
             <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Leave Logs</h3>
@@ -66,7 +66,7 @@ const LeaveLogCard = ({ onDelete }) => {
 
   return (
     // CHANGED: p-4 -> p-3
-    <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-3 w-full h-full flex flex-col">
+    <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-3 w-full h-full flex flex-col">
       <div className="flex justify-between items-start mb-2">
         <div>
           <div className="flex items-center gap-2 mb-0.5">

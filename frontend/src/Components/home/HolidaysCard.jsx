@@ -82,7 +82,7 @@ const HolidaysCard = ({ onDelete }) => {
 
   if (loading) {
     return (
-      <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+      <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-4">
         <div className="flex items-center gap-2 mb-3">
           <FiCalendar className="w-4 h-4 text-orange-600" />
           <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Holidays</h3>
@@ -93,7 +93,7 @@ const HolidaysCard = ({ onDelete }) => {
   }
 
   return (
-    <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4">
+    <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-4">
       {/* Header */}
       <div className="flex justify-between items-start mb-3">
         <div>

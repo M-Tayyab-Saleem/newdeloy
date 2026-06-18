@@ -394,7 +394,7 @@ const ToDoCard = ({ onDelete, userId }) => {
         }
       `}</style>
 
-      <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-3 w-full h-full flex flex-col">
+      <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-3 w-full h-full flex flex-col">
         {/* Header - Marked as shrink-0 so it stays fixed at top */}
         <div className="flex justify-between items-start mb-3 shrink-0">
           <div>

@@ -34,7 +34,7 @@ const AddCardMenu = ({ onAdd }) => {
       {/* Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/90 backdrop-blur-sm border border-white/50 hover:bg-white transition-all shadow-sm text-xs font-bold text-slate-700 uppercase tracking-wide"
+        className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white backdrop-blur-sm border border-amber-100 hover:bg-white transition-all shadow-sm text-xs font-bold text-slate-700 uppercase tracking-wide"
       >
         More
         <EllipsisVerticalIcon className="h-4 w-4 text-slate-600" />
@@ -42,7 +42,7 @@ const AddCardMenu = ({ onAdd }) => {
 
       {/* Dropdown */}
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-white/50 z-50 py-1">
+        <div className="absolute right-0 mt-2 w-40 bg-white/95 backdrop-blur-md rounded-xl shadow-lg border border-amber-100 z-50 py-1">
           <ul className="text-xs text-slate-700">
             {cardOptions.map((option) => (
               <li

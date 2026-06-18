@@ -104,8 +104,8 @@ const SubNavbarVertical = () => {
   return (
     <>
       <aside className="w-[5.5rem] h-full bg-white/90 backdrop-blur-sm rounded-[2rem] flex flex-col items-center pb-6 z-[70] shadow-sm border border-white/50 relative">
-        <div className="w-full py-4 flex items-center justify-center bg-slate-200 mb-2 rounded-t-[2rem]">
-          <div className="w-6 h-6 bg-slate-800 flex items-center justify-center text-white text-lg font-bold shadow-md rounded-[6px]">
+        <div className="w-full py-4 flex items-center justify-center bg-amber-50 mb-2 rounded-t-[2rem]">
+          <div className="w-6 h-6 bg-amber-500 flex items-center justify-center text-white text-lg font-bold shadow-md rounded-[6px]">
             A
           </div>
         </div>
@@ -126,8 +126,8 @@ const SubNavbarVertical = () => {
                 to={link.path}
                 className={({ isActive }) =>
                   `w-full py-3 flex flex-col items-center justify-center rounded-[1.2rem] transition-all duration-300 ${isActive
-                    ? "bg-[#E0E5EA] text-slate-900 shadow-sm"
-                    : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
+                    ? "bg-amber-100 text-amber-700 shadow-sm"
+                    : "text-slate-600 hover:bg-amber-50 hover:text-amber-600"
                   }`
                 }
               >
@@ -143,7 +143,7 @@ const SubNavbarVertical = () => {
         <div className=" pt-1 border-t border-slate-100 w-full px-2 flex flex-col items-center flex-shrink-0 relative" ref={settingsRef}>
           <button
             onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-            className={`w-full py-2 flex flex-col items-center justify-center rounded-[1.2rem] transition-colors ${isSettingsOpen ? 'bg-slate-100 shadow-inner text-slate-900' : 'text-slate-600 hover:bg-slate-50'}`}
+            className={`w-full py-2 flex flex-col items-center justify-center rounded-[1.2rem] transition-colors ${isSettingsOpen ? 'bg-amber-100 shadow-inner text-amber-700' : 'text-slate-600 hover:bg-amber-50 hover:text-amber-600'}`}
           >
             <Cog6ToothIcon className="h-5 w-5" />
             <span className="text-[9px] font-bold uppercase mt-1">Settings</span>

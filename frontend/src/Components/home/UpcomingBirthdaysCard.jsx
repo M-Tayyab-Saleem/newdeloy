@@ -38,7 +38,7 @@ const UpcomingBirthdaysCard = ({ onDelete }) => {
 
   if (loading) {
     return (
-      <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 w-full">
+      <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-4 w-full">
         <div className="flex items-center gap-2 mb-3">
           <FiGift className="w-4 h-4 text-pink-600" />
           <h3 className="text-xs font-bold text-slate-800 uppercase tracking-tight">Upcoming Birthdays</h3>
@@ -49,7 +49,7 @@ const UpcomingBirthdaysCard = ({ onDelete }) => {
   }
 
   return (
-    <div className="relative bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 p-4 w-full">
+    <div className="relative bg-white backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-100 p-4 w-full">
       <div className="flex justify-between items-start mb-3">
         <div>
           <div className="flex items-center gap-2 mb-1">

@@ -223,7 +223,7 @@ const userName =
     <div className="w-full p-2">
 
      {/* Header Card */}
-<div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-white/50 mb-4 p-4">
+<div className="bg-white/90 backdrop-blur-sm rounded-[1.2rem] shadow-md border border-amber-200 mb-4 p-4">
   <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
 
     {/* ✅ LEFT: GREETING (RESTORED PROPERLY) */}
@@ -235,7 +235,7 @@ const userName =
     className="h-11 w-11 rounded-full object-cover border-2 border-white shadow-md"
   />
 ) : (
-  <div className="h-11 w-11 rounded-full bg-[#E0E5EA] text-slate-700 flex items-center justify-center text-sm font-bold border-2 border-white shadow-md">
+  <div className="h-11 w-11 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center text-sm font-bold border-2 border-white shadow-md">
     {userName.charAt(0).toUpperCase()}
   </div>
 )}
@@ -255,15 +255,15 @@ const userName =
 
       {/* TIMER (YOUR ORIGINAL STYLE) */}
       <div className="flex items-center gap-1.5">
-        <div className="bg-[#E0E5EA] text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
+        <div className="bg-amber-50 border border-amber-100 text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
           {h}
         </div>
         <div className="text-sm font-bold text-slate-800">:</div>
-        <div className="bg-[#E0E5EA] text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
+        <div className="bg-amber-50 border border-amber-100 text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
           {m}
         </div>
         <div className="text-sm font-bold text-slate-800">:</div>
-        <div className="bg-[#E0E5EA] text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
+        <div className="bg-amber-50 border border-amber-100 text-slate-800 px-3 py-2 rounded-xl font-bold text-sm shadow-inner min-w-[2.5rem] text-center">
           {s}
         </div>
       </div>

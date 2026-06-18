@@ -74,8 +74,8 @@ const NavBarVertical = ({ onNotificationClick }) => {
           aria-label="Notifications"
           className={`relative w-10 h-10 flex items-center justify-center transition-all duration-300 shadow-md rounded-xl ${
             location.pathname === '/notifications'
-              ? 'bg-slate-800 text-white translate-y-[2px] shadow-sm' 
-              : 'bg-white text-slate-700 hover:bg-slate-50'
+              ? 'bg-amber-500 text-white translate-y-[2px] shadow-sm' 
+              : 'bg-white text-slate-700 hover:bg-amber-50'
           }`}
         >
           <BellIcon className="w-5 h-5" />
@@ -91,13 +91,13 @@ const NavBarVertical = ({ onNotificationClick }) => {
         {/* Tooltip */}
         {hoveredItem === 'notifications' && (
           <div className="absolute top-1/2 left-full -translate-y-1/2 ml-3 px-3 py-1.5
-            bg-slate-800 text-white text-xs font-medium rounded-lg shadow-lg
+            bg-amber-600 text-white text-xs font-medium rounded-lg shadow-lg
             whitespace-nowrap z-[9999] animate-fadeIn pointer-events-none">
             Notifications{unreadCount > 0 ? ` (${unreadCount})` : ''}
             {/* Tooltip Arrow */}
             <div className="absolute top-1/2 left-0 -translate-x-full -translate-y-1/2
               w-0 h-0 border-t-4 border-b-4 border-r-4
-              border-transparent border-r-slate-800">
+              border-transparent border-r-amber-600">
             </div>
           </div>
         )}
@@ -117,8 +117,8 @@ const NavBarVertical = ({ onNotificationClick }) => {
                 className={() =>
                   `relative flex items-center justify-center w-[3rem] h-[3rem] transition-all duration-300 ${
                     active
-                      ? "bg-white/80 text-black rounded-l-3xl translate-x-[1px] shadow-[-2px_0_8px_rgba(0,0,0,0.08)]"
-                      : "text-slate-500 hover:text-white hover:bg-white/10 rounded-l-2xl"
+                      ? "bg-amber-50 text-amber-600 rounded-l-3xl translate-x-[1px] shadow-[-2px_0_8px_rgba(0,0,0,0.08)]"
+                      : "text-slate-500 hover:text-amber-600 hover:bg-amber-50/50 rounded-l-2xl"
                   }`
                 }
               >
@@ -127,13 +127,13 @@ const NavBarVertical = ({ onNotificationClick }) => {
 
               {hoveredItem === item.name && (
                 <div className="absolute top-1/2 left-full -translate-y-1/2 ml-3 px-3 py-1.5 
-                bg-slate-800 text-white text-xs font-medium rounded-lg shadow-lg 
+                bg-amber-600 text-white text-xs font-medium rounded-lg shadow-lg 
                 whitespace-nowrap z-[9999] animate-fadeIn pointer-events-none">
                   {item.name}
                   {/* Tooltip Arrow */}
                   <div className="absolute top-1/2 left-0 -translate-x-full -translate-y-1/2
                     w-0 h-0 border-t-4 border-b-4 border-r-4
-                    border-transparent border-r-slate-800">
+                    border-transparent border-r-amber-600">
                   </div>
                 </div>
               )}

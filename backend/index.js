@@ -18,9 +18,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
 
-const authLimiter = rateLimit({ windowMs: 15*60*1000, max: 20 });
-app.use('/api/v1/auth', authLimiter);
-
 const corsOptions = {
   origin: ['https://abidipro.abidisolutions.com', 'http://localhost:5173', 'http://localhost:3001', 'http://localhost:3000', "http://localhost:5174","http://localhost:5175" , "http://192.168.100.91:5173"],
   credentials: true,
@@ -28,9 +25,13 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
+app.use(cors(corsOptions));
+
+const authLimiter = rateLimit({ windowMs: 15*60*1000, max: 100 });
+app.use('/api/v1/auth', authLimiter);
+
 // Serve static files from uploads directory
 app.use("/uploads/receipts", express.static(path.join(__dirname, "uploads/receipts")));
-app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
